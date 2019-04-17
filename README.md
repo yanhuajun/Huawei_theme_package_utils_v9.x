@@ -42,6 +42,14 @@ hwt文件放置到theme_package文件夹下 ，
 点击 解包.bat 运行
 生成的文件夹放置在 theme_nopackage 文件夹下
 
+# Icon批量重命名：
+### (相关文件夹 orgin_name_file , trans_name_file)
+将原始icon系列图片放置到 orgin_name_file 文件夹内，
+并配置好icon_rename_file.conf 文件
+点击 批量换名.bat 运行
+运行后的系列文件保存至  trans_name_file
+
+
 
 # TODO：
 
