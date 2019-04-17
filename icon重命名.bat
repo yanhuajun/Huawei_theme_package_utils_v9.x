@@ -3,4 +3,4 @@ python .\renameIcon.py
 
 @echo '成功'
 
-@puase
+@pause
