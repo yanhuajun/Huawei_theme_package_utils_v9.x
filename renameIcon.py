@@ -5,13 +5,16 @@ import sys
 import zipfile
 import time
 import fileinput 
-
+import chardet
 
 def getFileNameList():
 	fileNameList = {}
 	filePath = os.path.join(os.getcwd(),"orgin_icon_file","icon_rename_file.conf")
-	for line in fileinput.input(filePath):
-		# print line
+	file = open(filePath,'r')
+	text = file.read().decode("utf-8")
+	#print text
+	for line in text.split("\n"):
+		#print "%s%s" %(line , "---")
 		if not line:
 			continue
 		if line == '':
@@ -19,14 +22,12 @@ def getFileNameList():
 		if line.startswith("#"):
 			continue
 		line = line.strip()
-		# print line
 		array = line.split("=")
-		# print array
 		fileNameList[array[0]] = array[1]
 	return fileNameList
 
 def tranName(fileNameList):
-	print "修改文件列表如下："
+	print "changing list :"
 	for item in fileNameList:
 		print "orginName:%s ===>tansName:%s" % (item  ,fileNameList[item])
 	for item in fileNameList:
@@ -34,8 +35,10 @@ def tranName(fileNameList):
 			print("cp ./orgin_icon_file/%s ./trans_name_file/%s"  %(item  ,fileNameList[item]));
 			os.system("cp ./orgin_icon_file/%s ./trans_name_file/%s"  %(item  ,fileNameList[item]));
 		else:
-			print("copy .\\orgin_icon_file\\%s .\\trans_name_file\\%s"  %(item  ,fileNameList[item]));
-			os.system("copy .\\orgin_icon_file\\%s .\\trans_name_file\\%s"  %(item  ,fileNameList[item]));
+			cmd = ("copy .\\orgin_icon_file\\%s .\\trans_name_file\\%s"  %(item ,fileNameList[item]))
+			cmd = cmd.encode("gbk")
+			print(cmd);
+			os.system(cmd);
 #start
 
 fileNameList = getFileNameList()

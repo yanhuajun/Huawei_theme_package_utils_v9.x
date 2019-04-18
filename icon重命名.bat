@@ -1,6 +1,6 @@
-@echo '开始运行'
+@echo 'start...'
 python .\renameIcon.py
 
-@echo '成功'
+@echo 'success'
 
 @pause
