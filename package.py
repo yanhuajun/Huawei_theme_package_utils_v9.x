@@ -6,6 +6,8 @@ import zipfile
 import time
 
 
+DEBUGMODE = True
+
 def getTheme_nopackage():
 		return os.listdir(os.path.join(os.getcwd() , 'theme_nopackage'))
 
@@ -13,40 +15,40 @@ def delete( item, fileName  ):
 	if os.sep == '/':
 		pass
 	else:
-		os.system( "rd .\\theme_package\\'%s'\\'%s' /q /s "% ( item , fileName ) )
+		os.system( "rd .\\theme_package\\%s\\%s /q /s "% ( item , fileName ) )
 
 def move(item ,fileName ):
 	if os.sep =='/':
 		pass
 	else:
-		os.system("move .\\theme_package\\'%s'\\'%s.zip' .\\theme_package\\'%s'\\'%s'" %(item ,fileName,item , fileName))
+		os.system("move .\\theme_package\\%s\\%s.zip .\\theme_package\\%s\\%s" %(item ,fileName,item , fileName))
 
 
 def move_out(item  ):
 	if os.sep =='/':
 		pass
 	else:
-		print("move .\\theme_package\\'%s.zip' .\\theme_package\\'%s.hwt'" % (item , item ))
-		os.system("move .\\theme_package\\'%s.zip' .\\theme_package\\'%s.hwt'" % (item , item ))
+		print("move .\\theme_package\\%s.zip .\\theme_package\\%s.hwt" % (item , item ))
+		os.system("move .\\theme_package\\%s.zip .\\theme_package\\%s.hwt" % (item , item ))
 
 
 
 def InnerZip( item ,fileName):
 	if os.sep == '/':
-		print("cd %s%stheme_package%s'%s'%s'%s'  \n pwd \n zip -r '%s.zip' .%s* \n mv '%s.zip' ../ \n cd ../ \n rm -rf .%s'%s' \n mv '%s.zip' '%s' " 
+		print("cd %s%stheme_package%s%s%s%s  \n pwd \n zip -r %s.zip .%s* \n mv %s.zip ../ \n cd ../ \n rm -rf .%s%s \n mv %s.zip %s " 
 		% ( os.getcwd() ,os.sep , os.sep,item ,os.sep , fileName,fileName,os.sep,fileName,os.sep,fileName,fileName,fileName ) )
-		os.system("cd %s%stheme_package%s'%s'%s'%s'  \n pwd \n zip -r '%s.zip' .%s* \n mv '%s.zip' ../ \n cd ../ \n rm -rf .%s'%s' \n mv '%s.zip' '%s' " 
+		os.system("cd %s%stheme_package%s%s%s%s  \n pwd \n zip -r %s.zip .%s* \n mv %s.zip ../ \n cd ../ \n rm -rf .%s%s \n mv %s.zip %s " 
 		% ( os.getcwd() ,os.sep , os.sep,item ,os.sep , fileName,fileName,os.sep,fileName,os.sep,fileName,fileName,fileName ) )
 	else:
-		print("cd .\\theme_package\\'%s'\\'%s' &&  zip -r '%s.zip' .\\* && mv '%s.zip' ../ && cd ../ " 
+		print("cd .\\theme_package\\%s\\%s &&  zip -r %s.zip .\\* && mv %s.zip ../ && cd ../ " 
 		%  (item,fileName,fileName,fileName) )
-		os.system("cd .\\theme_package\\'%s'\\'%s' &&  zip -r '%s.zip' .\\* && mv '%s.zip' ../ && cd ../ " 
+		os.system("cd .\\theme_package\\%s\\%s &&  zip -r %s.zip .\\* && mv %s.zip ../ && cd ../ " 
 		%  (item,fileName,fileName,fileName) )
 
 def OutterZip( item ):
-	print("cd theme_package%s'%s'  && zip -r '%s.zip' .%s* && mv '%s.zip' ../ && cd ../ && mv '%s.zip' '%s.hwt' " 
+	print("cd theme_package%s%s  && zip -r %s.zip .%s* && mv %s.zip ../ && cd ../ && mv %s.zip %s.hwt " 
 		% ( os.sep,item ,item ,os.sep,item,item,item) )
-	os.system("cd theme_package%s'%s'  && zip -r '%s.zip' .%s* && mv '%s.zip' ../ && cd ../ && mv '%s.zip' '%s.hwt' " 
+	os.system("cd theme_package%s%s  && zip -r %s.zip .%s* && mv %s.zip ../ && cd ../ && mv %s.zip %s.hwt " 
 		% ( os.sep,item ,item ,os.sep,item,item,item) )
 
 
@@ -59,18 +61,24 @@ def cpTemp( item ):
 		if os.sep == '/' :
 			os.remove(fileName)
 		else:
-			print "rmdir '%s' /s /q" % (fileName)
-			os.system("rmdir '%s' /s /q" % (fileName))
+			print "rmdir %s /s /q" % (fileName)
+			os.system("rmdir %s /s /q" % (fileName))
 	else:
 		print 'path not found ,do not clean ' 
 		
 	if os.sep == '/':
 		cp = 'cp'
-		print "%s -R ./theme_nopackage/'%s' ./theme_package/" % ( cp,item )
-		os.system("%s -R ./theme_nopackage/'%s' ./theme_package/" % ( cp,item ))
+		print "%s -R ./theme_nopackage/%s ./theme_package/" % ( cp,item )
+		os.system("%s -R ./theme_nopackage/%s ./theme_package/" % ( cp,item ))
 	else : 
-		print "xcopy .\\theme_nopackage\\'%s' .\\theme_package\\'%s' /S /I" % ( item , item )
-		os.system("xcopy .\\theme_nopackage\\'%s' .\\theme_package\\'%s' /S /I" % ( item , item ))
+		str = "xcopy %s %s /S /I" % ( os.path.join(os.getcwd() , 'theme_nopackage',"%s" % item ) , os.path.join(os.getcwd() , 'theme_package',"%s" % item ) )
+		log(str)
+		os.system(str)
+
+
+def log(logStr):
+	if DEBUGMODE:
+		print logStr
 
 # start
 
