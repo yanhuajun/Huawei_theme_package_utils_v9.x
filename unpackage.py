@@ -5,6 +5,8 @@ import sys
 import zipfile
 import time
 
+DEBUGMODE = True
+
 
 def getTheme_packaged():
 		fileList = [];
@@ -18,14 +20,17 @@ def deleteFile( item, fileName  ):
 		print( "rm -rf ./theme_nopackage/'%s'/'%s' "% ( item , fileName ) )
 		os.system( "rm -rf ./theme_nopackage/'%s'/'%s' "% ( item , fileName ) )
 	else:
-		print  "del .\\theme_nopackage\\'%s'\\'%s' "% ( item , fileName )
-		os.system( "del .\\theme_nopackage\\'%s'\\'%s' "% ( item , fileName ) )
+		str = "del %s " % ( os.path.join(os.getcwd() ,'theme_nopackage', item , fileName ) )
+		log(str)
+		os.system( str )
 
 def move(item ,fileName ):
 	if os.sep =='/':
 		os.system("mv ./theme_nopackage/'%s'/'%s' ./theme_nopackage/'%s'/'%s.zip'" %(item ,fileName,item , fileName))
 	else:
-		os.system("move .\\theme_nopackage\\'%s'\\'%s' .\\theme_nopackage\\'%s'\\'%s.zip'" %(item ,fileName,item , fileName))
+		str = "mv %s %s" % ( os.path.join(os.getcwd() , 'theme_nopackage' , item , fileName ) ,os.path.join(os.getcwd() , 'theme_nopackage' , item , '%s.zip' % fileName ) )
+		log(str)
+		os.system(str)
 
 
 def move_out(item  ):
@@ -59,15 +64,27 @@ def cpTemp( item ):
 
 def unzipfile_outter(item):
 	if os.sep == '/':
-		os.system("unzip -o ./theme_package/'%s.hwt' -d ./theme_nopackage/'%s'" % (item ,item ));
+		str = "unzip -o ./theme_package/'%s.hwt' -d ./theme_nopackage/'%s'" % (item ,item )
+		log(str)
+		os.system(str);
 	else:
-		os.system("7z x -tZip -y ./theme_package/'%s.hwt' -o./theme_nopackage/'%s'" % (item ,item ) )
+		str = "7z x -tZip -y %s -o%s" % (os.path.join(os.getcwd() , 'theme_package','%s.hwt' % item ) ,os.path.join(os.getcwd() , 'theme_nopackage',item ) ) 
+		log(str)
+		os.system(str)
 
 def unzipfile_inner(item,fileName):
 	if os.sep == '/':
-		os.system("unzip -o ./theme_nopackage/'%s'/'%s.zip' -d ./theme_nopackage/'%s'/'%s'" % (item ,fileName,item ,fileName ) )
+		str = "unzip -o ./theme_nopackage/'%s'/'%s.zip' -d ./theme_nopackage/'%s'/'%s'" % (item ,fileName,item ,fileName ) 
+		log(str)
+		os.system(str)
 	else:
-		os.system("7z x -tZip -y ./theme_nopackage/'%s'/'%s.zip' -o./theme_nopackage/'%s'/'%s'" % (item ,fileName,item ,fileName ) )
+		os.system("7z x -tZip -y %s -o%s" % (os.path.join(os.getcwd(),'theme_nopackage',item,'%s.zip'% fileName ),os.path.join(os.getcwd(),'theme_nopackage',item,fileName ) ) )
+
+def log(logString):
+	if DEBUGMODE:
+		print logString
+	else:
+		return
 
 # start
 themeList = getTheme_packaged()
