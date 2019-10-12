@@ -97,6 +97,8 @@ for item in themeList:
 	InnerZip( item ,'com.android.server.telecom')
 	InnerZip( item ,'com.android.systemui')
 	InnerZip( item ,'com.huawei.android.launcher')
+	InnerZip( item ,'com.huawei.hwvoipservice')
+
 	
 	delete( item ,'icons')
 	delete( item ,'com.android.contacts')
@@ -106,7 +108,8 @@ for item in themeList:
 	delete( item ,'com.android.server.telecom')
 	delete( item ,'com.android.systemui')
 	delete( item ,'com.huawei.android.launcher')
-    
+	delete( item ,'com.huawei.hwvoipservice')
+
 	move( item ,'icons')
 	move( item ,'com.android.contacts')
 	move( item ,'com.android.mms')
@@ -115,5 +118,6 @@ for item in themeList:
 	move( item ,'com.android.server.telecom')
 	move( item ,'com.android.systemui')
 	move( item ,'com.huawei.android.launcher')	
+	move( item ,'com.huawei.hwvoipservice')
 	
 	OutterZip(item )

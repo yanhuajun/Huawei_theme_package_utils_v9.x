@@ -100,6 +100,8 @@ for item in themeList:
 	move( item ,'com.android.server.telecom')
 	move( item ,'com.android.systemui')
 	move( item ,'com.huawei.android.launcher')
+	move( item ,'com.huawei.hwvoipservice') # com.huawei.hwvoipservice
+
 	
 	unzipfile_inner( item ,'icons')
 	unzipfile_inner( item ,'com.android.contacts')
@@ -109,7 +111,8 @@ for item in themeList:
 	unzipfile_inner( item ,'com.android.server.telecom')
 	unzipfile_inner( item ,'com.android.systemui')
 	unzipfile_inner( item ,'com.huawei.android.launcher')
-	
+	unzipfile_inner( item ,'com.huawei.hwvoipservice')
+
 	deleteFile( item ,'icons.zip')
 	deleteFile( item ,'com.android.contacts.zip')
 	deleteFile( item ,'com.android.mms.zip')
@@ -118,4 +121,5 @@ for item in themeList:
 	deleteFile( item ,'com.android.server.telecom.zip')
 	deleteFile( item ,'com.android.systemui.zip')
 	deleteFile( item ,'com.huawei.android.launcher.zip')
+	deleteFile( item ,'com.huawei.hwvoipservice.zip')
 	
