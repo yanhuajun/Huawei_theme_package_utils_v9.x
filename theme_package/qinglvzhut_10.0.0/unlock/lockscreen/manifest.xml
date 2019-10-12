@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Lockscreen version="1" frameRate="80" displayDesktop="false" vibrate="false" screenWidth="1080">
+    <Var name="sw" expression="#screen_width" />
+    <Var name="sh" expression="#screen_height" />
+    <Var name="on" expression="0" />
+
+
+    <Var name="huaban1" expression="0" />
+    <Var name="huaban2" expression="0" />
+    <Var name="qipao" expression="0" />
+    <Var name="huaduo" expression="1" />
+    <Var name="shuye" expression="1" />
+    <Var name="guangyun" expression="1" />
+    <Var name="wenzi1" expression="1" />
+    <Var name="wenzi2" expression="0" />
+    <Var name="oXn" expression="0" const="true" />	
+	<Var name="oXp" expression="0" const="true" />	
+	<Var name="oXq" expression="min((#time-#oXp)*(10/4),1000)/1000" />	
+	<Var name="oXl" expression="-(#oXq-1)*(#oXq-1)*(#oXq-1)" />	
+	<Var name="move_y" expression="0" const="true"/>	
+	<Var name="move_y" expression="ifelse(#setting,min(#touch_y-#touch_begin_y,0),#oXn*#oXl)" />
+	<Var name="ul_m" expression="ifelse(eq(#moving_target,0),#move_y,0)" />
+	<Var name="moving_target" expression="0" const="true" /> 
+	<Var name="oXr" expression="1" const="true" type="number" />	
+	<Var name="oXf" expression="0" const="true" />	
+	<Var name="oXg" expression="0" const="true" />	
+	<Var name="oXh" expression="min((#time-#oXf)*(10/4),1000)/1000" />	
+	<Var name="oXi" expression="ifelse(#oXg,(#oXh-1)*(#oXh-1)*(#oXh-1)+1,-(#oXh-1)*(#oXh-1)*(#oXh-1))" />
+	<Var name="oXj" expression="500*#oXi" />
+	<Var name="sw" expression="#screen_width" />
+	<Var name="sh" expression="#screen_height" />
+	<Var name="setting" expression="0" const="true" />
+	<Var name="set1" expression="1" const="true"  persist="true" />
+	<Var name="yuju" expression="1" const="true"  persist="true" />
+	<Var name="wz" expression="1" const="true" type="number" />	
+	<Var name="oyn" expression="0" const="true" />	
+	<Var name="oym" expression="0" const="true" />	
+	<Var name="oyo" expression="0" const="true" />	
+	<Var name="oyp" expression="min((#time-#oyo)*(10/4),1000)/1000" />	
+	<Var name="oyk" expression="-(#oyp-1)*(#oyp-1)*(#oyp-1)" />	
+	<Var name="oyj" expression="ifelse(#oyn,max(#touch_begin_x-#touch_x,0),#oym*#oyk)" />		
+	<Var name="oyq" expression="1" const="true" type="number" />	
+	<Var name="oye" expression="0" const="true" />	
+	<Var name="oyf" expression="0" const="true" />	
+	<Var name="oyg" expression="min((#time-#oye)*(10/4),1000)/1000" />	
+	<Var name="oyh" expression="ifelse(#oyf,(#oyg-1)*(#oyg-1)*(#oyg-1)+1,-(#oyg-1)*(#oyg-1)*(#oyg-1))" />	
+	<Var name="oyi" expression="500*#oyh" />	
+	<Var name="oyb" expression="ifelse(#oyd,8*#oyc*#oyc*#oyc,1-8*#oyc*#oyc*#oyc)" />		 
+
+	<Var name="kyn" expression="0" const="true" />	
+	<Var name="kym" expression="0" const="true" />	
+	<Var name="kyo" expression="0" const="true" />	
+	<Var name="kyp" expression="min((#time-#kyo)*(10/4),1000)/1000" />	
+	<Var name="kyk" expression="-(#kyp-1)*(#kyp-1)*(#kyp-1)" />	
+	<Var name="kyj" expression="ifelse(#kyn,max(#touch_begin_x-#touch_x,0),#kym*#kyk)" />		
+	<Var name="kyq" expression="1" const="true" type="number" />	
+	<Var name="kye" expression="0" const="true" />	
+	<Var name="kyf" expression="0" const="true" />	
+	<Var name="kyg" expression="min((#time-#kye)*(10/4),1000)/1000" />	
+	<Var name="kyh" expression="ifelse(#kyf,(#kyg-1)*(#kyg-1)*(#kyg-1)+1,-(#kyg-1)*(#kyg-1)*(#kyg-1))" />	
+	<Var name="kyi" expression="500*#kyh" />	
+	<Var name="kyb" expression="ifelse(#oyd,8*#oyc*#oyc*#oyc,1-8*#oyc*#oyc*#oyc)" />
+
+
+
+    <Var name="alpha1">
+        <VariableAnimation>
+            <AniFrame value="255" time="0" />
+            <AniFrame value="50" time="1200" />
+            <AniFrame value="255" time="2400" />
+        </VariableAnimation>
+    </Var>
+
+
+    <ExternalCommands>
+        <Trigger action="resume">
+            <VariableCommand name="mn" expression="0" />
+            <VariableCommand name="on" expression="1" />
+            <VariableCommand name="auto" expression="0" />
+            <VariableCommand name="app" expression="0" />
+            <VariableCommand name="auto3" expression="0" />
+            <VariableCommand name="zdykg" expression="0" />
+            <VariableCommand name="anqh2" expression="0" />
+
+            <VariableCommand name="showButton" expression="0" />
+
+            <Command target="open.animation" value="play" />
+        </Trigger>
+    </ExternalCommands>
+    <!-- 黑色壁纸 -->
+    <Image x="#sw/2" y="#sh/2" align="center" alignV="center" w="#sw" h="#sh" src="black.png" />
+    <!-- 壁纸 -->
+    <Image x="0" y="0" src="bg.jpg" />
+    <Image x="0" y="250" src="huaban2/hb.png" w="1011" h="1325" visibility="#huaban2" />
+
+    <Image x="#sw" y="#sh" align="right" alignV="bottom" src="huaduo/huaqietu.png" w="340" h="371" visibility="#huaduo" />
+
+
+    <!-- 文字  -->
+    <Image x="#sw/6*4+90" y="400" align="center" alignV="top" src="wenzi_1.png" w="188" h="413" visibility="#wenzi1" />
+    <Image x="#sw/6*4+90" y="400" align="center" alignV="top" src="wenzi_2.png" w="188" h="413" visibility="#wenzi2" />
+
+    <!-- 光晕-->
+    <!-- <Image x="#sw/2" y="#sh/2" align="center"  alignV="center" src="guangyun.png" alpha="sin(#passTime/3000)*255" visibility="#guangyun"> -->
+    <Image x="#sw/2" y="#sh/2" align="center" alignV="center" src="guangyun.png" alpha="#alpha1" visibility="#guangyun">
+        <!-- <AlphaAnimation> 
+            <Alpha a="sin(#passTime/3000)*255" time="#passTime"/>
+        </AlphaAnimation>   -->
+    </Image>
+
+
+    <!-- 气泡  -->
+    <Group visibility="#qipao">
+        <Image x="#screen_width/2" y="#screen_height-400" src="qipao/qp1.png" align="center" alignV="center">
+            <PositionAnimation>
+                <Position x="0" y="0" time="0" />
+                <Position x="-200" y="-1500" time="16000" />
+            </PositionAnimation>
+            <AlphaAnimation>
+                <Alpha a="0" time="0" />
+                <Alpha a="255" time="2000" />
+                <Alpha a="255" time="12000" />
+                <Alpha a="0" time="16000" />
+            </AlphaAnimation>
+        </Image>
+        <Image x="#screen_width/2+200" y="#screen_height-50" src="qipao/qp2.png" align="center" alignV="center">
+            <PositionAnimation>
+                <Position x="0" y="0" time="0" />
+                <Position x="400" y="-1500" time="16000" />
+            </PositionAnimation>
+            <AlphaAnimation>
+                <Alpha a="0" time="0" />
+                <Alpha a="255" time="2000" />
+                <Alpha a="255" time="12000" />
+                <Alpha a="0" time="16000" />
+            </AlphaAnimation>
+        </Image>
+        <Image x="#screen_width/2-300" y="#screen_height-100" src="qipao/qp3.png" align="center" alignV="center">
+            <PositionAnimation>
+                <Position x="0" y="0" time="0" />
+                <Position x="1500" y="-2000" time="16000" />
+            </PositionAnimation>
+            <AlphaAnimation>
+                <Alpha a="0" time="0" />
+                <Alpha a="255" time="2000" />
+                <Alpha a="255" time="12000" />
+                <Alpha a="0" time="16000" />
+            </AlphaAnimation>
+        </Image>
+        <Image x="#screen_width/2-500" y="#screen_height-200" src="qipao/qp4.png" align="center" alignV="center">
+            <PositionAnimation>
+                <Position x="0" y="0" time="0" />
+                <Position x="30" y="-100" time="3000" />
+                <Position x="300" y="-1000" time="20000" />
+            </PositionAnimation>
+            <AlphaAnimation>
+                <Alpha a="0" time="0" />
+                <Alpha a="255" time="3000" />
+                <Alpha a="255" time="16000" />
+                <Alpha a="0" time="20000" />
+            </AlphaAnimation>
+        </Image>
+        <Image x="#screen_width/2-300" y="#screen_height+50" src="qipao/qp3.png" align="center" alignV="center">
+            <PositionAnimation>
+                <Position x="0" y="0" time="0" />
+                <Position x="10" y="-210" time="3000" />
+                <Position x="100" y="-2100" time="20000" />
+            </PositionAnimation>
+            <AlphaAnimation>
+                <Alpha a="0" time="0" />
+                <Alpha a="255" time="3000" />
+                <Alpha a="255" time="16000" />
+                <Alpha a="0" time="20000" />
+            </AlphaAnimation>
+        </Image>
+        <Image x="#screen_width/2+250" y="#screen_height-600" src="qipao/qp1" align="center" alignV="center">
+            <PositionAnimation>
+                <Position x="0" y="0" time="0" />
+                <Position x="-20" y="-150" time="4000" />
+                <Position x="-200" y="-1500" time="30000" />
+            </PositionAnimation>
+            <AlphaAnimation>
+                <Alpha a="0" time="0" />
+                <Alpha a="255" time="4000" />
+                <Alpha a="255" time="20000" />
+                <Alpha a="0" time="30000" />
+            </AlphaAnimation>
+        </Image>
+    </Group>
+    <!-- 
+
+		<Image x="#screen_width/2-280" y="#screen_height+50" src="p4.png"  align="center" alignV="center" ><PositionAnimation><Position x="0" y="0" time="0" /><Position x="80" y="-120" time="4000" /><Position x="800" y="-1200" time="30000" /></PositionAnimation><AlphaAnimation><Alpha a="0" time="0" /><Alpha a="255" time="4000" /><Alpha a="255" time="20000" /><Alpha a="0" time="30000" /></AlphaAnimation></Image><Image x="#screen_width/2+150" y="#screen_height-400" src="p3.png"  align="center" alignV="center" ><PositionAnimation><Position x="0" y="0" time="0" /><Position x="150" y="-100" time="4000" /><Position x="1500" y="-1000" time="30000" /></PositionAnimation><AlphaAnimation><Alpha a="0" time="0" /><Alpha a="255" time="4000" /><Alpha a="255" time="20000" /><Alpha a="0" time="30000" /></AlphaAnimation></Image><Image x="#screen_width/2-220" y="#screen_height-100" src="p2.png"  align="center" alignV="center" ><PositionAnimation><Position x="0" y="0" time="0" /><Position x="30" y="-170" time="10000" /><Position x="300" y="-1700" time="40000" /></PositionAnimation><AlphaAnimation><Alpha a="0" time="0" /><Alpha a="255" time="6000" /><Alpha a="255" time="30000" /><Alpha a="0" time="40000" /></AlphaAnimation></Image><Image x="#screen_width/2+100" y="#screen_height-600" src="p1.png"  align="center" alignV="center" ><PositionAnimation><Position x="0" y="0" time="0" /><Position x="10" y="-80" time="10000" /><Position x="100" y="-800" time="40000" /></PositionAnimation><AlphaAnimation><Alpha a="0" time="0" /><Alpha a="255" time="6000" /><Alpha a="255" time="30000" /><Alpha a="0" time="40000" /></AlphaAnimation></Image>
+		
+   -->
+    <!--动态壁纸 -->
+    <!-- <Image x="0" y="0" w="1080" h="2340" srcExp="'bg/bg_'+int(#time/40%54)+'.jpg'"  /> -->
+    <!-- 右边的枝子 -->
+    <!-- #sw+100 -->
+    <!-- #sh/2-500 -->
+    <!-- <Image x="#sw/2" y="#sh/2" align="center" alignV="center" w="690" h="522" srcExp="'hz/'+int(#time/83%48)+'.png'"  /><Image x="#sw+100" y="#sh/2-500" align="right" alignV="center" w="690" h="522" srcExp="'hz/'+int(#time/83%48)+'.png'"  />  -->
+    <!-- 叶子摆动 
+  <Image src="yezi.png" x="#screen_width-1073.5" y="1402" align="left" alignV="center"><RotationAnimation><Rotation angle="0" time="0" /><Rotation angle="-7" time="3000" /><Rotation angle="0" time="6000" /><Rotation angle="7" time="9000" /><Rotation angle="0" time="12000" />  192.168.0.1
+      <Rotation angle="-7" time="15000" /><Rotation angle="0" time="18000" /></RotationAnimation></Image>   -->
+    <!-- 花瓣 -->
+    <Group visibility="#huaban1">
+        <Image y="-20+(#time/5+10)%2200" x="470+450*sin(#time/3000)*sin(#time/7500)" src="huaban1/hb1.png" alpha="240" align="center" alignV="center" rotation="-(#time/20*0.54)%360" />
+        <Image y="-20+(#time/6+200)%2230" x="540+460*sin(#time/2800)*cos(#time/7700)" src="huaban1/hb2.png" alpha="240" align="center" alignV="center" rotation="-(#time/20*0.32)%360" />
+        <Image y="-20+(#time/7+300)%2270" x="610+480*sin(#time/3100)*sin(#time/7800)" src="huaban1/hb3.png" alpha="240" align="center" alignV="center" rotation="-(#time/20*0.35)%360" />
+        <Image y="-20+(#time/6+400)%2280" x="780+470*sin(#time/3300)*cos(#time/8500)" src="huaban1/hb1.png" alpha="240" align="center" alignV="center" rotation="-(#time/20*0.6)%360" />
+    </Group>
+    <!-- 树叶 -->
+    m
+    <Group visibility="#shuye">
+        <Image y="-20+(#time/5+10)%2300" x="470+450*sin(#time/3000)*sin(#time/7100)" src="shuye/sy1.png" alpha="240" align="center" alignV="center" rotation="-(#time/20*0.54)%360" />
+        <Image y="-20+(#time/6+200)%2250" x="540+460*sin(#time/2800)*cos(#time/7900)" src="shuye/sy2.png" alpha="240" align="center" alignV="center" rotation="-(#time/20*0.32)%360" />
+        <Image y="-20+(#time/7+300)%2290" x="610+480*sin(#time/3100)*sin(#time/8100)" src="shuye/sy3.png" alpha="240" align="center" alignV="center" rotation="-(#time/20*0.35)%360" />
+        <Image y="-20+(#time/6+400)%2260" x="780+470*sin(#time/3300)*cos(#time/8700)" src="shuye/sy4.png" alpha="240" align="center" alignV="center" rotation="-(#time/20*0.6)%360" />
+    </Group>
+    <!--电话
+  	<Image x="329" y="1600" align="center" alignV="center" src="dh.png" ><PositionAnimation><Position x="0" y="0" time="0" /><Position x="0" y="-30" time="800" /><Position x="0" y="0" time="1600" /><Position x="0" y="0" time="4800" /></PositionAnimation></Image><Button x="329" y="1530"  w="139" h="139" align="center" alignV="center" ><Triggers><Trigger action="up"><IntentCommand action="android.intent.action.MAIN" package="com.android.contacts" class="com.android.contacts.activities.DialtactsActivity" /><ExternCommand command="unlock" /></Trigger></Triggers></Button>
+		
+		 -->
+    <!--QQ 
+	 <Image x="540" y="1600" align="center" alignV="center" src="qq.png" ><PositionAnimation><Position x="0" y="0" time="0" /><Position x="0" y="0" time="1600" /><Position x="0" y="-30" time="2400" /><Position x="0" y="0" time="3200" /><Position x="0" y="0" time="4800" /></PositionAnimation></Image><Button x="540" y="1530" w="139" h="139" align="center" alignV="center" ><Triggers><Trigger action="up"><IntentCommand  action="android.intent.action.MAIN" package="com.tencent.mobileqq" class="com.tencent.mobileqq.activity.SplashActivity" /><ExternCommand command="unlock" /></Trigger></Triggers></Button>
+	-->
+    <!--微信
+	<Image x="751" y="1600" align="center" alignV="center" src="wx.png" ><PositionAnimation><Position x="0" y="0" time="0" /><Position x="0" y="0" time="3200" /><Position x="0" y="-30" time="4000" /><Position x="0" y="0" time="4800" /></PositionAnimation></Image><Button x="751" y="1530" w="139" h="139" align="center" alignV="center" ><Triggers><Trigger action="up"><IntentCommand action="android.intent.action.MAIN" package="com.tencent.mm" class="com.tencent.mm.ui.LauncherUI" /><ExternCommand command="unlock" /></Trigger></Triggers></Button> 
+  -->
+    <!--时间日期  -->
+    <Group x="0" y="200" alpha="255+(#lok_ts/300*200)" visibility="eq(#showButton,0)">
+        <Image x="50+100" y="30" src="time/time.png" w="75" h="109" srcid="int((#hour24)/10)" />
+        <Image x="50+100+75+10" y="30" src="time/time.png" w="75" h="109" srcid="int(#hour24%10)" />
+        <Image x="50+100" y="139+40" src="time/time.png" w="75" h="109" srcid="int(#minute/10)" />
+        <Image x="50+100+75+10" y="139+40" src="time/time.png" w="75" h="109" srcid="int(#minute%10)" />
+        <DateTime x="50+100+75+5" y="139+40+109+20" align="center" h="72" color="#38757d" size="42" format="M/d EEEE" />
+    </Group>
+    <!--未接电话信息 -->
+    <Image x="#sw/2" y="#sh-100-200" align="center" alignV="center" src="xinxi.png" visibility="ne(#call_missed_count, 0)" />
+    <Text x="#sw/2" y="#sh-100-200" color="#38757d" align="center" alignV="center" size="30" format="未接电话:  %d" paras="#call_missed_count" visibility="ne(#call_missed_count, 0)" />
+    <Image x="#sw/2" y="#sh-100-100" align="center" alignV="center" src="xinxi.png" visibility="ne(#sms_unread_count, 0)" />
+    <Text x="#sw/2" y="#sh-100-100" color="#38757d" align="center" alignV="center" size="30" format="未读信息:  %d" paras="#sms_unread_count" visibility="ne(#sms_unread_count, 0)" />
+
+
+    <!--开灯黑色壁纸 -->
+    <Image name="open" x="#sw/2" y="#sh/2" align="center" alignV="center" w="#sw" h="#sh" src="black.png" visibility="#on">
+        <AlphaAnimation>
+            <Alpha a="255" time="0" />
+            <Alpha a="255" time="200" />
+            <Alpha a="180" time="600" />
+            <Alpha a="0" time="800" />
+            <Alpha a="0" time="9999999999999" />
+        </AlphaAnimation>
+    </Image>
+
+
+    <!-- 滑动侧边栏 -->
+    <Image x="-492+#celan_slider.move_x" y="100" w="492" h="1751" align="left" alignV="top" src="tanchuang.png" visibility="eq(#showButton,0)" /> <!--滑动中 eq(#showButton,0) -->
+    <Image x="0" y="100" w="492" h="1751" align="left" alignV="top" src="tanchuang.png" visibility="eq(#showButton,1)" />
+    <!-- 滑动完毕 ，正常显示 -->
+    <Slider name="celan_slider" bounceInitSpeed="2000" bounceAcceleration="3000" alwaysShow="true">
+        <StartPoint x="0" y="0" w="200" h="#sh"></StartPoint>
+        <EndPoint x="0+400" y="0" w="200" h="#sh">
+            <Trigger>
+                <VariableCommand name="showButton" expression="1" />
+                <!-- <VariableCommand name="b" expression="0"/> -->
+            </Trigger>
+            <Path x="0" y="0" w="200" h="#sh">
+                <Position x="0" y="0" />
+                <Position x="492" y="0" />
+            </Path>
+        </EndPoint>
+    </Slider>
+
+    <Group visibility="eq(#showButton,1)">
+        <Button x="294" y="0" w="#sw-294" h="#sh" align="left" alignV="top">
+            <Normal>
+                <!-- <Image  x="#sw/2-350" y="350" align="center" alignV="top" w="123" h="50" src="./sw/off.png"  /> -->
+            </Normal>
+            <Triggers>
+                <Trigger action="up">
+                    <VariableCommand name="showButton" expression="0" />
+                </Trigger>
+            </Triggers>
+            <Pressed></Pressed>
+        </Button>
+    </Group>
+
+    <!-- 开关 -->
+    <Group visibility="#showButton">
+        <!-- <Image x="0" y="100" w="492" h="1751" align="left" alignV="top" src="tanchuang.png"  /> -->
+        <!-- 花瓣1-->
+        <Group visibility="eq(#huaban1,0)*#showButton">
+            <Button x="0" y="616" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <!-- <Image  x="#sw/2-350" y="350" align="center" alignV="top" w="123" h="50" src="./sw/off.png"  /> -->
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="huaban1" expression="1" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <Group visibility="eq(#huaban1,1)*#showButton">
+            <Button x="0" y="616" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <Image x="237" y="666" align="center" alignV="center" w="33" h="33" src="on.png" />
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="huaban1" expression="0" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <!-- 花瓣2-->
+        <Group visibility="eq(#huaban2,0)*#showButton">
+            <Button x="0" y="616+150" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <!-- <Image  x="#sw/2-350" y="350" align="center" alignV="top" w="123" h="50" src="./sw/off.png"  /> -->
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="huaban2" expression="1" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <Group visibility="eq(#huaban2,1)*#showButton">
+            <Button x="0" y="616+150" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <Image x="237" y="666+154" align="center" alignV="center" w="33" h="33" src="on.png" />
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="huaban2" expression="0" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <!-- 气泡-->
+        <Group visibility="eq(#qipao,0)*#showButton">
+            <Button x="0" y="616+150*2" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <!-- <Image  x="#sw/2-350" y="350" align="center" alignV="top" w="123" h="50" src="./sw/off.png"  /> -->
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="qipao" expression="1" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <Group visibility="eq(#qipao,1)*#showButton">
+            <Button x="0" y="616+150*2" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <Image x="237" y="666+154*2" align="center" alignV="center" w="33" h="33" src="on.png" />
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="qipao" expression="0" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <!-- 花朵-->
+        <Group visibility="eq(#huaduo,0)*#showButton">
+            <Button x="0" y="616+150*3" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <!-- <Image  x="#sw/2-350" y="350" align="center" alignV="top" w="123" h="50" src="./sw/off.png"  /> -->
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="huaduo" expression="1" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <Group visibility="eq(#huaduo,1)*#showButton">
+            <Button x="0" y="616+150*3" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <Image x="237" y="666+154*3" align="center" alignV="center" w="33" h="33" src="on.png" />
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="huaduo" expression="0" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <!-- 树叶-->
+        <Group visibility="eq(#shuye,0)*#showButton">
+            <Button x="0" y="616+150*4" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <!-- <Image  x="#sw/2-350" y="350" align="center" alignV="top" w="123" h="50" src="./sw/off.png"  /> -->
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="shuye" expression="1" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <Group visibility="eq(#shuye,1)*#showButton">
+            <Button x="0" y="616+150*4" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <Image x="237" y="666+154*4" align="center" alignV="center" w="33" h="33" src="on.png" />
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="shuye" expression="0" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <!-- 光晕-->
+        <Group visibility="eq(#guangyun,0)*#showButton">
+            <Button x="0" y="616+150*5" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <!-- <Image  x="#sw/2-350" y="350" align="center" alignV="top" w="123" h="50" src="./sw/off.png"  /> -->
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="guangyun" expression="1" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <Group visibility="eq(#guangyun,1)*#showButton">
+            <Button x="0" y="616+150*5" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <Image x="237" y="666+154*5" align="center" alignV="center" w="33" h="33" src="on.png" />
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="guangyun" expression="0" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <!-- 文字1-->
+        <Group visibility="eq(#wenzi1,0)*#showButton">
+            <Button x="0" y="616+150*6" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <!-- <Image  x="#sw/2-350" y="350" align="center" alignV="top" w="123" h="50" src="./sw/off.png"  /> -->
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="wenzi1" expression="1" />
+                        <VariableCommand name="wenzi2" expression="eq(wenzi2,1)" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <Group visibility="eq(#wenzi1,1)*#showButton">
+            <Button x="0" y="616+150*6" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <Image x="237" y="666+154*6" align="center" alignV="center" w="33" h="33" src="on.png" />
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="wenzi1" expression="0" />
+                        <!-- <VariableCommand name="wenzi2" expression="1"  /> -->
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <!-- 文字2 -->
+        <Group visibility="eq(#wenzi2,0)*#showButton">
+            <Button x="0" y="616+150*7" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <!-- <Image  x="#sw/2-350" y="350" align="center" alignV="top" w="123" h="50" src="./sw/off.png"  /> -->
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="wenzi2" expression="1" />
+                        <VariableCommand name="wenzi1" expression="0" />
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+        <Group visibility="eq(#wenzi2,1)*#showButton">
+            <Button x="0" y="616+150*7" w="297" h="150" align="left" alignV="center">
+                <Normal>
+                    <Image x="237" y="666+154*7" align="center" alignV="center" w="33" h="33" src="on.png" />
+                </Normal>
+                <Triggers>
+                    <Trigger action="up">
+                        <VariableCommand name="wenzi2" expression="0" />
+                        <!-- <VariableCommand name="wenzi1" expression="1"  /> -->
+                    </Trigger>
+                </Triggers>
+                <Pressed></Pressed>
+            </Button>
+        </Group>
+    </Group>
+    
+    <!-- 右边侧滑 -->
+    	<Group visibility="not(#kyf)*not(#oyf)">			 
+		<Button x="0" y="600" w="1080" h="#screen_height-800">       
+			<Triggers> 
+				<Trigger action="up">
+					<VariableCommand name="kye" expression="#time" condition="gt(#touch_begin_x-#touch_x,200)" />
+					<VariableCommand name="kyf" expression="gt(#touch_begin_x-#touch_x,200)" />
+				</Trigger>
+			</Triggers>
+		</Button>
+    </Group>
+    <Group visibility="not(#kyf)*not(#oyf)">			 
+		<Button x="0" y="600" w="1080" h="#screen_height-800">
+			<Triggers>
+				<Trigger action="up">
+					<VariableCommand name="oye" expression="#time" condition="gt(#touch_x-#touch_begin_x,200)" />
+					<VariableCommand name="oyf" expression="gt(#touch_x-#touch_begin_x,200)" />
+				</Trigger>
+			</Triggers>
+		</Button>
+	</Group>			
+
+	<Group visibility="eq(#oyf,1)">
+		<Button x="0" y="600" w="1080" h="#screen_height-800">
+			<Triggers>
+				<Trigger action="up">
+					<VariableCommand name="oye" expression="#time"  condition="gt(#touch_begin_x-#touch_x,200)" />
+					<VariableCommand name="oyf" expression="ifelse(gt(#touch_begin_x-#touch_x,200),0,1)"    />
+				</Trigger>
+			</Triggers>
+		</Button>
+	</Group>	
+
+    <Group x="1080-1080*#kyh" visibility="#kyf*not(#oyf)">
+		<Image x="#screen_width-216" y="#screen_height-1920+670"  src="kjzf.png" />   
+		<Button x="0" y="0" w="1080" h="#screen_height" >
+			<Triggers>
+				<Trigger action="up">
+					<VariableCommand name="kye" expression="#time" condition="gt(#touch_x-#touch_begin_x,100)" />
+					<VariableCommand name="kyf" expression="ifelse(gt(#touch_x-#touch_begin_x,50),0,1)" />
+				</Trigger>
+			</Triggers>
+        </Button>     
+        <!-- 微信 -->
+		<Button x="925" y="#screen_height-1920+720" w="111" h="111">
+			<Triggers>
+				<Trigger action="up">
+					<IntentCommand action="android.intent.action.MAIN" package="com.tencent.mm" class="com.tencent.mm.ui.LauncherUI" />
+					<ExternCommand command="unlock" delay="500"/>
+				</Trigger>
+			</Triggers>
+        </Button>    
+        <!-- 支付宝 -->
+		<Button x="925" y="#screen_height-1920+882" w="111" h="111">
+			<Triggers>
+				<Trigger action="up">
+					<IntentCommand action="android.intent.action.MAIN" package="com.eg.android.AlipayGphone" class="com.alipay.mobile.quinox.splash.ShareDispenseActivity" />
+					<ExternCommand command="unlock" delay="500"/>
+				</Trigger>
+			</Triggers>
+        </Button>       
+        <!-- 淘宝 -->
+		<Button x="925" y="#screen_height-1920+1018" w="111" h="111">
+			<Triggers>
+				<Trigger action="up">
+					<IntentCommand action="android.intent.action.MAIN" package="com.taobao.taobao" class="com.taobao.tao.welcome.Welcome" />
+					<ExternCommand command="unlock" delay="500"/>
+				</Trigger>
+			</Triggers>
+		</Button>    
+        <!-- qq -->
+		<Button x="925" y="#screen_height-1920+1200" w="111" h="111">
+			<Triggers>
+				<Trigger action="up">
+					<IntentCommand action="android.intent.action.MAIN" package="com.tencent.mobileqq" class="com.tencent.mobileqq.activity.SplashActivity" /> 
+					<ExternCommand command="unlock" delay="500"/>
+				</Trigger>
+			</Triggers>
+		</Button> 
+
+
+	</Group>	
+
+    <!-- 充电动画 -->
+
+
+    <!--充电 -->
+    <Group name="cd" x="0" y="0">
+        <Text x="540" y="#sh-100" align="center" color="#ffffff" size="30" textExp="'正在充电 '+#battery_level+'%'" visibility="eq(#battery_state,1)" />
+        <Text x="540" y="#sh-100" align="center" color="#ffffff" size="30" textExp="'充电已完成'" visibility="eq(#battery_state,3)" />
+        <AlphaAnimation>
+            <Alpha a="0" time="0" />
+            <Alpha a="255" time="500" />
+            <Alpha a="255" time="2000" />
+            <Alpha a="0" time="2500" />
+        </AlphaAnimation>
+    </Group>
+    <!-- 充电特效  -->
+    <Group name="show_charging" visibility="eq(#battery_state,1)">
+        <Image x="#screen_width/2-60" y="#sh-190"  src="00001.png" category="Charging">
+            <SourcesAnimation>
+                <Source src="00001.png" time="600"/>
+                <Source src="00002.png" time="1200"/>
+                <Source src="00003.png" time="1800"/>
+            </SourcesAnimation>  
+        </Image>
+    </Group>
+
+
+    <!-- 跟手粒子  
+  <Group name="guang" visibility="eq(#game_vis,0)*eq(#setting,0)"><Image src="lizi_2.png" x="#touch_begin_x+(#touch_x-#touch_begin_x)*0.65" y="#touch_begin_y+(#touch_y-#touch_begin_y)*0.93" align="center" alignV="center"><PositionAnimation><Position x="0" y="0" time="0" /><Position x="-21" y="-6" time="400" /><Position x="32" y="20" time="1200" /><Position x="-9" y="-20" time="2000" /><Position x="0" y="0" time="2550" /></PositionAnimation></Image><Image src="lizi_1.png" x="#touch_begin_x+(#touch_x-#touch_begin_x)*0.69" y="#touch_begin_y+(#touch_y-#touch_begin_y)*0.89" align="center" alignV="center" alpha="50"><PositionAnimation><Position x="0" y="0" time="0" /><Position x="21" y="-6" time="700" /><Position x="42" y="30" time="1800" /><Position x="-9" y="-20" time="2600" /><Position x="0" y="0" time="3250" /></PositionAnimation></Image><Image src="cd2.png" x="#touch_begin_x+(#touch_x-#touch_begin_x)*0.73" y="#touch_begin_y+(#touch_y-#touch_begin_y)*0.85" align="center" alignV="center"><PositionAnimation><Position x="0" y="0" time="0" /><Position x="-21" y="6" time="600" /><Position x="-2" y="-30" time="1500" /><Position x="19" y="-20" time="2600" /><Position x="0" y="0" time="2950" /></PositionAnimation></Image><Image src="cd2.png" x="#touch_begin_x+(#touch_x-#touch_begin_x)*0.85" y="#touch_begin_y+(#touch_y-#touch_begin_y)*0.73" align="center" alignV="center" alpha="150"><PositionAnimation><Position x="0" y="0" time="0" /><Position x="-15" y="-11" time="600" /><Position x="16" y="-5" time="1400" /><Position x="-40" y="21" time="2400" /><Position x="-14" y="26" time="3100" /><Position x="0" y="0" time="3700" /></PositionAnimation></Image><Image src="lizi_2.png" x="#touch_begin_x+(#touch_x-#touch_begin_x)*0.89" y="#touch_begin_y+(#touch_y-#touch_begin_y)*0.69" align="center" alignV="center" alpha="150"><PositionAnimation><Position x="0" y="0" time="0" /><Position x="-15" y="-11" time="550" /><Position x="-36" y="-5" time="1500" /><Position x="18" y="21" time="2400" /><Position x="-14" y="26" time="3300" /><Position x="0" y="0" time="3900" /></PositionAnimation></Image></Group>   -->
+    <!-- <Group y="#sh-1483" x="90" visibility="#auto3*#zdykg*eq(#anqh2,0)" /> -->
+    <Button x="0" y="0" w="1080" h="#screen_height">
+        <Triggers>
+            <Trigger action="down">
+                <VariableCommand name="h" expression="1" />
+            </Trigger>
+            <Trigger action="up">
+                <VariableCommand name="h" expression="0" condition="gt(#touch_begin_y-#touch_y,0)*lt(#touch_begin_y-#touch_y,350)" />
+                <ExternCommand command="unlock" condition="gt(#touch_begin_y-#touch_y,350)" />
+            </Trigger>
+        </Triggers>
+    </Button>
+    <!--解锁 -->
+    <Var name="up" expression="ifelse(ge(#touch_begin_y-#touch_y,160),1,0)" />
+    <Unlocker name="unlocker" bounceInitSpeed="800" bounceAcceleration="2000" alwaysShow="true">
+        <StartPoint x="#touch_begin_x" y="#touch_begin_y" w="1" h="1" />
+        <EndPoint x="ifelse(#up,#touch_x,-1)" y="ifelse(#up,#touch_y,-1)" w="1" h="1" />
+    </Unlocker>
+</Lockscreen>

@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+<!-- 背景色 （必须保持同一颜色值）-->
+
+<!-- Actionbar背景颜色 -->
+<!-- 信号栏背景颜色 -->
+<color name="emui_appbar_bg">#E6FFFFFF</color>
+<color name="emui_appbar_bg_blur">#FF000000</color>
+<!-- 信号栏文字图标反色依据id，需和emui_appbar_bg色值保持一致-->
+<color name="hwtoolbar_background">#E6FFFFFF</color>
+
+<!-- Toolbar 底部工具栏背景颜色 -->
+<color name="emui_toolbar_bg">#F2FAFAFA</color>
+<color name="emui_toolbar_bg_blur">#FF000000</color>
+
+<!-- 导航栏背景颜色 -->
+<color name="emui_navigationbar_bg">#F2FFFFFF</color>
+<color name="emui_navigationbar_bg_blur">#ff000000</color>
+<!-- 导航栏图标反色依据id，需和emui_navigationbar_bg色值保持一致-->
+<color name="navigationbar_emui_light">#F2FFFFFF</color>
+
+<!--Sub tab背景颜色 -->
+<color name="emui_subtab_bg">#E6FFFFFF</color>
+<color name="emui_subtab_bg_blur">#ff000000</color>
+
+<!--Tooltips背景颜色 -->
+<color name="emui_color_tips_bg">#F2D9D9D9</color>
+
+<!--界面背景颜色 -->
+<!-- 收到彩信分割线颜色 -->
+<!-- 搜索框背景色-->
+<!-- 下拉开关背景颜色 -->
+<color name="emui_color_bg">#FFFFFFFF</color>
+
+<!--控件通用背景色-->
+<color name="emui_control_normal">#19000000</color>
+
+
+<!-- 分割线颜色 （建议用同一颜色值）-->
+
+<!-- 列表分割线颜色 -->
+<color name="emui_color_divider_horizontal">#33000000</color>
+
+
+<!-- 特殊颜色 -->
+ <!-- 拨号 按钮背景色  nomal状态--> 
+<color name="emui_color_connected">#41ba41</color>
+
+
+<!-- 高亮色 （建议用同一颜色值）-->
+<!-- 高亮色颜色 -->
+<color name="emui_accent">#FF007DFF</color>
+
+<!-- 文字按钮颜色-->
+<!-- 链接文字 -->
+<color name="emui_functional_blue">#007DFF</color>
+
+<!-- Radio button 高亮颜色 -->
+<color name="emui_switch_bg_on">#007DFF</color>
+
+<!-- 发送失败图标 短信设置短信中心提示文字高亮色 -->
+ <color name="emui_functional_red">#fa2a2d</color>
+
+ <!-- 光标颜色  复用emui_accent-->
+
+ <!-- Progress bar 动画颜色 -->
+ <color name="emui_progress">#4D4D4D</color>
+
+
+ <!-- Subtab 副标题栏高亮颜色 -->
+ <!-- 文本高亮色 -->
+<color name="emui_subtab_text_on">#FF007dff</color>
+ <!-- 文本下划线高亮色-->
+<color name="emui_subtab_line_on">#FF007dff</color>
+
+<!-- Bottomtab 选中高亮颜色 -->
+<!--图标高亮色-->
+<color name="emui_bottombar_icon_on">#FF007dff</color>
+<!--文本高亮色-->
+<color name="emui_bottombar_text_on">#FF007dff</color>
+
+
+<!-- 一级图标文字颜色 （建议用同一颜色值，可通过修改透明度来和高亮色区分）-->
+<!--一级图标 文字颜色 -->
+<color name="emui_primary">#191919</color>
+<!--spinner下拉列表图标颜色 -->
+<color name="emui_spinner_icon">#191919</color>
+
+<!-- 提示性质文字颜色 -->
+<!-- 拨号数字 归属地文字颜色 -->
+<!-- appbar更多弹框上的文字颜色 -->
+<!-- 双卡模式下 卡1卡2弹框文字颜色 -->
+<!-- 弹框描述信息文字颜色 -->
+<!-- 弹框list文字颜色 -->
+<!-- 设置二级文字 短信收件人输入文字 短信会话输入文字 提醒气泡文字 -->
+<!-- 文件夹添到应用图标下方颜色 -->
+<!-- 单行list文字颜色--> 
+<!-- 双行list文字颜色--> 
+<!-- 拨号设置 快速拨号 -->
+<!-- 编辑联系人 来自以下账户一级文字颜色 -->
+<!-- 编辑联系人 来自以下账户二级文字颜色 -->
+<!-- 编辑联系人 来自以下账户三级文字颜色 -->
+<!-- 新建联系人号码类目文字颜色 -->
+<!-- 二维码弹框文字颜色--> 
+<!--增强信息 按住说话button文字颜色 -->
+<!-- 附件区 地理位置加载提示文字颜色 -->
+<!-- 会话界面 ActionBar上联系人名字颜色 -->
+<!-- 收信人chips字符串颜色 -->
+<!-- 附件区图库文字颜色 -->
+<!--附件区录音计时提示文字颜色 -->
+<!-- 幻灯片音频文字颜色 -->
+<!--主界面未开启增强信息，“您尚未开启增强信息"文字颜色 -->
+<!-- 短信搜索结果列表第一行文字颜色 -->
+<!--群聊列表标题-->
+<!-- 短信文本详情的颜色 附件选择联系人的号码的颜色-->
+<!-- 常用短语字符串颜色 -->
+<!-- 短信首次启动条幅，第一行文字颜色 -->
+<!-- 新建信息 输入框提示文字颜色 -->
+<!-- 会话界面 彩信模式下输入文字颜色 -->
+<!-- 会话界面 短信接收消息的文字颜色 收件人列表title文字颜色  -->
+<!-- 管理sim卡中得信息页面消息文字颜色 -->
+<!-- 设置 送达报告的pop框 list文字 颜色 -->
+<!-- 下拉开关左上角时间和日期的文字颜色 -->
+<!-- 下拉开关左上角时间和日期文字的背景颜色 -->
+<!-- 用户编辑界面 用户文字颜色 -->
+<!-- 用户编辑界面 机主文字颜色 -->
+<!-- sim卡设置呼叫转移中的无条件呼叫转移中的“开始时间”和“结束时间”文本颜色 -->
+<!-- 通话自动录音自动录音对象和指定号码item的title颜色 -->
+<color name="emui_text_primary">#191919</color>
+
+<!-- 标题栏图标颜色 -->
+<color name="emui_appbar_icon">#E6000000</color>
+<color name="emui_appbar_icon_pressed">#E6000000</color>
+
+<!-- 标题栏文本颜色 -->
+<color name="emui_appbar_title">#E6000000</color>
+
+<!-- Toolbar 界面底部工具栏图标、文本颜色 -->
+<!--图标颜色-->
+<color name="emui_toolbar_icon">#E6000000</color>
+<color name="emui_toolbar_icon_pressed">#E6000000</color>
+<!--文字颜色-->
+<color name="emui_toolbar_text">#E6000000</color>
+<color name="emui_toolbar_text_pressed">#E6000000</color>
+
+
+<!-- 二级图标文字颜色 （建议用同一颜色值，可通过修改透明度来和高亮色区分）-->
+
+<!--文字未激活状态颜色  复用emui_text_primary-->
+<!-- Spinner字体颜色 复用emui_text_primary-->
+<!-- 拨号 短信设置三级文字 复用emui_text_primary--> 
+<!-- 通话详情 通话记录第二行文字颜色 复用emui_text_primary-->
+
+<!-- Subtab 副标题栏高亮颜色 -->
+<color name="emui_subtab_text_off">#99000000</color>
+
+<!-- Bottomtab 选中高亮颜色 -->
+<!--图标高亮色（未激活）-->
+<color name="emui_bottombar_icon_off">#99000000</color>
+<!--文本高亮色（未激活）-->
+<color name="emui_bottombar_text_off">#99000000</color>
+
+
+<!-- searchview 文字颜色-->
+<!--搜索框内提示文字颜色-->
+<color name="emui_text_hint">#99000000</color>
+
+<!--右箭头 -->
+<color name="emui_icon_tertiary">#4D000000</color>
+
+<!-- 二级图标颜色-->
+<color name="emui_secondary">#99000000</color>
+
+<!-- APPbar副标题颜色 -->
+<color name="emui_appbar_subtitle">#99000000</color>
+
+<!-- 按钮弹框颜色 （建议用同一颜色值）-->
+<!-- 选中文字背景颜色  复用emui_accent-->
+
+<!-- 字母索引pop背景颜色 -->
+<color name="emui_fastscroll_lable_bg">#E6E6E6</color>
+
+<!-- Switch off  背景颜色 --> 
+<!--off状态-->
+<color name="switch_track_off_bg_emui">#E6E6E6</color>
+<!--disabled状态-->
+<color name="switch_off_disable_emui">#0E000000</color>
+
+<!-- Radio button 背景、描边颜色 -->
+
+<!--复选框描边颜色-->
+<color name="emui_checkbox_boxedge">#191919</color>
+
+<!--描边颜色-->
+<color name="emui_switch_outline_off">#B3B3B3</color>
+<!--背景颜色-->
+<color name="emui_switch_bg_off">#4D000000</color>
+
+<!-- checkbox 内部背景颜色 -->
+<color name="emui_white_bg">#FFFFFF</color>
+
+<!-- 弹框背景颜色 -->
+<color name="emui_dialog_bg">#ffffff</color>
+
+<!-- Toast背景颜色 -->
+<color name="emui_toast_bg">#F2D9D9D9</color>
+
+
+<!--对照每个模块，新增项-->
+<!-- 背景色 -->
+
+<!--多选框的颜色 -->
+<!--多选框的颜色off -->
+<color name="emui_checkbox_boxedge">#191919</color>
+
+<!-- 联系人分割条颜色 -->
+<color name="emui_color_subheader_divider">#08000000</color>
+
+<!-- 高亮色 -->
+<!-- 链接文字 -->
+<color name="clickeffic_default_color_emui">#33000000</color>
+
+<!--短信会话界面编辑栏背景色 -->
+<color name="emui_color_fg">#000000</color>
+
+<!-- 一级图标文字 -->
+<!-- 联系人新建按钮图标 -->  
+<color name="emui_fab_icon">#0000ff</color>
+
+<!-- 拨号图标颜色 -->  
+<color name="emui_color_fg_inverse">#ffffff</color>
+
+
+
+</resources>
+

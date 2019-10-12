@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <color name="qs_panel_background">#14193c</color>
+    <color name="qs_customize_content_backgroundcolor">#14193c</color>
+    <color name="ripple_drawable_dark_color">#80808080</color>
+    <color name="notification_header_clock_text_color">#808080</color>
+    <color name="notification_header_clock_text_color_pressed">#80808080</color>
+    <color name="notification_header_icon_color">#808080</color>
+    <color name="notification_header_clock_icon_color_pressed">#80808080</color>
+    <color name="qs_tile_tint_off">#80808080</color>
+    <color name="qs_tile_tint_disable">#4D808080</color>
+    <color name="brightness_bar_left_color">#808080</color>
+    <color name="brightness_bar_right_color">#808080</color>
+    <color name="status_bar_brightness_image_color">#808080</color>
+    <color name="qs_customize_divider_text_color">#808080</color>
+    <color name="ic_ab_back_color">#808080</color>
+    <color name="qs_text_user">#808080</color>
+    <color name="qs_detail_button">#31ffe4</color>
+    <color name="qs_user_detail_name">#808080</color>
+    <color name="volume_settings_ic_color">#80808080</color>
+    <color name="brightness_progress_bg_color">#80808080</color>
+    <color name="qs_tile_tint_on">#31ffe4</color>
+    <color name="qs_tile_tint_opening">#31ffe4</color>
+    <color name="notification_manager_tip_color">#31ffe4</color>
+    <color name="brightness_image_color">#31ffe4</color>
+    <color name="volume_image_color">#31ffe4</color>
+    <color name="qs_customize_divider_backgroundcolor">#19ffffff</color>
+</resources>
