@@ -7,8 +7,13 @@ import time
 import fileinput 
 import chardet
 import re
+import platform
+
+isWindows = False
 
 queshipicArr = []
+
+currentProjectFilePath = ''
 
 fileList = ['com.android.contacts' , 'com.android.mms'  ,'com.android.phone' , 'com.android.phone.recorder' , 'com.android.server.telecom' , 'com.android.systemui' ,
 	'com.huawei.android.launcher' , 'com.huawei.hwvoipservice'
@@ -614,20 +619,23 @@ icons_normalConfig_v91_v10 = [
 	# "com.example.android.notepad
 	# com.huawei.notepad"	备忘录	192×192
 
-	# ic_deskclock_dial	动态模拟时钟背板	192×192	"icons\dynamic_icons\com.huawei.deskclock"
-	# ic_deskclock_hour	动态模拟时钟时针	18×192	
-	# ic_deskclock_minute	动态模拟时钟分针	18×192	
-	# ic_deskclock_second	动态模拟时钟秒针	18×192	
 	{'com.android.calendar':'com.huawei.calendar'},
 	{'com.android.contacts':'com.huawei.contacts'},
 	{'com.android.email':'com.huawei.email'},
 	{'com.example.android.notepad':'com.huawei.notepad'},
 	
 ]
-dynamic_icons = ['icons/dynamic_icons/com.huawei.deskclock/ic_deskclock_dial.png',
+dynamic_icons = [
+	
+	# ic_deskclock_dial	动态模拟时钟背板	192×192	"icons\dynamic_icons\com.huawei.deskclock"
+	# ic_deskclock_hour	动态模拟时钟时针	18×192	
+	# ic_deskclock_minute	动态模拟时钟分针	18×192	
+	# ic_deskclock_second	动态模拟时钟秒针	18×192	
+	'icons/dynamic_icons/com.huawei.deskclock/ic_deskclock_dial.png',
 	'icons/dynamic_icons/com.huawei.deskclock/ic_deskclock_hour.png',
 	'icons/dynamic_icons/com.huawei.deskclock/ic_deskclock_minute.png',
-	'icons/dynamic_icons/com.huawei.deskclock/ic_deskclock_second.png',]
+	'icons/dynamic_icons/com.huawei.deskclock/ic_deskclock_second.png',
+]
 
 
 normalConfig_dic = {
@@ -649,10 +657,10 @@ def listConfigFileArray():
 	retObj = {}
 	for index in range(len(fileList)):
 		fileItem = fileList[index]
-		frameworkResHwextConfigFilePath = os.path.join(os.getcwd(),fileItem , "framework-res-hwext" , "theme.xml")
+		frameworkResHwextConfigFilePath = os.path.join(currentProjectFilePath,fileItem , "framework-res-hwext" , "theme.xml")
 		# print("frameworkResHwextConfigFilePath:%s(%d)" %(frameworkResHwextConfigFilePath ,index) )
 		frameworkResHwextConfigFilePathList.append(frameworkResHwextConfigFilePath)
-		normalConfigFilePath = os.path.join(os.getcwd(),fileItem , "theme.xml")
+		normalConfigFilePath = os.path.join(currentProjectFilePath,fileItem , "theme.xml")
 		# print("normalConfigFilePath:%s(%d)" % (normalConfigFilePath ,index) )
 		normalConfigFilePathList.append(normalConfigFilePath)
 	retObj['frameworkResHwextConfigFilePathList'] = frameworkResHwextConfigFilePathList
@@ -687,14 +695,15 @@ def checkFileExists(configFileDic):
 def doTransform( filePath  , configParam ):
 	if len(configParam) == 0:
 		return 
+	if isWindows:
+		filePath = filePath.replace('/','\\',99)
 	print '配置文件路径：' 
 	print filePath
 	print '修改依照配置规则：' 
 	print configParam
 
 	print '读取配置文件内容...'
-	configFile = open(filePath,'w');
-	configFileContent = configFile.read()
+	configFileContent = open(filePath).read()
 	print configFileContent
 	print '解析替换配置规则...'
 	configFileContent = configFileContent.replace('</resources>','')
@@ -745,7 +754,7 @@ def doTransform( filePath  , configParam ):
 			print '----------'
 	configFileContent+="\n</resources>\n"
 	print configFileContent
-	configFile.write(configFileContent)
+	# open(filePath , 'w').write(configFileContent)
 	print '准备执行文件写入  ，文件为：' + filePath
 		
 
@@ -755,8 +764,8 @@ def checkIcons():
 	for item in icons_normalConfig_v91_v10:
 		for key in item:
 			print '检查对：' + key + '和' + item[key]
-			filepath1 = os.path.join(os.getcwd() , "icons" , key + '.png')
-			filepath2 = os.path.join(os.getcwd() , "icons" , item[key] + '.png')
+			filepath1 = os.path.join(currentProjectFilePath , "icons" , key + '.png')
+			filepath2 = os.path.join(currentProjectFilePath , "icons" , item[key] + '.png')
 			if os.path.exists(filepath1) and os.path.exists(filepath2):
 				print '存在不补'
 			else:
@@ -764,7 +773,10 @@ def checkIcons():
 				print filepath1
 				print filepath2
 				if os.path.exists(filepath1) :
-					os.system('cp ' + filepath1 + ' ' + filepath2)
+					if isWindows:
+						os.system('xcopy ' + filepath1 + ' ' + filepath2)
+					else:
+						os.system('cp ' + filepath1 + ' ' + filepath2)
 					print '已补全 ， 从' + filepath1 + '到' + filepath2
 					continue
 				if os.path.exists(filepath2) :
@@ -776,7 +788,9 @@ def checkIcons():
 
 	print '检查动态时钟图标.....'
 	for item in dynamic_icons:
-		tmpPath = os.path.join(os.getcwd() , item ) 
+		if  isWindows:
+			item = item.replace('/','\\',99)
+		tmpPath = os.path.join(currentProjectFilePath , item ) 
 		if not os.path.exists(tmpPath):	
 			print '需补充:' + tmpPath
 			queshipicArr.append(tmpPath)
@@ -790,6 +804,23 @@ def checkdot9pic():
 
 
 # start 
+# print '输入参数列表：' 
+if len(sys.argv) > 1:
+	for index in range(len(sys.argv)):
+		if index == 1:
+			currentProjectFilePath = sys.argv[index]
+else:
+	currentProjectFilePath = os.getcwd()
+print '处理文件夹为:' + currentProjectFilePath
+print '\n'
+# 判断是否windows
+print  '当前系统为：' + platform.system()
+if platform.system().find(r'windows' ,re.I):
+	isWindows = True
+if isWindows:
+	print 'windows环境'
+else:
+	print '非windows环境'
 
 print '==============以当前文件夹为基础路径 ， 查找配置文件并替换 =============='
 configFileDic = listConfigFileArray();
