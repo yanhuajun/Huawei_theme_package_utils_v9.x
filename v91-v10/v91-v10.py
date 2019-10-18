@@ -24,35 +24,51 @@ fileList = ['com.android.contacts' , 'com.android.mms'  ,'com.android.phone' , '
 framework_res_hwext_change_v9_v10=[
 	{
 		'orgin':'<color name="hwtoolbar_background">(.*)</color>',
-		'replace':[{'tag':'<color name="emui_appbar_bg">{color}</color>','color':'{orgincolor}FF'},{'tag':'<color(.*)name="emui_appbar_bg_blur">{color}</color>','color':'{orgincolor}00'}]
+		'replace':[{'tag':'<color name="emui_appbar_bg">{color}</color>','color':'{orgincolor}FF'},{'tag':'<color(.*)name="emui_appbar_bg_blur">{color}</color>','color':'{orgincolor}00'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="hwtoolbar_background">(.*)</color>',
-		'replace':[{'tag':'<color name="emui_toolbar_bg">{color}</color>','color':'{orgincolor}FF'},{'tag':'<color(.*)name="emui_toolbar_bg_blur">{color}</color>','color':'{orgincolor}00'}]
+		'replace':[{'tag':'<color name="emui_toolbar_bg">{color}</color>','color':'{orgincolor}FF'},{'tag':'<color(.*)name="emui_toolbar_bg_blur">{color}</color>','color':'{orgincolor}00'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="navigationbar_emui_light">(.*)</color>',
-		'replace':[{'tag':'<color name="emui_navigationbar_bg">{color}</color>','color':'{orgincolor}FF'},{'tag':'<color(.*)name="emui_navigationbar_bg_blur">{color}</color>','color':'{orgincolor}00'}]
+		'replace':[{'tag':'<color name="emui_navigationbar_bg">{color}</color>','color':'{orgincolor}FF'},{'tag':'<color(.*)name="emui_navigationbar_bg_blur">{color}</color>','color':'{orgincolor}00'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_color_gray_1">(.*)</color>',
-		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>','color':'{orgincolor}FF'},{'tag':'<color(.*)name="emui_subtab_bg_blur">{color}</color>','color':'{orgincolor}00'}]
+		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>','color':'{orgincolor}FF'},{'tag':'<color(.*)name="emui_subtab_bg_blur">{color}</color>','color':'{orgincolor}00'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="emui_color_tips_bg">{color}</color>','color':'#F2D9D9D9'}]
+		'replace':[{'tag':'<color name="emui_color_tips_bg">{color}</color>','color':'#F2D9D9D9'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="emui_color_bg">{color}</color>','color':'#FFFFFFFF'}]
+		'replace':[{'tag':'<color name="emui_color_bg">{color}</color>','color':'#FFFFFFFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="emui_control_normal">{color}</color>','color':'#19000000'}]
+		'replace':[{'tag':'<color name="emui_control_normal">{color}</color>','color':'#19000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="emui_toast_bg">{color}</color>','color':'#F2D9D9D9'}]
+		'replace':[{'tag':'<color name="emui_toast_bg">{color}</color>','color':'#F2D9D9D9'}],
+		'target':'',
+		'color':''
 	},
 ]
 framework_res_hwext_change_v91_v10=[
@@ -61,218 +77,332 @@ framework_res_hwext_change_v91_v10=[
 	# 颜色必须保持一致开始 
 	{
 		'orgin':'<color name="emui_appbar_bg">#F2F2F2</color>',
-		'replace':[{'tag':'<color name="emui_appbar_bg">{color}</color>','color':'#E6FFFFFF'}]
+		'replace':[{'tag':'<color name="emui_appbar_bg">{color}</color>','color':'#E6FFFFFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_appbar_bg_blur">#80F2F2F2</color>',
-		'replace':[{'tag':'<color name="emui_appbar_bg_blur">{color}</color>','color':'#FF000000'}]
+		'replace':[{'tag':'<color name="emui_appbar_bg_blur">{color}</color>','color':'#FF000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_toolbar_bg">#FF262626</color>',
-		'replace':[{'tag':'<color name="emui_toolbar_bg">{color}</color>','color':'#F2FAFAFA'}]
+		'replace':[{'tag':'<color name="emui_toolbar_bg">{color}</color>','color':'#F2FAFAFA'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_toolbar_bg_blur">#80262626</color>',
-		'replace':[{'tag':'<color name="emui_toolbar_bg">{color}</color>','color':'#F2FAFAFA'}]
+		'replace':[{'tag':'<color name="emui_toolbar_bg">{color}</color>','color':'#F2FAFAFA'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_appbar_bg">#F2F2F2</color>',
-		'replace':[{'tag':'<color name="emui_appbar_bg">{color}</color>','color':'#E6FFFFFF'}]
+		'replace':[{'tag':'<color name="emui_appbar_bg">{color}</color>','color':'#E6FFFFFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_appbar_bg_blur">#80F2F2F2</color>',
-		'replace':[{'tag':'<color name="emui_appbar_bg_blur">{color}</color>','color':'#FF000000'}]
+		'replace':[{'tag':'<color name="emui_appbar_bg_blur">{color}</color>','color':'#FF000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_navigationbar_bg">#FFFFFF</color>',
-		'replace':[{'tag':'<color name="emui_navigationbar_bg">{color}</color>','color':'#F2FFFFFF'}]
+		'replace':[{'tag':'<color name="emui_navigationbar_bg">{color}</color>','color':'#F2FFFFFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_navigationbar_bg_blur">#80FFFFFF</color>',
-		'replace':[{'tag':'<color name="emui_navigationbar_bg_blur">{color}</color>','color':'#ff000000'}]
+		'replace':[{'tag':'<color name="emui_navigationbar_bg_blur">{color}</color>','color':'#ff000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_subtab_bg">#f0f0f0</color>',
-		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>','color':'#E6FFFFFF'}]
+		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>','color':'#E6FFFFFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_subtab_bg_blur">#80f0f0f0</color>',
-		'replace':[{'tag':'<color name="emui_subtab_bg_blur">{color}</color>','color':'#ff000000'}]
+		'replace':[{'tag':'<color name="emui_subtab_bg_blur">{color}</color>','color':'#ff000000'}],
+		'target':'',
+		'color':''
 	},
 	# 颜色必须保持一致   结束
 
 	{
 		'orgin':'<color name="emui_color_tips_bg">#FF666666</color>',
-		'replace':[{'tag':'<color name="emui_color_tips_bg">{color}</color>','color':'#F2D9D9D9'}]
+		'replace':[{'tag':'<color name="emui_color_tips_bg">{color}</color>','color':'#F2D9D9D9'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_color_bg">#ffffff</color>',
-		'replace':[{'tag':'<color name="emui_color_bg">{color}</color>','color':'#FFFFFFFF'}]
+		'replace':[{'tag':'<color name="emui_color_bg">{color}</color>','color':'#FFFFFFFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="emui_control_normal">{color}</color>','color':'#19000000'}]
+		'replace':[{'tag':'<color name="emui_control_normal">{color}</color>','color':'#19000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="emui_toast_bg">{color}</color>','color':'#F2D9D9D9'}]
+		'replace':[{'tag':'<color name="emui_toast_bg">{color}</color>','color':'#F2D9D9D9'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_color_divider_horizontal">#33FFFFFF</color>',
-		'replace':[{'tag':'<color name="emui_color_divider_horizontal">{color}</color>','color':'#33000000'}]
+		'replace':[{'tag':'<color name="emui_color_divider_horizontal">{color}</color>','color':'#33000000'}],
+		'target':'',
+		'color':''
 	},
 
 	# 切换至.9图
 	{
 		'orgin':'<color name="emui_color_gray_4">#cacaca</color>',
-		'replace':[{'tag':'','color':''}]
+		'replace':[{'tag':'','color':''}],
+		'target':'',
+		'color':''
 	},
 
 	{
 		'orgin':'<color name="emui_color_fg">#000000</color>',
-		'replace':[{'tag':'<color name="emui_color_bg">{color}</color>','color':'#FFFFFFFF'}]
+		'replace':[{'tag':'<color name="emui_color_bg">{color}</color>','color':'#FFFFFFFF'}],
+		'target':'',
+		'color':''
 	},
 	
 	{
 		'orgin':'<color name="emui_color_fg">(.*)</color>',
-		'replace':[{'tag':'<color name="emui_color_bg">{color}</color>','color':'{orgincolor}'}]
+		'replace':[{'tag':'<color name="emui_color_bg">{color}</color>','color':'{orgincolor}'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="emui_color_connected">{color}</color>','color':'#41ba41'}]
+		'replace':[{'tag':'<color name="emui_color_connected">{color}</color>','color':'#41ba41'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_accent">#007dfe</color>',
-		'replace':[{'tag':'<color name="emui_accent">{color}</color>','color':'#FF007DFF'}]
+		'replace':[{'tag':'<color name="emui_accent">{color}</color>','color':'#FF007DFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_functional_blue">#005bba</color>',
-		'replace':[{'tag':'<color name="emui_functional_blue">{color}</color>','color':'#007DFF'}]
+		'replace':[{'tag':'<color name="emui_functional_blue">{color}</color>','color':'#007DFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_switch_bg_on">#007dfe</color>',
-		'replace':[{'tag':'<color name="emui_switch_bg_on">{color}</color>','color':'#007DFF'}]
+		'replace':[{'tag':'<color name="emui_switch_bg_on">{color}</color>','color':'#007DFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_progress">#808080</color>',
-		'replace':[{'tag':'<color name="emui_progress">{color}</color>','color':'#4D4D4D'}]
+		'replace':[{'tag':'<color name="emui_progress">{color}</color>','color':'#4D4D4D'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_control_hightlight">(.*)</color>',
-		'replace':[{'tag':'<color name="emui_functional_blue">{color}</color>','color':'{orgincolor}'}]
+		'replace':[{'tag':'<color name="emui_functional_blue">{color}</color>','color':'{orgincolor}'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_spinner_icon">(.*)</color>',
-		'replace':[{'tag':'<color name="emui_color_spinner_icon">{color}</color>','color':'{orgincolor}'}]
+		'replace':[{'tag':'<color name="emui_color_spinner_icon">{color}</color>','color':'{orgincolor}'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_appbar_icon">#FF191919</color>',
-		'replace':[{'tag':'<color name="emui_appbar_icon">{color}</color>','color':'#E6000000'}]
+		'replace':[{'tag':'<color name="emui_appbar_icon">{color}</color>','color':'#E6000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_appbar_icon_pressed">#FF191919</color>',
-		'replace':[{'tag':'<color name="emui_appbar_icon_pressed">{color}</color>','color':'#E6000000'}]
+		'replace':[{'tag':'<color name="emui_appbar_icon_pressed">{color}</color>','color':'#E6000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_appbar_title">#FF191919</color>',
-		'replace':[{'tag':'<color name="emui_appbar_title">{color}</color>','color':'#E6000000'}]
+		'replace':[{'tag':'<color name="emui_appbar_title">{color}</color>','color':'#E6000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_toolbar_icon">#FF191919</color>',
-		'replace':[{'tag':'<color name="emui_toolbar_icon">{color}</color>','color':'#E6000000'}]
+		'replace':[{'tag':'<color name="emui_toolbar_icon">{color}</color>','color':'#E6000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_toolbar_icon_pressed">#FF191919</color>',
-		'replace':[{'tag':'<color name="emui_toolbar_icon_pressed">{color}</color>','color':'#E6000000'}]
+		'replace':[{'tag':'<color name="emui_toolbar_icon_pressed">{color}</color>','color':'#E6000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_toolbar_text">#FF191919</color>',
-		'replace':[{'tag':'<color name="emui_toolbar_text">{color}</color>','color':'#E6000000'}]
+		'replace':[{'tag':'<color name="emui_toolbar_text">{color}</color>','color':'#E6000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_toolbar_text_pressed">#FF191919</color>',
-		'replace':[{'tag':'<color name="emui_toolbar_text_pressed">{color}</color>','color':'#E6000000'}]
+		'replace':[{'tag':'<color name="emui_toolbar_text_pressed">{color}</color>','color':'#E6000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_subtab_text_off">(.*)</color>',
-		'replace':[{'tag':'<color name="hwsubtab_emui_subtab_text_off">{color}</color>','color':'{orgincolor}'}]
+		'replace':[{'tag':'<color name="hwsubtab_emui_subtab_text_off">{color}</color>','color':'{orgincolor}'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_subtab_text_off">(.*)</color>',
-		'replace':[{'tag':'<color name="hwsubtab_emui_subtab_text_off">{color}</color>','color':'{orgincolor}'}]
+		'replace':[{'tag':'<color name="hwsubtab_emui_subtab_text_off">{color}</color>','color':'{orgincolor}'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_bottombar_icon_off">#FFFFFFFF</color>',
-		'replace':[{'tag':'<color name="emui_bottombar_icon_off">{color}</color>','color':'#99000000'}]
+		'replace':[{'tag':'<color name="emui_bottombar_icon_off">{color}</color>','color':'#99000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_bottombar_text_off">#FFFFFFFF</color>',
-		'replace':[{'tag':'<color name="emui_bottombar_text_off">{color}</color>','color':'#99000000'}]
+		'replace':[{'tag':'<color name="emui_bottombar_text_off">{color}</color>','color':'#99000000'}],
+		'target':'',
+		'color':''
 	},
 
 	# emui_black_color_alpha_30 已删除 ，切换至.9图
 	{
 		'orgin':'<color name="emui_text_hint">#191919</color>',
-		'replace':[{'tag':'','color':''}]
+		'replace':[{'tag':'','color':''}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_bottombar_text_off">#FFFFFFFF</color>',
-		'replace':[{'tag':'<color name="emui_bottombar_text_off">{color}</color>','color':'#99000000'}]
+		'replace':[{'tag':'<color name="emui_bottombar_text_off">{color}</color>','color':'#99000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_icon_tertiary">#191919</color>',
-		'replace':[{'tag':'<color name="emui_icon_tertiary">{color}</color>','color':'#4D000000'}]
+		'replace':[{'tag':'<color name="emui_icon_tertiary">{color}</color>','color':'#4D000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_secondary">(.*)</color>',
-		'replace':[{'tag':'<color name="emui_primary">{color}</color>','color':'{orgincolor}'}]
+		'replace':[{'tag':'<color name="emui_primary">{color}</color>','color':'{orgincolor}'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="emui_appbar_subtitle">{color}</color>','color':'#99000000'}]
+		'replace':[{'tag':'<color name="emui_appbar_subtitle">{color}</color>','color':'#99000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_accent">#007dfe</color>',
-		'replace':[{'tag':'<color name="emui_accent">{color}</color>','color':'#007dff'}]
+		'replace':[{'tag':'<color name="emui_accent">{color}</color>','color':'#007dff'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_fastscroll_lable_bg">#e4e4e4</color>',
-		'replace':[{'tag':'<color name="emui_fastscroll_lable_bg">{color}</color>','color':'#E6E6E6'}]
+		'replace':[{'tag':'<color name="emui_fastscroll_lable_bg">{color}</color>','color':'#E6E6E6'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="switch_off_disable_emui">#4De4e4e4</color>',
-		'replace':[{'tag':'<color name="switch_off_disable_emui">{color}</color>','color':'#0E000000'}]
+		'replace':[{'tag':'<color name="switch_off_disable_emui">{color}</color>','color':'#0E000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_checkbox_boxedge">#4D000000</color>',
-		'replace':[{'tag':'<color name="emui_checkbox_boxedge">{color}</color>','color':'#191919'}]
+		'replace':[{'tag':'<color name="emui_checkbox_boxedge">{color}</color>','color':'#191919'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_switch_outline_off">#4DFFFFFF</color>',
-		'replace':[{'tag':'<color name="emui_switch_outline_off">{color}</color>','color':'#B3B3B3'}]
+		'replace':[{'tag':'<color name="emui_switch_outline_off">{color}</color>','color':'#B3B3B3'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_switch_bg_off">#FFFFFF</color>',
-		'replace':[{'tag':'<color name="emui_switch_bg_off">{color}</color>','color':'#4D000000'}]
+		'replace':[{'tag':'<color name="emui_switch_bg_off">{color}</color>','color':'#4D000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'<color name="emui_white_bg">#e4e4e4</color>',
-		'replace':[{'tag':'<color name="emui_white_bg">{color}</color>','color':'#FFFFFF'}]
+		'replace':[{'tag':'<color name="emui_white_bg">{color}</color>','color':'#FFFFFF'}],
+		'target':'',
+		'color':''
 	},
 
 	# progress_primary_emui.9.png  ， progress_bg_emui.9.png   亮度调整 条  ，26*74
 ]
 
-launcher_normalConfig_v91_v10 = []
+launcher_normalConfig_v91_v10 = [
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="ic_home_checkbox_off_center_color">{color}</color>' , 'color':'#FFFFFF'}],
+		'target':'',
+		'color':''
+	},
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="ic_home_checkbox_off_rim_color">{color}</color>' , 'color':'#000000'}],
+		'target':'',
+		'color':''
+	},
+	
+]
 
 contacts_normalConfig_v91_v10 = [
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="ic_home_checkbox_off_center_color">{color}</color>' , 'color':'#FFFFFF'}]
+		'replace':[{'tag':'<color name="ic_home_checkbox_off_center_color">{color}</color>' , 'color':'#FFFFFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="ic_home_checkbox_off_rim_color">{color}</color>' , 'color':'#000000'}]
+		'replace':[{'tag':'<color name="ic_home_checkbox_off_rim_color">{color}</color>' , 'color':'#000000'}],
+		'target':'',
+		'color':''
 	},
 
 	# 联系人/收藏/新建按钮背景色
@@ -285,19 +415,27 @@ contacts_normalConfig_v91_v10 = [
 	# <color name="hwfab_shadow_end">#4DFF00D0</color>
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="hwfab_bg">{color}</color>' , 'color':'#007DFF'}]
+		'replace':[{'tag':'<color name="hwfab_bg">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="primary_emui_light">(.*)</color>'
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="hwfab_pressed">{color}</color>' , 'color':'#0070E5'}]
+		'replace':[{'tag':'<color name="hwfab_pressed">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="primary_emui_light">(.*)</color>'
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="hwfab_shadow_start">{color}</color>' , 'color':'#4D00B0FF'}]
+		'replace':[{'tag':'<color name="hwfab_shadow_start">{color}</color>' , 'color':'{color}FF'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="primary_emui_light">(.*)</color>'
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="hwfab_shadow_end">{color}</color>' , 'color':'#4DFF00D0'}]
+		'replace':[{'tag':'<color name="hwfab_shadow_end">{color}</color>' , 'color':'{color}D0'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="primary_emui_light">(.*)</color>'
 	},
 
 	# 拨号/拨号盘展开收起悬浮按钮背景色
@@ -313,23 +451,33 @@ contacts_normalConfig_v91_v10 = [
 	# <color name="dial_hwfab_shadow_end">#4DFF00D0</color>
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="dial_fab_backgrounp">{color}</color>' , 'color':'#41ba41'}]
+		'replace':[{'tag':'<color name="dial_fab_backgrounp">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="primary_emui_light">(.*)</color>'
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="dial_fab_backgrounp_pressed">{color}</color>' , 'color':'#41ba41'}]
+		'replace':[{'tag':'<color name="dial_fab_backgrounp_pressed">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="primary_emui_light">(.*)</color>'
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="dial_fab_backgrounp_focue">{color}</color>' , 'color':'#41ba41'}]
+		'replace':[{'tag':'<color name="dial_fab_backgrounp_focue">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="primary_emui_light">(.*)</color>'
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="dial_hwfab_shadow_start">{color}</color>' , 'color':'#4D00B0FF'}]
+		'replace':[{'tag':'<color name="dial_hwfab_shadow_start">{color}</color>' , 'color':'{color}FF'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="primary_emui_light">(.*)</color>'
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="dial_hwfab_shadow_end">{color}</color>' , 'color':'#4DFF00D0'}]
+		'replace':[{'tag':'<color name="dial_hwfab_shadow_end">{color}</color>' , 'color':'{color}D0'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="primary_emui_light">(.*)</color>'
 	},
 
 	# 拨号图标
@@ -345,29 +493,41 @@ contacts_normalConfig_v91_v10 = [
 	# <color name="contact_svg_icon_base_grey_color_c">#D6D6D6</color>
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="emui_color_connected">{color}</color>' , 'color':'#41ba41'}]
+		'replace':[{'tag':'<color name="emui_color_connected">{color}</color>' , 'color':'#41ba41'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="contact_svg_icon_base_green_color_a">{color}</color>' , 'color':'#20A934'}]
+		'replace':[{'tag':'<color name="contact_svg_icon_base_green_color_a">{color}</color>' , 'color':'#20A934'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="emui_color_fg_inverse">{color}</color>' , 'color':'#ffffff'}]
+		'replace':[{'tag':'<color name="emui_color_fg_inverse">{color}</color>' , 'color':'#ffffff'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="emui_color_fg_inverse">{color}</color>' , 'color':'#ffffff'}]
+		'replace':[{'tag':'<color name="emui_color_fg_inverse">{color}</color>' , 'color':'#ffffff'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="contact_svg_icon_base_grey_color_c">{color}</color>' , 'color':'#D6D6D6'}]
+		'replace':[{'tag':'<color name="contact_svg_icon_base_grey_color_c">{color}</color>' , 'color':'#D6D6D6'}],
+		'target':'',
+		'color':''
 	},
 
 
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="bottom_tab_bg">{color}</color>' , 'color':'#ffffff'}]
+		'replace':[{'tag':'<color name="bottom_tab_bg">{color}</color>' , 'color':'#ffffff'}],
+		'target':'',
+		'color':''
 	},
 
 	# 拨号/联系人、收藏主界面/新建按钮（可保留默认状态）
@@ -376,24 +536,32 @@ contacts_normalConfig_v91_v10 = [
 	# <color name="hwfab_icon_end">#FF00D0</color>
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="hwfab_icon_start">{color}</color>' , 'color':'#00B0FF'}]
+		'replace':[{'tag':'<color name="hwfab_icon_start">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="emui_primary">(.*)</color>'
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="hwfab_icon_end">{color}</color>' , 'color':'#FF00D0'}]
+		'replace':[{'tag':'<color name="hwfab_icon_end">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="emui_primary">(.*)</color>'
 	},
 
 	# 联系人首次启动条幅背景色
 	# <color name="tips_and_divider_color">#FFFFFFFF</color>
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="tips_and_divider_color">{color}</color>' , 'color':'#FFFFFFFF'}]
+		'replace':[{'tag':'<color name="tips_and_divider_color">{color}</color>' , 'color':'#FFFFFFFF'}],
+		'target':'',
+		'color':''
 	},
 
 	# <color name="hwsubtab_emui_color_bg">#ffffff</color>
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="hwsubtab_emui_color_bg">{color}</color>' , 'color':'#ffffff'}]
+		'replace':[{'tag':'<color name="hwsubtab_emui_color_bg">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="emui_color_fg">(.*)</color>'
 	},
 
 	# 选中的页签文字颜色：<color name="hwsubtab_emui_subtab_text_on">#007dff</color>
@@ -401,15 +569,21 @@ contacts_normalConfig_v91_v10 = [
 	# 未选中的页签文字颜色：<color name="hwsubtab_emui_subtab_text_off">#191919</color>
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="hwsubtab_emui_subtab_text_on">{color}</color>' , 'color':'#007dff'}]
+		'replace':[{'tag':'<color name="hwsubtab_emui_subtab_text_on">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="emui_control_hightlight">(.*)</color>'
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="hwsubtab_indicator_color">{color}</color>' , 'color':'#007dff'}]
+		'replace':[{'tag':'<color name="hwsubtab_indicator_color">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="emui_control_hightlight">(.*)</color>'
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="hwsubtab_emui_subtab_text_off">{color}</color>' , 'color':'#191919'}]
+		'replace':[{'tag':'<color name="hwsubtab_emui_subtab_text_off">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="emui_primary">(.*)</color>'
 	},
 
 	# svg图片，即电话或者摄像头图标的颜色：<color name="hicall_recent_call_type_image">#FFFFFF</color>
@@ -419,7 +593,9 @@ contacts_normalConfig_v91_v10 = [
 	# <color name="emui_color_bg">#ffffff</color>
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="hicall_recent_call_type_image">{color}</color>' , 'color':'#FFFFFF'}]
+		'replace':[{'tag':'<color name="hicall_recent_call_type_image">{color}</color>' , 'color':'#FFFFFF'}],
+		'target':'',
+		'color':''
 	},
 
 	# 新增.9图
@@ -435,7 +611,16 @@ hwvoipservice_normalConfig_v91_v10 = []
 mms_normalConfig_v91_v10 = [
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="color_gray_one">{color}</color>' , 'color':'#F2FAFAFA'}]
+		'replace':[{'tag':'<color name="color_gray_one">{color}</color>' , 'color':'#F2FAFAFA'}],
+		'target':'',
+		'color':''
+	},
+
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="messaeg_pop_text_color_send_sms_theme_adapter">{color}</color>' , 'color':'#ffffff'}],
+		'target':'',
+		'color':''
 	},
 
 
@@ -524,53 +709,75 @@ mms_normalConfig_v91_v10 = [
 	# 新建短信按钮颜色
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="mms_color_primary_dark">{color}</color>' , 'color':'#ffffff'}]
+		'replace':[{'tag':'<color name="mms_color_primary_dark">{color}</color>' , 'color':'#ffffff'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="messaeg_pop_text_color_send_rcs_theme_adapter">{color}</color>' , 'color':'#242424'}]
+		'replace':[{'tag':'<color name="messaeg_pop_text_color_send_rcs_theme_adapter">{color}</color>' , 'color':'#242424'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="message_pop_send_bg_color">{color}</color>' , 'color':'#26c73d'}]
+		'replace':[{'tag':'<color name="message_pop_send_bg_color">{color}</color>' , 'color':'#26c73d'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="messaeg_pop_text_color_send_sms_theme_adapter">{color}</color>' , 'color':'#242424'}]
+		'replace':[{'tag':'<color name="messaeg_pop_text_color_send_sms_theme_adapter">{color}</color>' , 'color':'#242424'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="messaeg_pop_text_color_send_rcs_theme_adapter">{color}</color>' , 'color':'#242424'}]
+		'replace':[{'tag':'<color name="messaeg_pop_text_color_send_rcs_theme_adapter">{color}</color>' , 'color':'#242424'}],
+		'target':'',
+		'color':''
 	},
 
 	# <!-- 智能短信 弹框背景-->
 	# <color name="duoqu_rcs_url_bg_color">#FFFFFF</color>
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="duoqu_rcs_url_bg_color">{color}</color>' , 'color':'#FFFFFF'}]
+		'replace':[{'tag':'<color name="duoqu_rcs_url_bg_color">{color}</color>' , 'color':'#FFFFFF'}],
+		'target':'',
+		'color':''
 	},
 ]
 
 systemui_normalConfig_v91_v10 = [
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="qs_customize_background_color1">{color}</color>' , 'color':'#FFFFFFFF'}]
+		'replace':[{'tag':'<color name="qs_customize_background_color1">{color}</color>' , 'color':'#FFFFFFFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="notification_background_color_without_alpha">{color}</color>' , 'color':'#FFFFFFFF'}]
+		'replace':[{'tag':'<color name="notification_background_color_without_alpha">{color}</color>' , 'color':'#FFFFFFFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="notification_button_pressed_bg_color">{color}</color>' , 'color':'#0d000000'}]
+		'replace':[{'tag':'<color name="notification_button_pressed_bg_color">{color}</color>' , 'color':'#0d000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="notification_button_pressed_bg_color">{color}</color>' , 'color':'#0d000000'}]
+		'replace':[{'tag':'<color name="notification_button_pressed_bg_color">{color}</color>' , 'color':'#0d000000'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="qs_tile_tint_on">{color}</color>' , 'color':'#FFFFFF'}]
+		'replace':[{'tag':'<color name="qs_tile_tint_on">{color}</color>' , 'color':'#FFFFFF'}],
+		'target':'',
+		'color':''
 	},
 
 	# 背景引用 framework-res-hwext 切图：
@@ -584,15 +791,21 @@ systemui_normalConfig_v91_v10 = [
 
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="volume_line_color">{color}</color>' , 'color':'#333333'}]
+		'replace':[{'tag':'<color name="volume_line_color">{color}</color>' , 'color':'#333333'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="volume_image_color">{color}</color>' , 'color':'#FF007DFF'}]
+		'replace':[{'tag':'<color name="volume_image_color">{color}</color>' , 'color':'#FF007DFF'}],
+		'target':'',
+		'color':''
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="volume_unfocus">{color}</color>' , 'color':'#FF007DFF'}]
+		'replace':[{'tag':'<color name="volume_unfocus">{color}</color>' , 'color':'#FF007DFF'}],
+		'target':'',
+		'color':''
 	},
 
 	# 增加.9图  ， ic_seekbar_thumb.png	96×96	音量控制滑块
@@ -651,22 +864,81 @@ normalConfig_dic = {
 
 dot9picList = [
 #  constacts
-	{'input':'constacts/daier_call_btn_normal.png','output':'com.android.contacts/framework-res-hwext/res/drawable-xxhdpi/daier_call_btn_normal.png'},
-	{'input':'constacts/daier_call_btn_press.png','output':'com.android.contacts/framework-res-hwext/res/drawable-xxhdpi/daier_call_btn_press.png'},
-	{'input':'constacts/dialpad_background_drawable.9.png','output':'com.android.contacts/framework-res-hwext/res/drawable-xxhdpi/dialpad_background_drawable.9.png'},
-	{'input':'constacts/header_background4.9.png','output':'com.android.contacts/framework-res-hwext/res/drawable-xxhdpi/header_background4.9.png'},
+	{'input':'constacts/daier_call_btn_normal.png','output':'com.android.contacts/framework-res-hwext/res/drawable-xxhdpi/daier_call_btn_normal.png',
+	'color':'<color name="primary_emui_light">(.*)</color>',
+	'defaultcolor':'#ffffff',
+	'target':'framework-res-hwext'},
+
+	{'input':'constacts/daier_call_btn_press.png','output':'com.android.contacts/framework-res-hwext/res/drawable-xxhdpi/daier_call_btn_press.png',
+	'color':'<color name="primary_emui_light">(.*)</color>',
+	'defaultcolor':'#ffffff',
+	'target':'framework-res-hwext'},
+
+	{'input':'constacts/dialpad_background_drawable.9.png','output':'com.android.contacts/res/drawable-xxhdpi/dialpad_background_drawable.9.png',
+	'color':'<color name="primary_emui_light">(.*)</color>',
+	'defaultcolor':'#ffffff',
+	'target':'framework-res-hwext'},
+
+	{'input':'constacts/header_background4.9.png','output':'com.android.contacts/res/drawable-xxhdpi/header_background4.9.png',
+	'color':'<color name="primary_emui_light">(.*)</color>',
+	'defaultcolor':'#ffffff',
+	'target':'framework-res-hwext'},
+
 
 # sms
-	{'input':'sms/message_location_pop_send_bg.9.png','output':'com.android.sms/framework-res-hwext/res/drawable-xxhdpi/message_location_pop_send_bg.9.png'},
-	{'input':'sms/message_location_pop_send_bg.9.png','output':'com.android.sms/framework-res-hwext/res/drawable-xxhdpi/message_location_pop_send_bg.9.png'},
-	{'input':'sms/message_pop_rcs_favorite_bg.9.png','output':'com.android.sms/framework-res-hwext/res/drawable-xxhdpi/message_pop_rcs_favorite_bg.9.png'},
-	{'input':'sms/message_pop_rcs_send_bg.9.png','output':'com.android.sms/framework-res-hwext/res/drawable-xxhdpi/message_pop_rcs_send_bg.9.png'},
-	{'input':'sms/message_slide_pop_incoming_bg.9.png','output':'com.android.sms/framework-res-hwext/res/drawable-xxhdpi/message_slide_pop_incoming_bg.9.png'},
-	{'input':'sms/encrypted_message_pop_send_bg.9.png','output':'com.android.sms/framework-res-hwext/res/drawable-xxhdpi/encrypted_message_pop_send_bg.9.png'},
-	{'input':'sms/message_attachment_preview_bg.9.png','output':'com.android.sms/framework-res-hwext/res/drawable-xxhdpi/message_attachment_preview_bg.9.png'},
-	{'input':'sms/message_pop_favorite_bg.9.png','output':'com.android.sms/framework-res-hwext/res/drawable-xxhdpi/message_pop_favorite_bg.9.png'},
-	{'input':'sms/message_pop_send_bg.9.png','output':'com.android.sms/framework-res-hwext/res/drawable-xxhdpi/message_pop_send_bg.9.png'},
-	{'input':'sms/message_slide_pop_send_bg.9.png','output':'com.android.sms/framework-res-hwext/res/drawable-xxhdpi/message_slide_pop_send_bg.9.png'},
+
+
+	{'input':'mms/message_slide_pop_incoming_bg.9.png','output':'com.android.mms/res/drawable-xxhdpi/message_slide_pop_incoming_bg.9.png',
+	'color':'<color name="message_pop_incoming_bg_color">(.*)</color>',
+	'defaultcolor':'#ffffff',
+	'target':''},
+
+	{'input':'mms/message_pop_incoming_bg.9.png','output':'com.android.mms/res/drawable-xxhdpi/message_pop_incoming_bg.9.png',
+	'color':'<color name="message_pop_incoming_bg_color">(.*)</color>',
+	'defaultcolor':'#ffffff',
+	'target':''},
+
+
+	{'input':'mms/message_location_pop_send_bg.9.png','output':'com.android.mms/res/drawable-xxhdpi/message_location_pop_send_bg.9.png',
+	'color':'<color name="message_pop_send_bg_color_theme_adapter">(.*)</color>',
+	'defaultcolor':'#000000',
+	'target':''},
+
+	{'input':'mms/message_pop_rcs_favorite_bg.9.png','output':'com.android.mms/res/drawable-xxhdpi/message_pop_rcs_favorite_bg.9.png',
+	'color':'<color name="message_pop_send_bg_color_theme_adapter">(.*)</color>',
+	'defaultcolor':'#000000',
+	'target':''},
+
+	{'input':'mms/message_pop_rcs_send_bg.9.png','output':'com.android.mms/res/drawable-xxhdpi/message_pop_rcs_send_bg.9.png',
+	'color':'<color name="message_pop_send_bg_color_theme_adapter">(.*)</color>',
+	'defaultcolor':'#000000',
+	'target':''},
+
+
+	{'input':'mms/encrypted_message_pop_send_bg.9.png','output':'com.android.mms/res/drawable-xxhdpi/encrypted_message_pop_send_bg.9.png',
+	'color':'<color name="message_pop_send_bg_color_theme_adapter">(.*)</color>',
+	'defaultcolor':'#000000',
+	'target':''},
+
+	{'input':'mms/message_attachment_preview_bg.9.png','output':'com.android.mms/res/drawable-xxhdpi/message_attachment_preview_bg.9.png',
+	'color':'<color name="message_pop_send_bg_color_theme_adapter">(.*)</color>',
+	'defaultcolor':'#000000',
+	'target':''},
+
+	{'input':'mms/message_pop_favorite_bg.9.png','output':'com.android.mms/res/drawable-xxhdpi/message_pop_favorite_bg.9.png',
+	'color':'<color name="message_pop_send_bg_color_theme_adapter">(.*)</color>',
+	'defaultcolor':'#000000',
+	'target':''},
+
+	{'input':'mms/message_pop_send_bg.9.png','output':'com.android.mms/res/drawable-xxhdpi/message_pop_send_bg.9.png',
+	'color':'<color name="message_pop_send_bg_color_theme_adapter">(.*)</color>',
+	'defaultcolor':'#000000',
+	'target':''},
+
+	{'input':'mms/message_slide_pop_send_bg.9.png','output':'com.android.mms/res/drawable-xxhdpi/message_slide_pop_send_bg.9.png',
+	'color':'<color name="message_pop_send_bg_color_theme_adapter">(.*)</color>',
+	'defaultcolor':'#000000',
+	'target':''},
 
 ]
 
@@ -726,13 +998,32 @@ def doTransform( filePath  , configParam ):
 	configFileContent = open(filePath).read()
 	print configFileContent
 	print '解析替换配置规则...'
-	configFileContent = configFileContent.replace('</resources>','')
+	if filePath.find('com.android.mms')> 0 and filePath.find('framework-res-hwext') < 0:
+		configFileContent = configFileContent.replace('</hwthemes>','')
+	else:
+		configFileContent = configFileContent.replace('</resources>','')
 	for item in configParam:
+		color = ''
+		
 		if item['orgin'] == '':
 			print '----------'
 			print '直接替换'
+
+			if item['color'] != None and item['color'] != '' :
+				print '需要从原始颜色替换...'
+				print '查找：' + item['color']
+				# color = getOrginColorFromConfig('',configFileContent , item['color']  ,'')
+				orginConfigFilePath = os.path.join(filePath.replace('framework-res-hwext\\theme.xml' if isWindows else 'framework-res-hwext/theme.xml'  ,'').replace('\\theme.xml' if isWindows else '/theme.xml' , ''),item['target'],'theme.xml')
+				print '从：%s, 内开始查找...' % (orginConfigFilePath)
+				color = getOrginColorFromConfig(orginConfigFilePath,'' , item['color']  ,'')
+				print '找到对应颜色：' + color
+
 			for param in item['replace']:
-				color = param['color'];
+				print 'find :%d' % param['color'].find('{color}') 
+				if param['color'].find('{color}') < 0 :
+					print '未找到replace中的替换标记 ... ,color置为：' + param['color'] 
+					color = param['color']
+				print 'replace item ：color -->' + param['color'] + '|||tag:' + param['tag'] + ',color:' + color
 				replaceStr =  param['tag'].replace('{color}',color)
 				print '准备添加：' + replaceStr + ',检测是否已经存在...'
 				if configFileContent.find(replaceStr) > 0:
@@ -772,7 +1063,10 @@ def doTransform( filePath  , configParam ):
 					configFileContent+="\n\t<!-- hwv91-v10 autoreplace --> \n\t" +replaceStr + "\n" 
 				
 			print '----------'
-	configFileContent+="\n</resources>\n"
+	if filePath.find('com.android.mms')> 0 and filePath.find('framework-res-hwext') < 0:
+		configFileContent+="\n</hwthemes>\n"
+	else:
+		configFileContent+="\n</resources>\n"
 	print configFileContent
 	open(filePath , 'w').write(configFileContent)
 	print '准备执行文件写入  ，文件为：' + filePath
@@ -794,13 +1088,20 @@ def checkIcons():
 				print filepath2
 				if os.path.exists(filepath1) :
 					if isWindows:
-						os.system('xcopy ' + filepath1 + ' ' + filepath2)
+						print 'command:' + 'xcopy \'' + filepath1 + '\' ' + filepath2+ '\''
+						os.system('xcopy \'' + filepath1 + '\' \'' + filepath2+ '\'')
 					else:
-						os.system('cp ' + filepath1 + ' ' + filepath2)
+						print 'command:' + 'cp \'' + filepath1 + '\' \'' + filepath2+ '\''
+						os.system('cp \'' + filepath1 + '\' \'' + filepath2+ '\'')
 					print '已补全 ， 从' + filepath1 + '到' + filepath2
 					continue
 				if os.path.exists(filepath2) :
-					os.system('cp ' + filepath2 + ' ' + filepath1)
+					if isWindows:
+						print 'command:' + 'xcopy \'' + filepath2 + '\' \'' + filepath1 + '\''
+						os.system('xcopy \'' + filepath2 + '\' \'' + filepath1+ '\'')
+					else:
+						print 'command:' + 'cp \'' + filepath2 + '\' \'' + filepath1+ '\''
+						os.system('cp \'' + filepath2 + '\' \'' + filepath1+ '\'')
 					print '已补全 ， 从' + filepath2 + '到' + filepath1
 
 					continue
@@ -814,6 +1115,9 @@ def checkIcons():
 		if not os.path.exists(tmpPath):	
 			print '需补充:' + tmpPath
 			queshipicArr.append(tmpPath)
+
+	# print '复制dynamic_icons...'
+
 
 
 def mkdir(path):
@@ -846,10 +1150,36 @@ def checkdot9pic():
 		if isWindows:
 			inputFilePath = inputFilePath.replace('/','\\',99)
 			outFilePath = outFilePath.replace('/','\\',99)
-		changeDot9PngColor(inputFilePath  ,outFilePath , Hex_to_RGB('#006dc3'))
+		color = getOrginColorFromConfig(os.path.join(currentProjectFilePath , item['output'].split('/')[0], item['target'] ,'theme.xml')  ,'', item['color'] , item['defaultcolor'])
+		changeDot9PngColor(inputFilePath  ,outFilePath , Hex_to_RGB(color))
 
 
-
+def getOrginColorFromConfig( filePath ,fileContent,  colorPatten  , defaultcolor):
+	color = defaultcolor
+	if color == '':
+		color = '#ffffff'
+	if filePath == '' and fileContent == '' :
+		return color
+	if filePath != '' and fileContent == '' and not os.path.exists(filePath):
+		return color
+	if filePath == '' and fileContent == '':
+		return color 
+	if colorPatten == '' :
+		return color
+	content = ''
+	if filePath != '':
+		content = open(filePath).read()
+	if fileContent != '':
+		content = fileContent
+	if content == '' :
+		return color
+	print 'colorPatten:' + colorPatten
+	matchObj = re.search(r''+colorPatten , content )
+	if matchObj == None:
+		return color
+	color = matchObj.group(1)
+	print 'color:' + color
+	return color 
 
 
 
@@ -870,7 +1200,7 @@ def RGB_to_Hex(rgb):
 def Hex_to_RGB(hex):
 	r = int(hex[1:3],16)
 	g = int(hex[3:5],16)
-	b = int(hex[5:7], 16)
+	b = int(hex[5:7],16)
 	rgb = str(r)+','+str(g)+','+str(b)
 	print(rgb)
 	return rgb
@@ -895,7 +1225,7 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 		img.save(outputPic)
 		img.show()
 		return 
-		
+
 	img2 = Image.new('RGBA',(imageWidth + 1,imageHeight +1)  ,(0,0,0))
 	box1 = (0,0,imageWidth,imageHeight)
 	region = img.crop(box1)
@@ -921,8 +1251,26 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 	img2.show()
 
 
+def updateLauncher():
+	productLauncherPath = os.path.join(currentProjectFilePath , 'com.huawei.android.launcher' ,'res' , 'drawable-xxhdpi') 
+	tempLauncherPath = os.path.join(os.getcwd() , 'launcher' )
+	command = ''
+	if not isWindows :
+		command = 'cp ' + tempLauncherPath + '/*.* ' + productLauncherPath + '/' 
+	else:
+		command = 'xcopy ' + tempLauncherPath + '\\*.* ' + productLauncherPath + '\\'
+	print 'updateLauncher , command:' + command
+	os.system(command);
 
-
+def updateThemeDesc():
+	descFilePath = os.path.join(currentProjectFilePath , 'description.xml');
+	content = open(descFilePath).read()
+	matchObj = re.search(r'<version>(.*)</version>' , content )
+	versionStr = matchObj.group()
+	print '版本号信息:' + versionStr
+	content = content.replace(versionStr , '<version>10.0.0</version>')
+	print '修改后desc文件：' + content 
+	open(descFilePath,'w').write(content)
 
 # start 
 # print '输入参数列表：' 
@@ -979,6 +1327,17 @@ print '==============checkIcons============== '
 print '==============checkdot9pic============== '  
 checkdot9pic()
 print '==============checkdot9pic============== '  
+
+
+print '==============updateLauncher============== '  
+updateLauncher()
+print '==============updateLauncher============== '  
+
+
+
+print '==============updateThemeDesc============== '  
+updateThemeDesc()
+print '==============updateThemeDesc============== '  
 
 
 # 完成
