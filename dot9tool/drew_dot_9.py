@@ -10,6 +10,9 @@ import re
 import platform
 from PIL import Image
 
+isWindows = False
+
+
 def mkdir(path):
     if not os.path.isdir(path):
         mkdir(os.path.split(path)[0])
@@ -138,11 +141,14 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 				minX = i 
 			if minY == '' or j <= minY:
 				minY = j
-	print '图片实际大小：minX:%d , maxX:%d , minY:%d , maxY:%d' %( minX , maxX , minY , maxY)
+	if isWindows:
+		print 'image real size : minX:%d , maxX:%d , minY:%d , maxY:%d' %( minX , maxX , minY , maxY)
+	else:
+		print '图片实际大小：minX:%d , maxX:%d , minY:%d , maxY:%d' %( minX , maxX , minY , maxY)
 
 	if imageWidth <=20 and imageHeight <=20:
 		img.save(outputPic)
-		img.show()
+		# img.show()
 		return 
 
 	img2 = Image.new('RGBA',(imageWidth + 1,imageHeight +1)  ,(0,0,0))
@@ -160,7 +166,7 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 					xsize = maxX - minX
 					yratio = 0.42
 					xratio = 0.30
-					#             上中点										左中点					下中线																		右中线
+					#             上中点										左中点					     下中线																		右中线
 					if (i == minX + xsize/2 and j == 0) or (i == 0 and j == minY + ysize/2) or ( ( i >= minX + xsize/2 - xsize*xratio and i<= minX + xsize/2 + xsize*xratio ) and j == imageHeight ) or ( i == imageWidth and j >= minY + ysize/2 -ysize*yratio and j <= minY + ysize/2 +ysize*yratio):
 						b = 0
 						g = 0
@@ -179,7 +185,7 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 				img2.putpixel((i,j), (r,g,b,a)) 
 
 	img2.save(outputPic)
-	img2.show()
+	# img2.show()
 
 def scandot9( filePath ):
 	fileList = [];
@@ -189,6 +195,17 @@ def scandot9( filePath ):
 	return fileList
 
 #start
+
+# 判断是否windows
+print  '当前系统为：' + platform.system()
+if platform.system() == 'Windows' or platform.system() == 'windows':
+	isWindows = True
+
+if isWindows:
+	print 'windows env...'
+else:
+	print '非windows环境'
+
 fileList = scandot9(os.path.join(os.getcwd(),'input'))
 print fileList
 for item in fileList:
