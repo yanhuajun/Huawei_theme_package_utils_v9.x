@@ -82,6 +82,19 @@ framework_res_hwext_change_v91_v10=[
 		'color':''
 	},
 	{
+		'orgin':'<color name="emui_appbar_bg">(.*)</color>',
+		'replace':[{'tag':'<color name="emui_appbar_bg">{color}</color>','color':'{color}'}],
+		'target':'framework_res_hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},
+	
+	{
+		'orgin':'<color name="emui_appbar_bg_blur">(.*)</color>',
+		'replace':[{'tag':'<color name="emui_appbar_bg_blur">{color}</color>','color':'{color}'}],
+		'target':'framework_res_hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},
+	{
 		'orgin':'<color name="emui_appbar_bg_blur">#80F2F2F2</color>',
 		'replace':[{'tag':'<color name="emui_appbar_bg_blur">{color}</color>','color':'#FF000000'}],
 		'target':'',
@@ -298,7 +311,7 @@ framework_res_hwext_change_v91_v10=[
 		'color':''
 	},
 
-	# emui_black_color_alpha_30 已删除 ，切换至.9图
+	# emui_black_color_alpha_30 已删除 ,切换至.9图
 	{
 		'orgin':'<color name="emui_text_hint">#191919</color>',
 		'replace':[{'tag':'','color':''}],
@@ -372,7 +385,7 @@ framework_res_hwext_change_v91_v10=[
 		'color':''
 	},
 
-	# progress_primary_emui.9.png  ， progress_bg_emui.9.png   亮度调整 条  ，26*74
+	# progress_primary_emui.9.png  , progress_bg_emui.9.png   亮度调整 条  ,26*74
 ]
 
 launcher_normalConfig_v91_v10 = [
@@ -406,11 +419,11 @@ contacts_normalConfig_v91_v10 = [
 	},
 
 	# 联系人/收藏/新建按钮背景色
-	# 背景颜色：
+	# 背景颜色:
 	# <color name="hwfab_bg">#007DFF</color>
-	# 背景按压颜色：
+	# 背景按压颜色:
 	# <color name="hwfab_pressed">#0070E5</color>
-	# 图标背景投影色：
+	# 图标背景投影色:
 	# <color name="hwfab_shadow_start">#4D00B0FF</color>
 	# <color name="hwfab_shadow_end">#4DFF00D0</color>
 	{
@@ -439,14 +452,14 @@ contacts_normalConfig_v91_v10 = [
 	},
 
 	# 拨号/拨号盘展开收起悬浮按钮背景色
-	# 背景颜色：
+	# 背景颜色:
 	# nomal状态
 	# <color name="dial_fab_backgrounp">#41ba41</color>
 	# pressed状态
 	# <color name="dial_fab_backgrounp_pressed">#41ba41</color>
 	# focused状态
 	# <color name="dial_fab_backgrounp_focue">#41ba41</color>
-	# 图标背景投影色：
+	# 图标背景投影色:
 	# <color name="dial_hwfab_shadow_start">#4D00B0FF</color>
 	# <color name="dial_hwfab_shadow_end">#4DFF00D0</color>
 	{
@@ -481,15 +494,15 @@ contacts_normalConfig_v91_v10 = [
 	},
 
 	# 拨号图标
-	# 图标背景色nomal状态，引用 framework-res-hwext：
+	# 图标背景色nomal状态,引用 framework-res-hwext:
 	# <color name="emui_color_connected">#41ba41</color>
-	# 图标背景色pressed状态，
+	# 图标背景色pressed状态,
 	# <color name="contact_svg_icon_base_green_color_a">#20A934</color>
-	# 图标颜色，引用 framework-res-hwext：
+	# 图标颜色,引用 framework-res-hwext:
 	# <color name="emui_color_fg_inverse">#ffffff</color>
-	# 图标不可用颜色，引用 framework-res-hwext：
+	# 图标不可用颜色,引用 framework-res-hwext:
 	# <color name="emui_color_fg_inverse">#ffffff</color>叠加38%不透明度
-	# 图标按压色：
+	# 图标按压色:
 	# <color name="contact_svg_icon_base_grey_color_c">#D6D6D6</color>
 	{
 		'orgin':'',
@@ -564,9 +577,9 @@ contacts_normalConfig_v91_v10 = [
 		'color':'<color name="emui_color_fg">(.*)</color>'
 	},
 
-	# 选中的页签文字颜色：<color name="hwsubtab_emui_subtab_text_on">#007dff</color>
-	# 下划线图标颜色：<color name="hwsubtab_indicator_color">#007dff</color>
-	# 未选中的页签文字颜色：<color name="hwsubtab_emui_subtab_text_off">#191919</color>
+	# 选中的页签文字颜色:<color name="hwsubtab_emui_subtab_text_on">#007dff</color>
+	# 下划线图标颜色:<color name="hwsubtab_indicator_color">#007dff</color>
+	# 未选中的页签文字颜色:<color name="hwsubtab_emui_subtab_text_off">#191919</color>
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="hwsubtab_emui_subtab_text_on">{color}</color>' , 'color':'{color}'}],
@@ -586,10 +599,10 @@ contacts_normalConfig_v91_v10 = [
 		'color':'<color name="emui_primary">(.*)</color>'
 	},
 
-	# svg图片，即电话或者摄像头图标的颜色：<color name="hicall_recent_call_type_image">#FFFFFF</color>
-	# 灰色背景颜色:  引用 framework-res-hwext：
+	# svg图片,即电话或者摄像头图标的颜色:<color name="hicall_recent_call_type_image">#FFFFFF</color>
+	# 灰色背景颜色:  引用 framework-res-hwext:
 	# <color name="emui_primary">#191919</color>叠加  38%不透明
-	# 灰色背景周围白色描边颜色:  引用 framework-res-hwext：
+	# 灰色背景周围白色描边颜色:  引用 framework-res-hwext:
 	# <color name="emui_color_bg">#ffffff</color>
 	{
 		'orgin':'',
@@ -599,21 +612,53 @@ contacts_normalConfig_v91_v10 = [
 	},
 
 	# 新增.9图
-	# 图标背景资源：daier_call_btn_normal.png
-	# 图标背景按压资源：daier_call_btn_press.png
-	# dialpad_background_drawable.9.png 拨号键盘中间间隔 ，无固定尺寸
+	# 图标背景资源:daier_call_btn_normal.png
+	# 图标背景按压资源:daier_call_btn_press.png
+	# dialpad_background_drawable.9.png 拨号键盘中间间隔 ,无固定尺寸
 	# header_background4.9.png
 ]
 
 # hwvoipservice 新增包 直接用官方包替代
-hwvoipservice_normalConfig_v91_v10 = []
+hwvoipservice_normalConfig_v91_v10 = [
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="compose_bottom_layout_background">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="embedded_text_editor_background">{color}</color>' , 'color':'{color}'}],
+		'target':'../com.android.mms',
+		'color':'<color name="message_editor_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="msg_text_body_color">{color}</color>' , 'color':'#ffffff'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="msg_pop_incoming_bg_color">{color}</color>' , 'color':'FFFFFFCC'}],
+		'target':'',
+		'color':''
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="msg_pop_send_bg_color">{color}</color>' , 'color':'#000000'}],
+		'target':'',
+		'color':''
+	},	
+
+]
 
 mms_normalConfig_v91_v10 = [
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="color_gray_one">{color}</color>' , 'color':'#F2FAFAFA'}],
+		'replace':[{'tag':'<color name="color_gray_one">{color}</color>' , 'color':'{color}'}],
 		'target':'',
-		'color':''
+		'color':'<color name="fab_new_message_bg">(.*)</color>'
 	},
 
 	{
@@ -632,72 +677,72 @@ mms_normalConfig_v91_v10 = [
 	# <!-- 增强信息发送气泡背景颜色 -->
 	# 具体
 	# message_attachment_preview_bg	"172x102
-	# 可以不固定，保证全区域可显示"	"待发区气泡背景
-	# 如有方向，注意镜像"
+	# 可以不固定,保证全区域可显示"	"待发区气泡背景
+	# 如有方向,注意镜像"
 	# "
 	# message_location_pop_send_bg"	"172x102
-	# 可以不固定，保证全区域可显示"	"
-	# 发送的地理位置气泡背景，圆角30px
-	# 如有方向，注意镜像"
+	# 可以不固定,保证全区域可显示"	"
+	# 发送的地理位置气泡背景,圆角30px
+	# 如有方向,注意镜像"
 	# "
 	# message_pop_favorite_bg"	"172x102
-	# 可以不固定，保证全区域可显示"	"
+	# 可以不固定,保证全区域可显示"	"
 	# 收藏的发送的短信气泡背景
-	# 如有方向，注意镜像"
+	# 如有方向,注意镜像"
 	# "
 	# message_pop_incoming_bg"	"172x102
-	# 可以不固定，保证全区域可显示"	"
+	# 可以不固定,保证全区域可显示"	"
 	# 接收信息气泡、收藏的接收气泡背景
-	# 如有方向，注意镜像"
+	# 如有方向,注意镜像"
 	# "
 	# message_pop_rcs_favorite_bg"	"172x102
-	# 可以不固定，保证全区域可显示"	"
+	# 可以不固定,保证全区域可显示"	"
 	# 收藏的发送的rcs气泡背景
-	# 如有方向，注意镜像"
+	# 如有方向,注意镜像"
 	# "
 	# message_pop_rcs_image_bg_long_press"	"172x102
-	# 可以不固定，保证全区域可显示"	"
-	# 四圆角蒙版气泡背景，需要有透明度，否则看不清短信文字，圆角30px
-	# 如有方向，注意镜像"
+	# 可以不固定,保证全区域可显示"	"
+	# 四圆角蒙版气泡背景,需要有透明度,否则看不清短信文字,圆角30px
+	# 如有方向,注意镜像"
 	# "
 	# message_pop_rcs_receive_bg_long_press"	"172x102
-	# 可以不固定，保证全区域可显示"	"
-	# 接收气泡蒙版气泡背景，需要有透明度，否则看不清短信文字
-	# 如有方向，注意镜像"
+	# 可以不固定,保证全区域可显示"	"
+	# 接收气泡蒙版气泡背景,需要有透明度,否则看不清短信文字
+	# 如有方向,注意镜像"
 	# "
 	# message_pop_rcs_send_bg"	"172x102
-	# 可以不固定，保证全区域可显示"	"
+	# 可以不固定,保证全区域可显示"	"
 	# rcs发送气泡气泡背景
-	# 如有方向，注意镜像"
+	# 如有方向,注意镜像"
 	# "
 	# message_pop_rcs_send_bg_long_press"	"172x102
-	# 可以不固定，保证全区域可显示"	"
-	# 发送气泡蒙版气泡背景，需要有透明度，否则看不清短信文字
-	# 如有方向，注意镜像"
+	# 可以不固定,保证全区域可显示"	"
+	# 发送气泡蒙版气泡背景,需要有透明度,否则看不清短信文字
+	# 如有方向,注意镜像"
 	# "
 	# message_pop_send_bg"	"172x102
-	# 可以不固定，保证全区域可显示"	"
+	# 可以不固定,保证全区域可显示"	"
 	# 短信发送出去之后气泡背景
-	# 如有方向，注意镜像"
+	# 如有方向,注意镜像"
 	# "
 	# message_slide_pop_incoming_bg"	"172x102
-	# 可以不固定，保证全区域可显示"	"
-	# 彩信幻灯片带图片接收气泡背景，圆角30px
-	# 如有方向，注意镜像"
+	# 可以不固定,保证全区域可显示"	"
+	# 彩信幻灯片带图片接收气泡背景,圆角30px
+	# 如有方向,注意镜像"
 	# "
 	# message_slide_pop_send_bg"	"172x102
-	# 可以不固定，保证全区域可显示"	"
+	# 可以不固定,保证全区域可显示"	"
 	# 彩信幻灯片带图片发送气泡背景
-	# 如有方向，注意镜像"
+	# 如有方向,注意镜像"
 	# "
 	# encrypted_message_pop_send_bg"	"172x102
-	# 可以不固定，保证全区域可显示"	"
+	# 可以不固定,保证全区域可显示"	"
 	# 加密短信气泡背景
-	# 如有方向，注意镜像"
+	# 如有方向,注意镜像"
 
 
 	# <!--增强信息 按住说话button文字颜色 -->
-	# 背景引用 framework-res-hwext 切图：
+	# 背景引用 framework-res-hwext 切图:
 	# button_big_bg_stroked.9.png（大）
 	# button_small_bg_stroked.9.png（小）
 	# button_big_bg_stroked_pressed.9.png（大）
@@ -780,7 +825,7 @@ systemui_normalConfig_v91_v10 = [
 		'color':''
 	},
 
-	# 背景引用 framework-res-hwext 切图：
+	# 背景引用 framework-res-hwext 切图:
 	# button_big_bg_stroked.9.png（大）
 	# button_small_bg_stroked.9.png（小）
 	# button_big_bg_stroked_pressed.9.png（大）
@@ -808,7 +853,7 @@ systemui_normalConfig_v91_v10 = [
 		'color':''
 	},
 
-	# 增加.9图  ， ic_seekbar_thumb.png	96×96	音量控制滑块
+	# 增加.9图  , ic_seekbar_thumb.png	96×96	音量控制滑块
 ]
 
 phone_normalConfig_v91_v10 = []
@@ -989,15 +1034,15 @@ def doTransform( filePath  , configParam ):
 		return 
 	if isWindows:
 		filePath = filePath.replace('/','\\',99)
-	print '配置文件路径：' 
+	print 'config file path:' 
 	print filePath
-	print '修改依照配置规则：' 
+	print 'the replace rule :' 
 	print configParam
 
-	print '读取配置文件内容...'
+	print 'load config file content ...'
 	configFileContent = open(filePath).read()
 	print configFileContent
-	print '解析替换配置规则...'
+	print 'load the replace rule ...'
 	if filePath.find('com.android.mms')> 0 and filePath.find('framework-res-hwext') < 0:
 		configFileContent = configFileContent.replace('</hwthemes>','')
 	else:
@@ -1007,59 +1052,59 @@ def doTransform( filePath  , configParam ):
 		
 		if item['orgin'] == '':
 			print '----------'
-			print '直接替换'
+			print 'direct replace :'
 
 			if item['color'] != None and item['color'] != '' :
-				print '需要从原始颜色替换...'
-				print '查找：' + item['color']
+				print 'need to find orgincolr to replace ...'
+				print 'find:' + item['color']
 				# color = getOrginColorFromConfig('',configFileContent , item['color']  ,'')
 				orginConfigFilePath = os.path.join(filePath.replace('framework-res-hwext\\theme.xml' if isWindows else 'framework-res-hwext/theme.xml'  ,'').replace('\\theme.xml' if isWindows else '/theme.xml' , ''),item['target'],'theme.xml')
-				print '从：%s, 内开始查找...' % (orginConfigFilePath)
+				print 'from:%s, start findding...' % (orginConfigFilePath)
 				color = getOrginColorFromConfig(orginConfigFilePath,'' , item['color']  ,'')
-				print '找到对应颜色：' + color
+				print 'find the match color' + color
 
 			for param in item['replace']:
 				print 'find :%d' % param['color'].find('{color}') 
 				if param['color'].find('{color}') < 0 :
-					print '未找到replace中的替换标记 ... ,color置为：' + param['color'] 
+					print 'can not find the color tag in replaceStr   ,color change to :' + param['color'] 
 					color = param['color']
-				print 'replace item ：color -->' + param['color'] + '|||tag:' + param['tag'] + ',color:' + color
+				print 'replace item :color -->' + param['color'] + '|||tag:' + param['tag'] + ',color:' + color
 				replaceStr =  param['tag'].replace('{color}',color)
-				print '准备添加：' + replaceStr + ',检测是否已经存在...'
+				print 'preadd ' + replaceStr + ',check if exists...'
 				if configFileContent.find(replaceStr) > 0:
-					print '存在' 
+					print 'exists' 
 				else:
-					print '不存在,准备添加'
+					print 'not exists , add ...'
 					configFileContent+="\n\t<!-- hwv91-v10 autoadd --> \n\t" +replaceStr + "\n" 
 					
 			print '----------'
 		else:
 			print '----------'
 			for param in item['replace']:
-				print '计划查找' + item['orgin'] + '并替换'
+				print 'find ' + item['orgin'] + 'and replace '
 				matchObj = re.search(item['orgin'] , configFileContent )
 				# print matchObj
 				color = ''
 				replaceStr = ''
 				if matchObj == None:
-					print '没有发现替换项，跳过...'
+					print 'do not find the replace str , continue ...'
 					continue
 				else:
-					print '已找到：' + matchObj.group()
+					print 'finded ' + matchObj.group()
 					if item['orgin'].find('(.*)') > 0 :
 						color = matchObj.group(1)
-						print '发现原始颜色：color:' + color
-				# print '将做如下替换：' + param['tag']
+						print 'find the orgincolor :' + color
+				# print '将做如下替换:' + param['tag']
 				if param['tag'].find('{color}') > 0:
 					color = param['color'].replace('{orgincolor}' , color)
 					replaceStr = param['tag'].replace('{color}' , color)
 				else:
 					replaceStr = param['tag']
-				print '将做如下替换：' + replaceStr
+				print 'will replce:' + replaceStr
 				if configFileContent.find(replaceStr) > 0:
-					print '存在，不进行替换' 
+					print 'exists ,do not replace '
 				else:
-					print '不存在,准备添加'
+					print 'not exists  , add...'
 					configFileContent+="\n\t<!-- hwv91-v10 autoreplace --> \n\t" +replaceStr + "\n" 
 				
 			print '----------'
@@ -1069,51 +1114,55 @@ def doTransform( filePath  , configParam ):
 		configFileContent+="\n</resources>\n"
 	print configFileContent
 	open(filePath , 'w').write(configFileContent)
-	print '准备执行文件写入  ，文件为：' + filePath
+	print 'prepare write to  file , the path :' + filePath
 		
 
 def checkIcons():
 	global queshipicArr
-	print '检查icons.....'
+	print 'check icons.....'
 	for item in icons_normalConfig_v91_v10:
 		for key in item:
-			print '检查对：' + key + '和' + item[key]
+			print 'check kv, key:' + key + ' ,value:' + item[key]
 			filepath1 = os.path.join(currentProjectFilePath , "icons" , key + '.png')
 			filepath2 = os.path.join(currentProjectFilePath , "icons" , item[key] + '.png')
 			if os.path.exists(filepath1) and os.path.exists(filepath2):
-				print '存在不补'
+				print 'exists , do not need add'
 			else:
-				print '不存在需补'
+				print 'not exists , need add '
 				print filepath1
 				print filepath2
 				if os.path.exists(filepath1) :
 					if isWindows:
-						print 'command:' + 'xcopy \'' + filepath1 + '\' ' + filepath2+ '\''
-						os.system('xcopy \'' + filepath1 + '\' \'' + filepath2+ '\'')
+						command =  'xcopy \'' + filepath1 + '\' ' + filepath2+ '\' /Y'
+						print 'command:' + command
+						os.system(command)
 					else:
-						print 'command:' + 'cp \'' + filepath1 + '\' \'' + filepath2+ '\''
-						os.system('cp \'' + filepath1 + '\' \'' + filepath2+ '\'')
-					print '已补全 ， 从' + filepath1 + '到' + filepath2
+						command =  'cp \'' + filepath1 + '\' \'' + filepath2+ '\' /Y'
+						print 'command:' + command
+						os.system(command)
+					print 'add finish , from' + filepath1 + 'to' + filepath2
 					continue
 				if os.path.exists(filepath2) :
 					if isWindows:
-						print 'command:' + 'xcopy \'' + filepath2 + '\' \'' + filepath1 + '\''
-						os.system('xcopy \'' + filepath2 + '\' \'' + filepath1+ '\'')
+						command = 'xcopy \'' + filepath2 + '\' \'' + filepath1 + '\' /Y'
+						print 'command:' + command
+						os.system(command)
 					else:
-						print 'command:' + 'cp \'' + filepath2 + '\' \'' + filepath1+ '\''
-						os.system('cp \'' + filepath2 + '\' \'' + filepath1+ '\'')
-					print '已补全 ， 从' + filepath2 + '到' + filepath1
+						command = 'cp \'' + filepath2 + '\' \'' + filepath1+ '\' /Y'
+						print 'command:' + command
+						os.system(command)
+					print 'add finish ,from ' + filepath2 + 'to' + filepath1
 
 					continue
 				
 
-	print '检查动态时钟图标.....'
+	print 'check dynamic clock icons.....'
 	for item in dynamic_icons:
 		if  isWindows:
 			item = item.replace('/','\\',99)
 		tmpPath = os.path.join(currentProjectFilePath , item ) 
 		if not os.path.exists(tmpPath):	
-			print '需补充:' + tmpPath
+			print 'need add :' + tmpPath
 			queshipicArr.append(tmpPath)
 
 	# print '复制dynamic_icons...'
@@ -1132,10 +1181,10 @@ def checkdot9pic():
 		inputFilePath = os.path.join(os.getcwd(),item['input'])
 		outFilePath = os.path.join(currentProjectFilePath , item['output'] )
 		if not os.path.exists(inputFilePath):
-			print '模板点9文件出现问题 ， path:%s' % inputFilePath
+			print 'template dot9 file error , path:%s' % inputFilePath
 			continue
 		if os.path.exists(outFilePath):
-			print '点9文件已存在 ， path:%s , 已跳过处理...' %(  outFilePath )
+			print 'dot9 file exists  path:%s , continue...' %(  outFilePath )
 			continue
 
 		arr = outFilePath.split('/')
@@ -1190,7 +1239,7 @@ def RGB_to_Hex(rgb):
 	color = '#'
 	for i in RGB:
 		num = int(i)
-		# 将R、G、B分别转化为16进制拼接转换并大写  hex() 函数用于将10进制整数转换成16进制，以字符串形式表示
+		# 将R、G、B分别转化为16进制拼接转换并大写  hex() 函数用于将10进制整数转换成16进制,以字符串形式表示
 		color += str(hex(num))[-2:].replace('x', '0').upper()
 	print(color)
 	return color
@@ -1207,6 +1256,13 @@ def Hex_to_RGB(hex):
 
 
 def changeDot9PngColor(inputPic , outputPic ,afterColor):
+	outputPic = os.path.join(currentProjectFilePath , 'com.android.mms\\res\\drawable-xxhdpi','test.png')
+	# if isWindows:
+	# 	arr = outputPic.split('\\')
+	# 	outputPic = outputPic.replace(arr[len(arr) -1] , '\'' + arr[len(arr) -1] + '\'')
+	# else:
+	# 	outputPic.split('/')
+	# 	outputPic = outputPic.replace(arr[len(arr) -1] , '\'' + arr[len(arr) -1] + '\'')
 	img = Image.open(inputPic) 
 	imageWidth = img.width 
 	imageHeight = img.height
@@ -1222,8 +1278,15 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 			r=int(afterColor.split(',')[0])
 			img.putpixel((i,j), (r,g,b,a)) 
 	if imageWidth <=20 and imageHeight <=20:
-		img.save(outputPic)
-		img.show()
+		print 'saving image file ,inputfile: %s , outputfile:%s' %(  inputPic , outputPic )
+
+		if isWindows:
+			# open(outputPic,'w').write('')
+			# os.system('touch ' + outputPic )
+			img.save(outputPic ,'PNG' ,optimize=1)
+		else:
+			img.save(outputPic)
+		# img.show()
 		return 
 
 	img2 = Image.new('RGBA',(imageWidth + 1,imageHeight +1)  ,(0,0,0))
@@ -1247,8 +1310,21 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 					a = 0
 				img2.putpixel((i,j), (r,g,b,a)) 
 
-	img2.save(outputPic)
-	img2.show()
+	print 'saving image file ,created new image2  outputfile:%s' %(   outputPic )
+	if isWindows:
+		# os.system('touch ' + outputPic )
+		img2.save(outputPic ,'PNG' ,optimize=1)	
+	else:
+		img2.save(outputPic)
+	# img2.save(outputPic)
+	# img2.show()
+
+def udpateSystemUi():
+	print 'delete hw_recents_close_all.png'
+	if isWindows:
+		os.system('')
+
+	print 'delete hw_recents_close_all_press.png'
 
 
 def updateLauncher():
@@ -1258,7 +1334,7 @@ def updateLauncher():
 	if not isWindows :
 		command = 'cp ' + tempLauncherPath + '/*.* ' + productLauncherPath + '/' 
 	else:
-		command = 'xcopy ' + tempLauncherPath + '\\*.* ' + productLauncherPath + '\\'
+		command = 'xcopy ' + tempLauncherPath + '\\*.* ' + productLauncherPath + '\\ /Y'
 	print 'updateLauncher , command:' + command
 	os.system(command);
 
@@ -1267,65 +1343,69 @@ def updateThemeDesc():
 	content = open(descFilePath).read()
 	matchObj = re.search(r'<version>(.*)</version>' , content )
 	versionStr = matchObj.group()
-	print '版本号信息:' + versionStr
+	print 'version:' + versionStr
 	content = content.replace(versionStr , '<version>10.0.0</version>')
-	print '修改后desc文件：' + content 
+	print 'content after change' + content 
 	open(descFilePath,'w').write(content)
 
 # start 
-# print '输入参数列表：' 
+# print '输入参数列表:' 
 if len(sys.argv) > 1:
 	for index in range(len(sys.argv)):
 		if index == 1:
 			currentProjectFilePath = sys.argv[index]
 else:
 	currentProjectFilePath = os.getcwd()
-print '处理文件夹为:' + currentProjectFilePath
+print 'currentProjectFilePath :' + currentProjectFilePath
 print '\n'
 # 判断是否windows
-print  '当前系统为：' + platform.system()
+print  'now system version:' + platform.system()
 if platform.system() == 'Windows' or platform.system() == 'windows':
 	isWindows = True
 
 if isWindows:
-	print 'windows环境'
+	print 'windows env'
 else:
-	print '非windows环境'
+	print 'not windows env'
 
-print '==============以当前文件夹为基础路径 ， 查找配置文件并替换 =============='
+print '============== from currentProjectFilePath  , find the config file and replace them =============='
 configFileDic = listConfigFileArray();
-print '==============检查文件是否存在  ， 如果不存在 ， 则需要一个默认的组件包 ， 或移除留空=============='
+print '============== check the file if exists  ,if not  ,need default file , or just remove  ,=============='
 configFileDic = checkFileExists(configFileDic)
-print '==============检查文件是否存在  ， 如果不存在 ， 则需要一个默认的组件包 ， 或移除留空=============='
+print '============== check the file if exists  ,if not  ,need default file , or just remove  ,=============='
 
 if len(configFileDic['normalConfigFilePathList']) == 0 or len(configFileDic['frameworkResHwextConfigFilePathList']) == 0:
-	print '没有需要替换文件，finish...'
+	print 'no file need to replace,finish...'
 
 
-print '==============开始读取替换队列=============='
+print '==============start load replace file list =============='
 normalConfigFilePathList = configFileDic['normalConfigFilePathList']
 frameworkResHwextConfigFilePathList = configFileDic['frameworkResHwextConfigFilePathList']
-print '==============开始读取替换队列=============='
+print '==============start load replace file list =============='
 
-print '==============开始替换=============='
-print '==============先替换 frameworkResHwextConfigFilePathList============== '  
+print '==============start replace=============='
+print '==============first ,replace frameworkResHwextConfigFilePathList============== '  
 for item in frameworkResHwextConfigFilePathList:
 	doTransform(item , framework_res_hwext_change_v91_v10)
-print '==============先替换 frameworkResHwextConfigFilePathList============== '  
+print '==============then ,replace  frameworkResHwextConfigFilePathList============== '  
 
-print '==============后替换 normalConfigFilePathList============== '  
+print '==============then , replace normalConfigFilePathList============== '  
 for item in normalConfigFilePathList:
-	# print item
+	print item
 	# print item.split('/')[len(item.split('/')) - 2 ].split('.')[len(item.split('/')[len(item.split('/')) - 2 ].split('.'))-1]
-	doTransform(item , normalConfig_dic['%s_normalConfig_v91_v10' %( item.split('/')[len(item.split('/')) - 2 ].split('.')[len(item.split('/')[len(item.split('/')) - 2 ].split('.'))-1]  )] )
-print '==============后替换 normalConfigFilePathList============== '  
+	print 'item:%s , normalcnofig_dic:%s' %( item , item.split('/')[len(item.split('/')) - 2 ].split('.')[len(item.split('/')[len(item.split('/')) - 2 ].split('.'))-1] )
+	if isWindows:
+		doTransform(item , normalConfig_dic['%s_normalConfig_v91_v10' %( item.split('\\')[len(item.split('\\')) - 2 ].split('.')[len(item.split('\\')[len(item.split('\\')) - 2 ].split('.'))-1]  )] )
+	else:
+		doTransform(item , normalConfig_dic['%s_normalConfig_v91_v10' %( item.split('/')[len(item.split('/')) - 2 ].split('.')[len(item.split('/')[len(item.split('/')) - 2 ].split('.'))-1]  )] )
+print '==============then ,replace normalConfigFilePathList============== '  
 
 print '==============checkIcons============== '  
 checkIcons()
 print '==============checkIcons============== '  
 
 print '==============checkdot9pic============== '  
-checkdot9pic()
+# checkdot9pic()
 print '==============checkdot9pic============== '  
 
 
@@ -1334,6 +1414,10 @@ updateLauncher()
 print '==============updateLauncher============== '  
 
 
+print '==============udpateSystemUi============== '  
+udpateSystemUi()
+print '==============udpateSystemUi============== '  
+
 
 print '==============updateThemeDesc============== '  
 updateThemeDesc()
@@ -1341,7 +1425,7 @@ print '==============updateThemeDesc============== '
 
 
 # 完成
-print '==============完成替换  ，以下打印图片缺失或替换列表 （icons， .9图）============== ' 
+print '==============finish replace  ,now print the losted pic or icons list （icons, dot9pic）============== ' 
 for item in queshipicArr :
 	print item
 

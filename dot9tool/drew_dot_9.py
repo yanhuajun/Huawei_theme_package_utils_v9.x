@@ -166,7 +166,7 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 					xsize = maxX - minX
 					yratio = 0.42
 					xratio = 0.30
-					#             上中点										左中点					     下中线																		右中线
+					#             上中点										左中点					下中线																		右中线
 					if (i == minX + xsize/2 and j == 0) or (i == 0 and j == minY + ysize/2) or ( ( i >= minX + xsize/2 - xsize*xratio and i<= minX + xsize/2 + xsize*xratio ) and j == imageHeight ) or ( i == imageWidth and j >= minY + ysize/2 -ysize*yratio and j <= minY + ysize/2 +ysize*yratio):
 						b = 0
 						g = 0
