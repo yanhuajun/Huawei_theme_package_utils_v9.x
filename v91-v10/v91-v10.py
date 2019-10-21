@@ -619,6 +619,93 @@ contacts_normalConfig_v91_v10 = [
 ]
 
 # hwvoipservice 新增包 直接用官方包替代
+hwvoipservice_framework_res_hwext_v91_v10 = [
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_appbar_bg">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_appbar_bg_blur">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="hwtoolbar_background">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_toolbar_bg">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_toolbar_bg_blur">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_navigationbar_bg">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_navigationbar_bg_blur">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="navigationbar_emui_light">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_subtab_bg_blur">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_color_tips_bg">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+	{
+		'orgin':'',
+		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>' , 'color':'{color}'}],
+		'target':'com.android.mms/framework-res-hwext',
+		'color':'<color name="hwtoolbar_background">(.*)</color>'
+	},	
+]
+
 hwvoipservice_normalConfig_v91_v10 = [
 	{
 		'orgin':'',
