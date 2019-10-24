@@ -16,9 +16,18 @@ queshipicArr = []
 
 currentProjectFilePath = ''
 
-fileList = ['com.android.contacts' , 'com.android.mms'  ,'com.android.phone' , 'com.android.phone.recorder' , 'com.android.server.telecom' , 'com.android.systemui' ,
-	'com.huawei.android.launcher' , 'com.huawei.hwvoipservice'
+fileList = [
+	'com.android.contacts' , 
+	'com.android.mms'  ,
+	'com.android.phone' , 
+	'com.android.phone.recorder' , 
+	'com.android.server.telecom' , 
+	'com.android.systemui' ,
+	'com.huawei.android.launcher' , 
+	'com.huawei.hwvoipservice'
 ]
+
+hasHwvoipservice = True
 
 
 framework_res_hwext_change_v9_v10=[
@@ -74,7 +83,7 @@ framework_res_hwext_change_v9_v10=[
 framework_res_hwext_change_v91_v10=[
 	# 默认颜色则直接修改  非默认颜色保持不变
 
-	# 颜色必须保持一致开始 
+	# 颜色必须保持一致开始
 	{
 		'orgin':'<color name="emui_appbar_bg">#F2F2F2</color>',
 		'replace':[{'tag':'<color name="emui_appbar_bg">{color}</color>','color':'#E6FFFFFF'}],
@@ -84,14 +93,14 @@ framework_res_hwext_change_v91_v10=[
 	{
 		'orgin':'<color name="emui_appbar_bg">(.*)</color>',
 		'replace':[{'tag':'<color name="emui_appbar_bg">{color}</color>','color':'{color}'}],
-		'target':'framework_res_hwext',
+		'target':'framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
 	},
-	
+
 	{
 		'orgin':'<color name="emui_appbar_bg_blur">(.*)</color>',
 		'replace':[{'tag':'<color name="emui_appbar_bg_blur">{color}</color>','color':'{color}'}],
-		'target':'framework_res_hwext',
+		'target':'framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
 	},
 	{
@@ -195,7 +204,7 @@ framework_res_hwext_change_v91_v10=[
 		'target':'',
 		'color':''
 	},
-	
+
 	{
 		'orgin':'<color name="emui_color_fg">(.*)</color>',
 		'replace':[{'tag':'<color name="emui_color_bg">{color}</color>','color':'{orgincolor}'}],
@@ -401,7 +410,11 @@ launcher_normalConfig_v91_v10 = [
 		'target':'',
 		'color':''
 	},
-	
+
+]
+
+launcher_normalConfig_v91_v10= [
+
 ]
 
 contacts_normalConfig_v91_v10 = [
@@ -625,85 +638,85 @@ hwvoipservice_framework_res_hwext_v91_v10 = [
 		'replace':[{'tag':'<color name="emui_appbar_bg">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="emui_appbar_bg_blur">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="hwtoolbar_background">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="emui_toolbar_bg">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="emui_toolbar_bg_blur">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="emui_navigationbar_bg">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="emui_navigationbar_bg_blur">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="navigationbar_emui_light">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="emui_subtab_bg_blur">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="emui_color_tips_bg">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="emui_subtab_bg">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 ]
 
 hwvoipservice_normalConfig_v91_v10 = [
@@ -712,31 +725,31 @@ hwvoipservice_normalConfig_v91_v10 = [
 		'replace':[{'tag':'<color name="compose_bottom_layout_background">{color}</color>' , 'color':'{color}'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="embedded_text_editor_background">{color}</color>' , 'color':'{color}'}],
 		'target':'../com.android.mms',
 		'color':'<color name="message_editor_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="msg_text_body_color">{color}</color>' , 'color':'#ffffff'}],
 		'target':'com.android.mms/framework-res-hwext',
 		'color':'<color name="hwtoolbar_background">(.*)</color>'
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="msg_pop_incoming_bg_color">{color}</color>' , 'color':'FFFFFFCC'}],
 		'target':'',
 		'color':''
-	},	
+	},
 	{
 		'orgin':'',
 		'replace':[{'tag':'<color name="msg_pop_send_bg_color">{color}</color>' , 'color':'#000000'}],
 		'target':'',
 		'color':''
-	},	
+	},
 
 ]
 
@@ -883,15 +896,15 @@ mms_normalConfig_v91_v10 = [
 systemui_normalConfig_v91_v10 = [
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="qs_customize_background_color1">{color}</color>' , 'color':'#FFFFFFFF'}],
-		'target':'',
-		'color':''
+		'replace':[{'tag':'<color name="qs_customize_background_color1">{color}</color>' , 'color':'{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="emui_color_bg">(.*)</color>'
 	},
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="notification_background_color_without_alpha">{color}</color>' , 'color':'#FFFFFFFF'}],
-		'target':'',
-		'color':''
+		'replace':[{'tag':'<color name="notification_background_color_without_alpha">{color}</color>' , 'color':'#{color}'}],
+		'target':'framework-res-hwext',
+		'color':'<color name="emui_color_bg">(.*)</color>'
 	},
 	{
 		'orgin':'',
@@ -923,7 +936,7 @@ systemui_normalConfig_v91_v10 = [
 
 	{
 		'orgin':'',
-		'replace':[{'tag':'<color name="volume_line_color">{color}</color>' , 'color':'#333333'}],
+		'replace':[{'tag':'<color name="volume_line_color">{color}</color>' , 'color':'#333333'}],
 		'target':'',
 		'color':''
 	},
@@ -950,7 +963,7 @@ recorder_normalConfig_v91_v10 = []
 
 
 icons_normalConfig_v91_v10 = [
-	# 图标增加 
+	# 图标增加
 
 
 	# "com.android.calendar
@@ -969,14 +982,14 @@ icons_normalConfig_v91_v10 = [
 	{'com.android.contacts':'com.huawei.contacts'},
 	{'com.android.email':'com.huawei.email'},
 	{'com.example.android.notepad':'com.huawei.notepad'},
-	
+
 ]
 dynamic_icons = [
-	
+
 	# ic_deskclock_dial	动态模拟时钟背板	192×192	"icons\dynamic_icons\com.huawei.deskclock"
-	# ic_deskclock_hour	动态模拟时钟时针	18×192	
-	# ic_deskclock_minute	动态模拟时钟分针	18×192	
-	# ic_deskclock_second	动态模拟时钟秒针	18×192	
+	# ic_deskclock_hour	动态模拟时钟时针	18×192
+	# ic_deskclock_minute	动态模拟时钟分针	18×192
+	# ic_deskclock_second	动态模拟时钟秒针	18×192
 	'icons/dynamic_icons/com.huawei.deskclock/ic_deskclock_dial.png',
 	'icons/dynamic_icons/com.huawei.deskclock/ic_deskclock_hour.png',
 	'icons/dynamic_icons/com.huawei.deskclock/ic_deskclock_minute.png',
@@ -1074,7 +1087,7 @@ dot9picList = [
 
 ]
 
-# 查询所有配置文件位置列表 
+# 查询所有配置文件位置列表
 def listConfigFileArray():
 	frameworkResHwextConfigFilePathList = []
 	normalConfigFilePathList = []
@@ -1093,19 +1106,22 @@ def listConfigFileArray():
 	return retObj;
 
 def checkFileExists(configFileDic):
+	global hasHwvoipservice
 	frameworkResHwextConfigFilePathList = configFileDic['frameworkResHwextConfigFilePathList']
 	normalConfigFilePathList = configFileDic['normalConfigFilePathList']
 	delList = []
-	for index in range(len(frameworkResHwextConfigFilePathList)):		
+	for index in range(len(frameworkResHwextConfigFilePathList)):
 		path = frameworkResHwextConfigFilePathList[index]
 		if not os.path.exists(path):
 			print('path:%s,not exists' % path)
 			delList.append(path)
+			if path.find("com.huawei.hwvoipservice") > 0:
+				hasHwvoipservice = False
 	for index in delList:
 		frameworkResHwextConfigFilePathList.remove(index)
 
 	delList = []
-	for index in range(len(normalConfigFilePathList)):		
+	for index in range(len(normalConfigFilePathList)):
 		path = normalConfigFilePathList[index]
 		if not os.path.exists(path):
 			print('path:%s,not exists' % path)
@@ -1118,12 +1134,12 @@ def checkFileExists(configFileDic):
 
 def doTransform( filePath  , configParam ):
 	if len(configParam) == 0:
-		return 
+		return
 	if isWindows:
 		filePath = filePath.replace('/','\\',99)
-	print 'config file path:' 
+	print 'config file path:'
 	print filePath
-	print 'the replace rule :' 
+	print 'the replace rule :'
 	print configParam
 
 	print 'load config file content ...'
@@ -1135,39 +1151,43 @@ def doTransform( filePath  , configParam ):
 	else:
 		configFileContent = configFileContent.replace('</resources>','')
 	for item in configParam:
-		color = ''
-		
+		findTargetColor = ''
+
+
+		if item['color'] != None and item['color'] != '' :
+			print 'need to find orgincolr to replace ...'
+			print 'find:' + item['color']
+			# findTargetColor = getOrginColorFromConfig('',configFileContent , item['color']  ,'')
+			orginConfigFilePath = os.path.join(filePath.replace('framework-res-hwext\\theme.xml' if isWindows else 'framework-res-hwext/theme.xml'  ,'').replace('\\theme.xml' if isWindows else '/theme.xml' , ''),item['target'],'theme.xml')
+			print 'from:%s, start findding...' % (orginConfigFilePath)
+			findTargetColor = getOrginColorFromConfig(orginConfigFilePath,'' , item['color']  ,'')
+			print 'find the match color' + findTargetColor
+
+
 		if item['orgin'] == '':
 			print '----------'
 			print 'direct replace :'
 
-			if item['color'] != None and item['color'] != '' :
-				print 'need to find orgincolr to replace ...'
-				print 'find:' + item['color']
-				# color = getOrginColorFromConfig('',configFileContent , item['color']  ,'')
-				orginConfigFilePath = os.path.join(filePath.replace('framework-res-hwext\\theme.xml' if isWindows else 'framework-res-hwext/theme.xml'  ,'').replace('\\theme.xml' if isWindows else '/theme.xml' , ''),item['target'],'theme.xml')
-				print 'from:%s, start findding...' % (orginConfigFilePath)
-				color = getOrginColorFromConfig(orginConfigFilePath,'' , item['color']  ,'')
-				print 'find the match color' + color
-
 			for param in item['replace']:
-				print 'find :%d' % param['color'].find('{color}') 
+				print 'find :%d' % param['color'].find('{color}')
 				if param['color'].find('{color}') < 0 :
-					print 'can not find the color tag in replaceStr   ,color change to :' + param['color'] 
-					color = param['color']
-				print 'replace item :color -->' + param['color'] + '|||tag:' + param['tag'] + ',color:' + color
-				replaceStr =  param['tag'].replace('{color}',color)
+					print 'can not find the color tag in replaceStr   ,color change to :' + param['color']
+					findTargetColor = param['color']
+				print 'replace item :color -->' + param['color'] + '|||tag:' + param['tag'] + ',color:' + findTargetColor
+				replaceStr =  param['tag'].replace('{color}',findTargetColor )
 				print 'preadd ' + replaceStr + ',check if exists...'
 				if configFileContent.find(replaceStr) > 0:
-					print 'exists' 
+					print 'exists'
 				else:
 					print 'not exists , add ...'
-					configFileContent+="\n\t<!-- hwv91-v10 autoadd --> \n\t" +replaceStr + "\n" 
-					
+					configFileContent+="\n\t<!-- hwv91-v10 autoadd --> \n\t" + replaceStr + "\n"
+
 			print '----------'
 		else:
 			print '----------'
 			for param in item['replace']:
+				print 'param:'
+				print param
 				print 'find ' + item['orgin'] + 'and replace '
 				matchObj = re.search(item['orgin'] , configFileContent )
 				# print matchObj
@@ -1187,13 +1207,15 @@ def doTransform( filePath  , configParam ):
 					replaceStr = param['tag'].replace('{color}' , color)
 				else:
 					replaceStr = param['tag']
+				if replaceStr.find('{color}') > 0:
+					replaceStr =  param['tag'].replace('{color}',findTargetColor)
 				print 'will replce:' + replaceStr
 				if configFileContent.find(replaceStr) > 0:
 					print 'exists ,do not replace '
 				else:
 					print 'not exists  , add...'
-					configFileContent+="\n\t<!-- hwv91-v10 autoreplace --> \n\t" +replaceStr + "\n" 
-				
+					configFileContent+="\n\t<!-- hwv91-v10 autoreplace --> \n\t" +replaceStr + "\n"
+
 			print '----------'
 	if filePath.find('com.android.mms')> 0 and filePath.find('framework-res-hwext') < 0:
 		configFileContent+="\n</hwthemes>\n"
@@ -1202,7 +1224,7 @@ def doTransform( filePath  , configParam ):
 	print configFileContent
 	open(filePath , 'w').write(configFileContent)
 	print 'prepare write to  file , the path :' + filePath
-		
+
 
 def checkIcons():
 	global queshipicArr
@@ -1220,11 +1242,11 @@ def checkIcons():
 				print filepath2
 				if os.path.exists(filepath1) :
 					if isWindows:
-						command =  'xcopy \'' + filepath1 + '\' ' + filepath2+ '\' /Y'
+						command = 'xcopy \'' + filepath1 + '\' ' + filepath2+ '\' /Y'
 						print 'command:' + command
 						os.system(command)
 					else:
-						command =  'cp \'' + filepath1 + '\' \'' + filepath2+ '\' /Y'
+						command = 'cp \'' + filepath1 + '\' \'' + filepath2+ '\' /Y'
 						print 'command:' + command
 						os.system(command)
 					print 'add finish , from' + filepath1 + 'to' + filepath2
@@ -1241,14 +1263,14 @@ def checkIcons():
 					print 'add finish ,from ' + filepath2 + 'to' + filepath1
 
 					continue
-				
+
 
 	print 'check dynamic clock icons.....'
 	for item in dynamic_icons:
 		if  isWindows:
 			item = item.replace('/','\\',99)
-		tmpPath = os.path.join(currentProjectFilePath , item ) 
-		if not os.path.exists(tmpPath):	
+		tmpPath = os.path.join(currentProjectFilePath , item )
+		if not os.path.exists(tmpPath):
 			print 'need add :' + tmpPath
 			queshipicArr.append(tmpPath)
 
@@ -1299,7 +1321,7 @@ def getOrginColorFromConfig( filePath ,fileContent,  colorPatten  , defaultcolor
 	if filePath != '' and fileContent == '' and not os.path.exists(filePath):
 		return color
 	if filePath == '' and fileContent == '':
-		return color 
+		return color
 	if colorPatten == '' :
 		return color
 	content = ''
@@ -1315,11 +1337,23 @@ def getOrginColorFromConfig( filePath ,fileContent,  colorPatten  , defaultcolor
 		return color
 	color = matchObj.group(1)
 	print 'color:' + color
-	return color 
+	return color
+
+def getInvertColor( orgincolor ):
+	print 'getInvertColor:\n'
+	print 'orginColor:hex:' + orgincolor + ',rgb:' + Hex_to_RGB(orgincolor)
+	rgbArray = Hex_to_RGB(orgincolor).split(',')
+	r = 255 - int(rgbArray[0])
+	g = 255 - int(rgbArray[1])
+	b = 255 - int(rgbArray[2])
+	rgb = '%d,%d,%d' % (r,g,b)
+	print 'InvertColor rgb:' + rgb
+	changed = RGB_to_Hex(rgb)
+	print 'orgincolor:' + orgincolor + ',changed:' + changed
+	return changed
 
 
 
- 
 # RGB格式颜色转换为16进制颜色格式
 def RGB_to_Hex(rgb):
 	RGB = rgb.split(',')            # 将RGB格式划分开来
@@ -1330,8 +1364,8 @@ def RGB_to_Hex(rgb):
 		color += str(hex(num))[-2:].replace('x', '0').upper()
 	print(color)
 	return color
- 
- 
+
+
 # 16进制颜色格式颜色转换为RGB格式
 def Hex_to_RGB(hex):
 	r = int(hex[1:3],16)
@@ -1343,18 +1377,18 @@ def Hex_to_RGB(hex):
 
 
 def changeDot9PngColor(inputPic , outputPic ,afterColor):
-	outputPic = os.path.join(currentProjectFilePath , 'com.android.mms\\res\\drawable-xxhdpi','test.png')
+	# outputPic = os.path.join(currentProjectFilePath , 'com.android.mms\\res\\drawable-xxhdpi','test.png')
 	# if isWindows:
 	# 	arr = outputPic.split('\\')
 	# 	outputPic = outputPic.replace(arr[len(arr) -1] , '\'' + arr[len(arr) -1] + '\'')
 	# else:
 	# 	outputPic.split('/')
 	# 	outputPic = outputPic.replace(arr[len(arr) -1] , '\'' + arr[len(arr) -1] + '\'')
-	img = Image.open(inputPic) 
-	imageWidth = img.width 
+	img = Image.open(inputPic)
+	imageWidth = img.width
 	imageHeight = img.height
 	print 'imgwidth:%s , imgheight:%s' %(imageWidth, imageHeight);
-	
+
 	for i in xrange(imageWidth):
 		for j in xrange(imageHeight):
 			r,g,b,a= img.getpixel((i,j))
@@ -1363,7 +1397,7 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 			b=int(afterColor.split(',')[2])
 			g=int(afterColor.split(',')[1])
 			r=int(afterColor.split(',')[0])
-			img.putpixel((i,j), (r,g,b,a)) 
+			img.putpixel((i,j), (r,g,b,a))
 	if imageWidth <=20 and imageHeight <=20:
 		print 'saving image file ,inputfile: %s , outputfile:%s' %(  inputPic , outputPic )
 
@@ -1374,7 +1408,7 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 		else:
 			img.save(outputPic)
 		# img.show()
-		return 
+		return
 
 	img2 = Image.new('RGBA',(imageWidth + 1,imageHeight +1)  ,(0,0,0))
 	box1 = (0,0,imageWidth,imageHeight)
@@ -1395,12 +1429,12 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 					g = 0
 					r = 0
 					a = 0
-				img2.putpixel((i,j), (r,g,b,a)) 
+				img2.putpixel((i,j), (r,g,b,a))
 
 	print 'saving image file ,created new image2  outputfile:%s' %(   outputPic )
 	if isWindows:
 		# os.system('touch ' + outputPic )
-		img2.save(outputPic ,'PNG' ,optimize=1)	
+		img2.save(outputPic ,'PNG' ,optimize=1)
 	else:
 		img2.save(outputPic)
 	# img2.save(outputPic)
@@ -1409,17 +1443,26 @@ def changeDot9PngColor(inputPic , outputPic ,afterColor):
 def udpateSystemUi():
 	print 'delete hw_recents_close_all.png'
 	if isWindows:
-		os.system('')
+		command = 'del \'' + os.path.join(currentProjectFilePath , 'com.android.systemui' , 'res','drawable-xxhdpi' , 'hw_recents_close_all.png' )+ '\' '
+	else:
+		command = 'rm \'' + os.path.join(currentProjectFilePath , 'com.android.systemui' , 'res','drawable-xxhdpi' , 'hw_recents_close_all.png' )+ '\' '
+	print 'command:' + command;
+	os.system(command)
 
 	print 'delete hw_recents_close_all_press.png'
-
+	if isWindows:
+		command = 'del \'' + os.path.join(currentProjectFilePath , 'com.android.systemui' , 'res','drawable-xxhdpi' , 'hw_recents_close_all_press.png' )+ '\' '
+	else:
+		command = 'rm \'' + os.path.join(currentProjectFilePath , 'com.android.systemui' , 'res','drawable-xxhdpi' , 'hw_recents_close_all_press.png' )+ '\' '
+	print 'command:' + command;
+	os.system(command)
 
 def updateLauncher():
-	productLauncherPath = os.path.join(currentProjectFilePath , 'com.huawei.android.launcher' ,'res' , 'drawable-xxhdpi') 
+	productLauncherPath = os.path.join(currentProjectFilePath , 'com.huawei.android.launcher' ,'res' , 'drawable-xxhdpi')
 	tempLauncherPath = os.path.join(os.getcwd() , 'launcher' )
 	command = ''
 	if not isWindows :
-		command = 'cp ' + tempLauncherPath + '/*.* ' + productLauncherPath + '/' 
+		command = 'cp ' + tempLauncherPath + '/*.* ' + productLauncherPath + '/'
 	else:
 		command = 'xcopy ' + tempLauncherPath + '\\*.* ' + productLauncherPath + '\\ /Y'
 	print 'updateLauncher , command:' + command
@@ -1432,11 +1475,42 @@ def updateThemeDesc():
 	versionStr = matchObj.group()
 	print 'version:' + versionStr
 	content = content.replace(versionStr , '<version>10.0.0</version>')
-	print 'content after change' + content 
+	print 'content after change' + content
 	open(descFilePath,'w').write(content)
 
-# start 
-# print '输入参数列表:' 
+def updateHwvoipservice():
+	print 'copy from template...'
+	# targetPath = ''
+	# if isWindows:
+	# 	targetPath = os.path.join(currentProjectFilePath , 'com.huawei.hwvoipservice')
+	# else:
+	# 	targetPath = os.path.join(currentProjectFilePath , 'com.huawei.hwvoipservice')
+	# if not os.path.exists(targetPath):
+	# 	mkdir(targetPath)
+	if isWindows:
+		command = 'xcopy \'' + os.getcwd()+ '\\com.huawei.hwvoipservice\\*.*\' \''+ currentProjectFilePath + '\\\' /Y'
+	else:
+		command = 'cp -R \'' + os.getcwd()+ '/com.huawei.hwvoipservice\' \''+ currentProjectFilePath + '/\''
+	print 'command:' + command
+	os.system(command)
+	print '\n\nchange bg.9.png...'
+	if isWindows:
+		command = 'xcopy \'' + currentProjectFilePath + '\\com.android.mms\\framework-res-hwext\\res\\drawable-xxhdpi\\background_emui.9.png\' \''+ currentProjectFilePath + '\\com.huawei.hwvoipservice\\framework-res-hwext\\res\\drawable-xxhdpi\\\' /Y'
+	else:
+		command = 'cp \'' + currentProjectFilePath + '/com.android.mms/framework-res-hwext/res/drawable-xxhdpi/background_emui.9.png\' \''+ currentProjectFilePath + '/com.huawei.hwvoipservice/framework-res-hwext/res/drawable-xxhdpi/\' '
+	print 'command:' + command
+	os.system(command)
+	print '\n\nchange theme color...\n'
+	configFilePath = os.path.join(currentProjectFilePath,'com.huawei.hwvoipservice' , 'framework-res-hwext' , 'theme.xml')
+	configContent = open(configFilePath).read()
+	color = getOrginColorFromConfig(os.path.join(currentProjectFilePath,'com.android.mms' , 'framework-res-hwext' , 'theme.xml') ,'','<color name="hwtoolbar_background">(.*)</color>','#272822')
+	configContent = configContent.replace('{color}' , color ,1000)
+	configContent = configContent.replace('{front_color}' , getInvertColor(color) ,1000)
+	open(configFilePath,'w').write(configContent)
+
+
+# start
+# print '输入参数列表:'
 if len(sys.argv) > 1:
 	for index in range(len(sys.argv)):
 		if index == 1:
@@ -1471,12 +1545,12 @@ frameworkResHwextConfigFilePathList = configFileDic['frameworkResHwextConfigFile
 print '==============start load replace file list =============='
 
 print '==============start replace=============='
-print '==============first ,replace frameworkResHwextConfigFilePathList============== '  
+print '==============first ,replace frameworkResHwextConfigFilePathList============== '
 for item in frameworkResHwextConfigFilePathList:
 	doTransform(item , framework_res_hwext_change_v91_v10)
-print '==============then ,replace  frameworkResHwextConfigFilePathList============== '  
+print '==============then ,replace  frameworkResHwextConfigFilePathList============== '
 
-print '==============then , replace normalConfigFilePathList============== '  
+print '==============then , replace normalConfigFilePathList============== '
 for item in normalConfigFilePathList:
 	print item
 	# print item.split('/')[len(item.split('/')) - 2 ].split('.')[len(item.split('/')[len(item.split('/')) - 2 ].split('.'))-1]
@@ -1485,25 +1559,31 @@ for item in normalConfigFilePathList:
 		doTransform(item , normalConfig_dic['%s_normalConfig_v91_v10' %( item.split('\\')[len(item.split('\\')) - 2 ].split('.')[len(item.split('\\')[len(item.split('\\')) - 2 ].split('.'))-1]  )] )
 	else:
 		doTransform(item , normalConfig_dic['%s_normalConfig_v91_v10' %( item.split('/')[len(item.split('/')) - 2 ].split('.')[len(item.split('/')[len(item.split('/')) - 2 ].split('.'))-1]  )] )
-print '==============then ,replace normalConfigFilePathList============== '  
+print '==============then ,replace normalConfigFilePathList============== '
 
-print '==============checkIcons============== '  
+print '==============checkIcons============== '
 checkIcons()
-print '==============checkIcons============== '  
+print '==============checkIcons============== '
 
-print '==============checkdot9pic============== '  
-# checkdot9pic()
-print '==============checkdot9pic============== '  
+print '==============checkdot9pic============== '
+checkdot9pic()
+print '==============checkdot9pic============== '
 
 
-print '==============updateLauncher============== '  
+print '==============updateLauncher============== '
 updateLauncher()
-print '==============updateLauncher============== '  
+print '==============updateLauncher============== '
 
 
-print '==============udpateSystemUi============== '  
+print '==============udpateSystemUi============== '
 udpateSystemUi()
-print '==============udpateSystemUi============== '  
+print '==============udpateSystemUi====2========== '
+
+
+if hasHwvoipservice:
+	print '==============updateHwvoipservice============== '
+	updateHwvoipservice()
+	print '==============updateHwvoipservice============== '
 
 
 print '==============updateThemeDesc============== '  

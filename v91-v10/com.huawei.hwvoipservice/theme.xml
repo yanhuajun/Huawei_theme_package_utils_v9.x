@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+<!--信息部分——留言板-->
+<!-- 留言板下方编辑框外背景 -->
+<color name="compose_bottom_layout_background">#0e754b</color>
+<!-- 留言板下方编辑框内背景 -->
+<color name="embedded_text_editor_background">#328966</color>
+<!-- 卡片上文字颜色 -->
+<color name="msg_text_body_color">#ffffff</color>
+<!-- 接收卡片背景颜色 -->
+<color name="msg_pop_incoming_bg_color">#ffffffCC</color>
+<!-- 发送卡片背景颜色 -->
+<color name="msg_pop_send_bg_color">#000000</color>
+
+
+</resources>
+

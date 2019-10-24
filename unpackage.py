@@ -7,6 +7,9 @@ import time
 
 DEBUGMODE = True
 
+currentProjectFilePath = ''
+outputPath = ''
+projectName = ''
 
 def getTheme_packaged():
 		fileList = [];
@@ -15,20 +18,21 @@ def getTheme_packaged():
 				fileList.append(item[0:len(item) - 4])
 		return fileList
 
-def deleteFile( item, fileName  ):
+def deleteFile( item  ):
 	if os.sep == '/':
-		print( "rm -rf ./theme_nopackage/'%s'/'%s' "% ( item , fileName ) )
-		os.system( "rm -rf ./theme_nopackage/'%s'/'%s' "% ( item , fileName ) )
+		command  = "rm -rf '%s/%s' "% ( outputPath + projectName , item  ) 
+		print( command)
+		os.system( command )
 	else:
-		str = "del %s " % ( os.path.join(os.getcwd() ,'theme_nopackage', item , fileName ) )
+		str = "del '%s\\%s' " % ( outputPath + projectName , item  ) 
 		log(str)
 		os.system( str )
 
-def move(item ,fileName ):
+def move(item  ):
 	if os.sep =='/':
-		os.system("mv ./theme_nopackage/'%s'/'%s' ./theme_nopackage/'%s'/'%s.zip'" %(item ,fileName,item , fileName))
+		os.system("mv '%s/%s' '%s/%s.zip' " % ( outputPath+projectName ,  item  ,outputPath + projectName  ,item )  )
 	else:
-		str = "mv %s %s" % ( os.path.join(os.getcwd() , 'theme_nopackage' , item , fileName ) ,os.path.join(os.getcwd() , 'theme_nopackage' , item , '%s.zip' % fileName ) )
+		os.system("mv '%s/%s' '%s/%s.zip' " % ( outputPath+projectName ,  item  ,outputPath + projectName  ,item )  )
 		log(str)
 		os.system(str)
 
@@ -62,23 +66,23 @@ def cpTemp( item ):
 		print "xcopy .\\theme_nopackage\\'%s' .\\theme_package\\'%s' /S /I" % ( item , item )
 		os.system("xcopy .\\theme_nopackage\\'%s' .\\theme_package\\'%s' /S /I" % ( item , item ))
 
-def unzipfile_outter(item):
+def unzipfile_outter():
 	if os.sep == '/':
-		str = "unzip -o ./theme_package/'%s.hwt' -d ./theme_nopackage/'%s'" % (item ,item )
+		str = "unzip -o '%s' -d '%s' " % (currentProjectFilePath , outputPath + projectName  )
 		log(str)
 		os.system(str);
 	else:
-		str = "7z x -tZip -y %s -o%s" % (os.path.join(os.getcwd() , 'theme_package','%s.hwt' % item ) ,os.path.join(os.getcwd() , 'theme_nopackage',item ) ) 
+		str = "7z x -tZip -y '%s' -o'%s'" % (currentProjectFilePath , outputPath + projectName  ) 
 		log(str)
 		os.system(str)
 
-def unzipfile_inner(item,fileName):
+def unzipfile_inner(item):
 	if os.sep == '/':
-		str = "unzip -o ./theme_nopackage/'%s'/'%s.zip' -d ./theme_nopackage/'%s'/'%s'" % (item ,fileName,item ,fileName ) 
+		str = "unzip -o '%s/%s.zip' -d '%s/%s' " % (outputPath + projectName ,item ,outputPath + projectName , item   ) 
 		log(str)
 		os.system(str)
 	else:
-		os.system("7z x -tZip -y %s -o%s" % (os.path.join(os.getcwd(),'theme_nopackage',item,'%s.zip'% fileName ),os.path.join(os.getcwd(),'theme_nopackage',item,fileName ) ) )
+		os.system("7z x -tZip -y '%s/%s.zip' -o'%s/%s' " % ( outputPath + projectName ,item ,outputPath + projectName , item ) )
 
 def log(logString):
 	if DEBUGMODE:
@@ -86,40 +90,98 @@ def log(logString):
 	else:
 		return
 
-# start
-themeList = getTheme_packaged()
-for item in themeList:
-	print('success scan :%s' % item );
-	unzipfile_outter(item)
+#########################################################      start    #####################################################################################
+
+# print '输入参数列表:' 
+if len(sys.argv) > 1:
+	for index in range(len(sys.argv)):
+		if index == 1:
+			currentProjectFilePath = sys.argv[index]
+else:
+	currentProjectFilePath = os.getcwd()
+print 'currentProjectFilePath :' + currentProjectFilePath
+
+outputPath = currentProjectFilePath[0:currentProjectFilePath.rindex('/')+1]
+print "outputPath:" + outputPath
+
+projectName = currentProjectFilePath[currentProjectFilePath.rindex('/') +1: len(currentProjectFilePath)].replace(".hwt","")
+print "projectName:" + projectName
+
+unzipfile_outter()
+
+move( 'icons')
+move( 'com.android.contacts')
+move( 'com.android.mms')
+move( 'com.android.phone')
+move( 'com.android.phone.recorder')
+move( 'com.android.server.telecom')
+move( 'com.android.systemui')
+move( 'com.huawei.android.launcher')
+move( 'com.huawei.hwvoipservice') # com.huawei.hwvoipservice
+
+
+unzipfile_inner( 'icons')
+unzipfile_inner( 'com.android.contacts')
+unzipfile_inner( 'com.android.mms')
+unzipfile_inner( 'com.android.phone')
+unzipfile_inner( 'com.android.phone.recorder')
+unzipfile_inner( 'com.android.server.telecom')
+unzipfile_inner( 'com.android.systemui')
+unzipfile_inner( 'com.huawei.android.launcher')
+unzipfile_inner( 'com.huawei.hwvoipservice')
+
+deleteFile('icons.zip')
+deleteFile('com.android.contacts.zip')
+deleteFile('com.android.mms.zip')
+deleteFile('com.android.phone.zip')
+deleteFile('com.android.phone.recorder.zip')
+deleteFile('com.android.server.telecom.zip')
+deleteFile('com.android.systemui.zip')
+deleteFile('com.huawei.android.launcher.zip')
+deleteFile('com.huawei.hwvoipservice.zip')
+
+
+
+
+
+
+#########################################################      之前的版本    #####################################################################################
+
+
+# 扫描 package文件夹并输出至unpackage文件夹
+# themeList = getTheme_packaged()
+# for item in themeList:
+# 	print('success scan :%s' % item );
+# 	unzipfile_outter(item)
 	
-	move( item ,'icons')
-	move( item ,'com.android.contacts')
-	move( item ,'com.android.mms')
-	move( item ,'com.android.phone')
-	move( item ,'com.android.phone.recorder')
-	move( item ,'com.android.server.telecom')
-	move( item ,'com.android.systemui')
-	move( item ,'com.huawei.android.launcher')
-	move( item ,'com.huawei.hwvoipservice') # com.huawei.hwvoipservice
+# 	move( item ,'icons')
+# 	move( item ,'com.android.contacts')
+# 	move( item ,'com.android.mms')
+# 	move( item ,'com.android.phone')
+# 	move( item ,'com.android.phone.recorder')
+# 	move( item ,'com.android.server.telecom')
+# 	move( item ,'com.android.systemui')
+# 	move( item ,'com.huawei.android.launcher')
+# 	move( item ,'com.huawei.hwvoipservice') # com.huawei.hwvoipservice
 
 	
-	unzipfile_inner( item ,'icons')
-	unzipfile_inner( item ,'com.android.contacts')
-	unzipfile_inner( item ,'com.android.mms')
-	unzipfile_inner( item ,'com.android.phone')
-	unzipfile_inner( item ,'com.android.phone.recorder')
-	unzipfile_inner( item ,'com.android.server.telecom')
-	unzipfile_inner( item ,'com.android.systemui')
-	unzipfile_inner( item ,'com.huawei.android.launcher')
-	unzipfile_inner( item ,'com.huawei.hwvoipservice')
+# 	unzipfile_inner( item ,'icons')
+# 	unzipfile_inner( item ,'com.android.contacts')
+# 	unzipfile_inner( item ,'com.android.mms')
+# 	unzipfile_inner( item ,'com.android.phone')
+# 	unzipfile_inner( item ,'com.android.phone.recorder')
+# 	unzipfile_inner( item ,'com.android.server.telecom')
+# 	unzipfile_inner( item ,'com.android.systemui')
+# 	unzipfile_inner( item ,'com.huawei.android.launcher')
+# 	unzipfile_inner( item ,'com.huawei.hwvoipservice')
 
-	deleteFile( item ,'icons.zip')
-	deleteFile( item ,'com.android.contacts.zip')
-	deleteFile( item ,'com.android.mms.zip')
-	deleteFile( item ,'com.android.phone.zip')
-	deleteFile( item ,'com.android.phone.recorder.zip')
-	deleteFile( item ,'com.android.server.telecom.zip')
-	deleteFile( item ,'com.android.systemui.zip')
-	deleteFile( item ,'com.huawei.android.launcher.zip')
-	deleteFile( item ,'com.huawei.hwvoipservice.zip')
+# 	deleteFile( item ,'icons.zip')
+# 	deleteFile( item ,'com.android.contacts.zip')
+# 	deleteFile( item ,'com.android.mms.zip')
+# 	deleteFile( item ,'com.android.phone.zip')
+# 	deleteFile( item ,'com.android.phone.recorder.zip')
+# 	deleteFile( item ,'com.android.server.telecom.zip')
+# 	deleteFile( item ,'com.android.systemui.zip')
+# 	deleteFile( item ,'com.huawei.android.launcher.zip')
+# 	deleteFile( item ,'com.huawei.hwvoipservice.zip')
 	
