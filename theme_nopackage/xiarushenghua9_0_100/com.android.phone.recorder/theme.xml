@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
-    <color name="preference_title_enable_color">#80ffffff</color>
-    <color name="preference_title_disable_color">#33ffffff</color>
-    <color name="autorecord_list_item_number_text">#80ffffff</color>
-</resources>
