@@ -44,8 +44,11 @@ def listConfigFileArray():
 def get_filelist(dir, Filelist,suffix):
 	newDir = dir
 	if os.path.isfile(dir):
-		if dir.endswith(suffix):
+		if suffix == "":
 			Filelist.append(dir)
+		else:
+			if dir.endswith(suffix):
+				Filelist.append(dir)
 		# # 若只是要返回文件文，使用这个
 		# Filelist.append(os.path.basename(dir))
 	elif os.path.isdir(dir):
@@ -71,6 +74,14 @@ def check(arr):
 			print root 
 		print "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 	
+def removeFile(path):
+	if os.path.exists(path):
+		#删除文件，可使用以下两种方法。
+		os.remove(path)
+		#os.unlink(my_file)
+	else:
+		print 'no such file:%s' % path
+
 
 # start
 print '输入参数列表:'
@@ -97,7 +108,25 @@ if isWindows:
 else:
 	print 'not windows env'
 
+
 fileList = []
+
+print "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+print "删除.bat, .DS_Store 文件 "
+print "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+fileList = get_filelist(currentProjectFilePath,fileList,".bat")
+for path in fileList:
+	print "pre delete path:" + path;
+fileList = get_filelist(currentProjectFilePath,fileList,".DS_Store")
+for path in fileList:
+	print "pre delete path:" + path;
+
+
+
+
+print "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
+print "检查xml文件 "
+print "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 fileList = get_filelist(currentProjectFilePath,fileList,".xml")
 print "fileList Number: %d" % (len(fileList) )
 print "file list is :\n"
