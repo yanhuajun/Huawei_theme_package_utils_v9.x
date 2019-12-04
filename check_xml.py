@@ -117,9 +117,11 @@ print "-------------------------------------------------------------------------
 fileList = get_filelist(currentProjectFilePath,fileList,".bat")
 for path in fileList:
 	print "pre delete path:" + path;
+	removeFile(path);
 fileList = get_filelist(currentProjectFilePath,fileList,".DS_Store")
 for path in fileList:
 	print "pre delete path:" + path;
+	removeFile(path);
 
 
 
@@ -127,7 +129,7 @@ for path in fileList:
 print "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 print "检查xml文件 "
 print "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
-fileList = get_filelist(currentProjectFilePath,fileList,".xml")
+fileList = get_filelist(currentProjectFilePath,[],".xml")
 print "fileList Number: %d" % (len(fileList) )
 print "file list is :\n"
 check(fileList)
