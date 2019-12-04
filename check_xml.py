@@ -22,6 +22,8 @@ isWindows = False
 currentProjectFilePath = ''
 toolPath = ''
 
+errorXmlFilePathList = []
+
 def listConfigFileArray():
 	frameworkResHwextConfigFilePathList = []
 	normalConfigFilePathList = []
@@ -61,6 +63,7 @@ def get_filelist(dir, Filelist,suffix):
 	return Filelist
 
 def check(arr):
+	global errorXmlFilePathList
 	for item in arr:
 		print "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
 
@@ -69,7 +72,8 @@ def check(arr):
 		print data
 		root = ET.fromstring(data)
 		if root == '' :
-			print "有误"
+			print "有误,请注意稍后日志...."
+			errorXmlFilePathList.apend(item);
 		else:
 			print root 
 		print "----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
@@ -133,5 +137,10 @@ fileList = get_filelist(currentProjectFilePath,[],".xml")
 print "fileList Number: %d" % (len(fileList) )
 print "file list is :\n"
 check(fileList)
-
+if len(errorXmlFilePathList) > 0 :
+	print "以下位置xml有问题，注意检查"
+	for item in errorXmlFilePathList:
+		print "path:" + item 
+else:
+	print "xml文件无问题"
 
