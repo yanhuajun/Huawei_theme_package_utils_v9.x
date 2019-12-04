@@ -4,20 +4,20 @@
 
 
 <!-- 标题栏图标颜色 -->
-<color name="emui_appbar_icon">{front_color}00</color>
-<color name="emui_appbar_icon_pressed">{front_color}00</color>
+<color name="emui_appbar_icon">{front_color}</color>
+<color name="emui_appbar_icon_pressed">{front_color}</color>
 
 <!-- 标题栏文本颜色 -->
-<color name="emui_appbar_title">{front_color}00</color>
+<color name="emui_appbar_title">{front_color}</color>
 
 <!-- 背景色 （必须保持同一颜色值）-->
 
 <!-- Actionbar背景颜色 -->
 <!-- 信号栏背景颜色 -->
-<color name="emui_appbar_bg">{color}FF</color>
-<color name="emui_appbar_bg_blur">#FF000000</color>
-<!-- 信号栏文字图标反色依据id，需和emui_appbar_bg色值保持一致-->
-<color name="hwtoolbar_background">{color}FF</color>
+<color name="emui_appbar_bg">{color}</color>
+<color name="emui_appbar_bg_blur">{color}</color>
+<!-- 信号栏文字图标反色依据id，需和 emui_appbar_bg 色值保持一致-->
+<color name="hwtoolbar_background">{color}</color>
 
 <!-- Toolbar 底部工具栏背景颜色 -->
 <color name="emui_toolbar_bg">{color}FA</color>
@@ -30,8 +30,8 @@
 <color name="navigationbar_emui_light">#F2FFFFFF</color>
 
 <!--Sub tab背景颜色 -->
-<color name="emui_subtab_bg">{color}FF</color>
-<color name="emui_subtab_bg_blur">#ff000000</color>
+<color name="emui_subtab_bg">{color}</color>
+<color name="emui_subtab_bg_blur">{color}</color>
 
 <!--Tooltips背景颜色 -->
 <color name="emui_color_tips_bg">#F2D9D9D9</color>
@@ -59,14 +59,14 @@
 
 <!-- 高亮色 （建议用同一颜色值）-->
 <!-- 高亮色颜色 -->
-<color name="emui_accent">#FF007DFF</color>
+<color name="emui_accent">{lightcolor}</color>
 
 <!-- 文字按钮颜色-->
 <!-- 链接文字 -->
-<color name="emui_functional_blue">#297558</color>
+<color name="emui_functional_blue">{lightcolor}</color>
 
 <!-- Radio button 高亮颜色 -->
-<color name="emui_switch_bg_on">#297558</color>
+<color name="emui_switch_bg_on">{color}</color>
 
 <!-- 发送失败图标 短信设置短信中心提示文字高亮色 -->
  <color name="emui_functional_red">#fa2a2d</color>
@@ -74,7 +74,7 @@
  <!-- 光标颜色  复用emui_accent-->
 
  <!-- Progress bar 动画颜色 -->
- <color name="emui_progress">#000000</color>
+ <color name="emui_progress">{front_color}</color>
 
 
  <!-- Subtab 副标题栏高亮颜色 -->
@@ -92,9 +92,9 @@
 
 <!-- 一级图标文字颜色 （建议用同一颜色值，可通过修改透明度来和高亮色区分）-->
 <!--一级图标 文字颜色 -->
-<color name="emui_primary">#000000</color>
+<color name="emui_primary">{front_color}</color>
 <!--spinner下拉列表图标颜色 -->
-<color name="emui_spinner_icon">#000000</color>
+<color name="emui_spinner_icon">{front_color}</color>
 
 <!-- 提示性质文字颜色 -->
 <!-- 拨号数字 归属地文字颜色 -->
@@ -136,7 +136,7 @@
 <!-- 用户编辑界面 机主文字颜色 -->
 <!-- sim卡设置呼叫转移中的无条件呼叫转移中的“开始时间”和“结束时间”文本颜色 -->
 <!-- 通话自动录音自动录音对象和指定号码item的title颜色 -->
-<color name="emui_text_primary">#000000</color>
+<color name="emui_text_primary">{front_color}</color>
 
 
 <!-- Toolbar 界面底部工具栏图标、文本颜色 -->
@@ -176,7 +176,7 @@
 <color name="emui_secondary">#99000000</color>
 
 <!-- APPbar副标题颜色 -->
-<color name="emui_appbar_subtitle">#99000000</color>
+<color name="emui_appbar_subtitle">{color}</color>
 
 <!-- 按钮弹框颜色 （建议用同一颜色值）-->
 <!-- 选中文字背景颜色  复用emui_accent-->
@@ -193,15 +193,15 @@
 <!-- Radio button 背景、描边颜色 -->
 
 <!--复选框描边颜色-->
-<color name="emui_checkbox_boxedge">#000000</color>
+<color name="emui_checkbox_boxedge">{front_color}</color>
 
 <!--描边颜色-->
-<color name="emui_switch_outline_off">#B3B3B3</color>
+<color name="emui_switch_outline_off">{color}</color>
 <!--背景颜色-->
-<color name="emui_switch_bg_off">#4D000000</color>
+<color name="emui_switch_bg_off">{color}</color>
 
 <!-- checkbox 内部背景颜色 -->
-<color name="emui_white_bg">#000000</color>
+<color name="emui_white_bg">{color}</color>
 
 <!-- 弹框背景颜色 -->
 <color name="emui_dialog_bg">{color}</color>
@@ -215,7 +215,7 @@
 
 <!--多选框的颜色 -->
 <!--多选框的颜色off -->
-<color name="emui_checkbox_boxedge">#000000</color>
+<color name="emui_checkbox_boxedge">{color}</color>
 
 <!-- 联系人分割条颜色 -->
 <color name="emui_color_subheader_divider">#08000000</color>

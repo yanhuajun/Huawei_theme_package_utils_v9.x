@@ -4,6 +4,7 @@ import os
 import sys
 import zipfile
 import time
+import re
 
 
 DEBUGMODE = True
@@ -38,38 +39,38 @@ def move_out(item  ):
 
 def InnerZip( item ):
 	command = ""
-	command += "cd '%s_temp/%s' \n" %(outputPath + projectName , item )  + "pwd \n" + "zip -r '%s.zip' ./* \n" % item 
-	command += "mv '%s.zip' ../ \n" % item 
+	command += "cd '%s_temp/%s' \n" %(outputPath + projectName , item )  + "pwd \n" + "zip -r '%s.zip' ./* \n" % item
+	command += "mv '%s.zip' ../ \n" % item
 	command += "cd ../ \n"
-	command += "rm -rf '%s' \n" % item 
+	command += "rm -rf '%s' \n" % item
 	command += "mv '%s.zip' '%s' \n" %(item , item )
 	print "innerZip,command:" +command
 	os.system(command)
 
 	# if os.sep == '/':
-	# 	print("cd %s%stheme_package%s%s%s%s  \n pwd \n zip -r %s.zip .%s* \n mv %s.zip ../ \n cd ../ \n rm -rf .%s%s \n mv %s.zip %s " 
+	# 	print("cd %s%stheme_package%s%s%s%s  \n pwd \n zip -r %s.zip .%s* \n mv %s.zip ../ \n cd ../ \n rm -rf .%s%s \n mv %s.zip %s "
 	# 	% ( os.getcwd() ,os.sep , os.sep,item ,os.sep , fileName,fileName,os.sep,fileName,os.sep,fileName,fileName,fileName ) )
-	# 	os.system("cd %s%stheme_package%s%s%s%s  \n pwd \n zip -r %s.zip .%s* \n mv %s.zip ../ \n cd ../ \n rm -rf .%s%s \n mv %s.zip %s " 
+	# 	os.system("cd %s%stheme_package%s%s%s%s  \n pwd \n zip -r %s.zip .%s* \n mv %s.zip ../ \n cd ../ \n rm -rf .%s%s \n mv %s.zip %s "
 	# 	% ( os.getcwd() ,os.sep , os.sep,item ,os.sep , fileName,fileName,os.sep,fileName,os.sep,fileName,fileName,fileName ) )
 	# else:
-	# 	print("cd .\\theme_package\\%s\\%s &&  zip -r %s.zip .\\* && mv %s.zip ../ && cd ../ " 
+	# 	print("cd .\\theme_package\\%s\\%s &&  zip -r %s.zip .\\* && mv %s.zip ../ && cd ../ "
 	# 	%  (item,fileName,fileName,fileName) )
-	# 	os.system("cd .\\theme_package\\%s\\%s &&  zip -r %s.zip .\\* && mv %s.zip ../ && cd ../ " 
+	# 	os.system("cd .\\theme_package\\%s\\%s &&  zip -r %s.zip .\\* && mv %s.zip ../ && cd ../ "
 	# 	%  (item,fileName,fileName,fileName) )
 
 def OutterZip( ):
 	command = ""
-	command += "cd '%s_temp' \n" % (outputPath + projectName)  
-	command += "zip -r '%s.zip' ./* \n" % projectName 
+	command += "cd '%s_temp' \n" % (outputPath + projectName)
+	command += "zip -r '%s.zip' ./* \n" % projectName
 	command += "mv '%s.zip' ../ \n" % projectName
 	command += "cd ../ \n"
 	command += "rm -rf '%s_temp' \n" % (outputPath + projectName)
 	command += "mv '%s.zip' '%s.hwt' \n" % (projectName , projectName )
 	print "OutterZip,command:" + command
 	os.system(command)
-	# print("cd theme_package%s%s  && zip -r %s.zip .%s* && mv %s.zip ../ && cd ../ && mv %s.zip %s.hwt " 
+	# print("cd theme_package%s%s  && zip -r %s.zip .%s* && mv %s.zip ../ && cd ../ && mv %s.zip %s.hwt "
 	# 	% ( os.sep,item ,item ,os.sep,item,item,item) )
-	# os.system("cd theme_package%s%s  && zip -r %s.zip .%s* && mv %s.zip ../ && cd ../ && mv %s.zip %s.hwt " 
+	# os.system("cd theme_package%s%s  && zip -r %s.zip .%s* && mv %s.zip ../ && cd ../ && mv %s.zip %s.hwt "
 	# 	% ( os.sep,item ,item ,os.sep,item,item,item) )
 
 
@@ -77,6 +78,23 @@ def cpTemp( ):
 	command = "cp -R '%s' '%s_temp'" % ( currentProjectFilePath  , outputPath + projectName )
 	print "command:" + command
 	os.system(command)
+
+def reNameThemePackage():
+    descFilePath = os.path.join(currentProjectFilePath , 'description.xml');
+    content = open(descFilePath).read()
+    matchObj = re.search(r'<version>(.*)</version>' , content )
+    versionStr = matchObj.group(1)
+
+    matchObj = re.search(r'<title>(.*)</title>' , content )
+    englishName = matchObj.group(1)
+
+    print 'version:' + versionStr + ",title:" + englishName
+    command = "cd " + outputPath[0:outputPath.rfind('/')] +"\n"
+    # command += "cd ../ \n"
+    command += "mv '%s.hwt' '%s.hwt' " %(projectName , englishName + "_V" + versionStr )
+
+    print "command:" + command
+    os.system(command)
 
 
 def log(logStr):
@@ -86,7 +104,7 @@ def log(logStr):
 # start
 
 print '输入参数列表:'
-print sys.argv 
+print sys.argv
 if len(sys.argv) == 2:
 	print "get outputPath from currentProjectFilePath..."
 	for index in range(len(sys.argv)):
@@ -111,20 +129,28 @@ projectName = currentProjectFilePath[currentProjectFilePath.rindex('/') +1: len(
 print "projectName:" + projectName
 
 cpTemp( )
-InnerZip( 'icons')
-InnerZip( 'com.android.contacts')
-InnerZip( 'com.android.mms')
-InnerZip( 'com.android.phone')
-InnerZip( 'com.android.phone.recorder')
-InnerZip( 'com.android.server.telecom')
-InnerZip( 'com.android.systemui')
-InnerZip( 'com.huawei.android.launcher')
-InnerZip( 'com.huawei.hwvoipservice')
+if(os.path.exists(os.path.join(currentProjectFilePath , 'icons' ) ) ):
+	InnerZip( 'icons')
+if(os.path.exists(os.path.join(currentProjectFilePath , 'com.android.contacts' ) ) ):
+	InnerZip( 'com.android.contacts')
+if(os.path.exists(os.path.join(currentProjectFilePath , 'com.android.mms' ) ) ):
+	InnerZip( 'com.android.mms')
+if(os.path.exists(os.path.join(currentProjectFilePath , 'com.android.phone' ) ) ):
+	InnerZip( 'com.android.phone')
+if(os.path.exists(os.path.join(currentProjectFilePath , 'com.android.phone.recorder' ) ) ):
+	InnerZip( 'com.android.phone.recorder')
+if(os.path.exists(os.path.join(currentProjectFilePath , 'com.android.server.telecom' ) ) ):
+	InnerZip( 'com.android.server.telecom')
+if(os.path.exists(os.path.join(currentProjectFilePath , 'com.android.systemui' ) ) ):
+	InnerZip( 'com.android.systemui')
+if(os.path.exists(os.path.join(currentProjectFilePath , 'com.huawei.android.launcher' ) ) ):
+	InnerZip( 'com.huawei.android.launcher')
+if(os.path.exists(os.path.join(currentProjectFilePath , 'com.huawei.hwvoipservice' ) ) ):
+	InnerZip( 'com.huawei.hwvoipservice')
 
 OutterZip()
 
-
-
+reNameThemePackage()
 
 ####################################################    之前的版本    ######################################################################################################
 # themeList = getTheme_nopackage()
@@ -132,7 +158,7 @@ OutterZip()
 # 	print('success scan :%s' % item );
 # for item in themeList:
 # 	if item == '.DS_Store':
-# 		continue  
+# 		continue
 # 	cpTemp( item )
 # 	InnerZip( item ,'icons')
 # 	InnerZip( item ,'com.android.contacts')
@@ -144,7 +170,7 @@ OutterZip()
 # 	InnerZip( item ,'com.huawei.android.launcher')
 # 	InnerZip( item ,'com.huawei.hwvoipservice')
 
-	
+
 # 	delete( item ,'icons')
 # 	delete( item ,'com.android.contacts')
 # 	delete( item ,'com.android.mms')
@@ -162,7 +188,7 @@ OutterZip()
 # 	move( item ,'com.android.phone.recorder')
 # 	move( item ,'com.android.server.telecom')
 # 	move( item ,'com.android.systemui')
-# 	move( item ,'com.huawei.android.launcher')	
+# 	move( item ,'com.huawei.android.launcher')
 # 	move( item ,'com.huawei.hwvoipservice')
-	
+
 # 	OutterZip(item )
