@@ -81,7 +81,7 @@ def check(arr):
 def removeFile(path):
 	if os.path.exists(path):
 		#删除文件，可使用以下两种方法。
-		# os.remove(path)
+		os.remove(path)
 		print 'success'
 		#os.unlink(my_file)
 	else:
