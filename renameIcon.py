@@ -61,7 +61,8 @@ def tranName(fileNameList):
 	print "转换成功 ，可能有部分图片转换失败 ，请查看orgin_icon_file 是否有 error_list.txt 文件 ，转换错误的信息将写在此文件中 ，"
 #start
 
-fileNameList = getFileNameList()
+configFileList = getFileNameList()
+# print configFileList
 
 # 更换下列文件
-tranName(fileNameList)
+tranName(configFileList)
