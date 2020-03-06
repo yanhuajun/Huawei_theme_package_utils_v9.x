@@ -38,11 +38,11 @@ def check_icon_name(configFileList, checkFilePath):
 			configFileList.pop(item)
 	# 剩下的configFileList 都是未找到对应的，需要输出到文件
 	if len(configFileList) == 0:
-		print "已检查" + checkFilePath +"下所有png文件，文件名正确"
+		print u"已检查" + checkFilePath +u"下所有png文件，文件名正确"
 		return
-	result = ''
+	result = u'以下为命名错误图标，请检查 \r\n\r\n'
 	for (d,x) in configFileList.items():
-		result += "can't find :"+d+"\r\nmatched en name:"+ x +"\r\n\r\n"
+		result += u"未找到 （中文名）:"+d+u"\r\n匹配的英文名:"+ x +"\r\n\r\n"
 	
 	# print result
 	resultPath = os.path.join(checkFilePath , "check_icon_name_error.txt")
