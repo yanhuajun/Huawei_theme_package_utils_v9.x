@@ -12,8 +12,8 @@ error_icon_file_list = ''
 
 def getFileNameList(filePath):
 	fileNameList = {}
-	file = open(filePath,'r')
-	text = file.read().decode("utf-8")
+	file = codecs.open(filePath,'r','utf-8')
+	text = file.read()
 	file.close()
 	#print text
 	for line in text.split("\n"):
@@ -29,37 +29,6 @@ def getFileNameList(filePath):
 		fileNameList[array[0]] = array[1]
 	return fileNameList
 
-def tranName(fileNameList):
-	global error_icon_file_list
-	print "changing list :"
-	for item in fileNameList:
-		pass
-		#print "orginName:%s ===>tansName:%s" % (item  ,fileNameList[item])
-	for item in fileNameList:
-		try:
-			if(os.sep == '/'):
-				cmd = "cp ./orgin_icon_file/'%s' ./trans_name_file/'%s'"  %(item  ,fileNameList[item])
-				print(cmd);
-				os.system(cmd);
-			else:
-				cmd = ("copy .\\orgin_icon_file\\'%s' .\\trans_name_file\\'%s'"  %(item ,fileNameList[item]))
-				cmd = cmd.encode("gbk")
-				print(cmd);
-				os.system(cmd)
-		except Exception , e : 
-			print "error , " + e.message 
-			error_icon_file_list += "转换失败\t原始文件：" + item.encode("utf-8") + "\t\t\t,转换后文件:" + fileNameList[item].encode('utf-8') + "\n"
-			continue;
-	# 输出错误列表
-	filePath = os.path.join(os.getcwd(),"orgin_icon_file","error_list.txt")
-	file = open(filePath,'w')
-	if error_icon_file_list == '':
-		error_icon_file_list = '没有错误 ，请查看 trans_name_file 文件夹并使用图标 '
-	file.write(error_icon_file_list)
-	file.close()
-
-	print "转换成功 ，可能有部分图片转换失败 ，请查看orgin_icon_file 是否有 error_list.txt 文件 ，转换错误的信息将写在此文件中 ，"
-
 def check_icon_name(configFileList, checkFilePath):
 	fileList = getFileFromPath(checkFilePath)
 	# print fileList 
@@ -73,14 +42,15 @@ def check_icon_name(configFileList, checkFilePath):
 		return
 	result = ''
 	for (d,x) in configFileList.items():
-		result += "can't find :"+d+"\nmatched en name:"+ x +"\n\n"
+		result += "can't find :"+d+"\r\nmatched en name:"+ x +"\r\n\r\n"
 	
-	print result
+	# print result
 	resultPath = os.path.join(checkFilePath , "check_icon_name_error.txt")
 	resultFile = codecs.open(resultPath,"w",encoding='utf-8')
+	#resultFile = codecs.open(resultPath,"w",encoding='gbk')
 	resultFile.write(result)
 	resultFile.close()
-	print "结果文件成功写入至" + resultPath
+	print u"结果文件成功写入至" + resultPath
 
 def getFileFromPath(path):
 	print "getFileFrom:" + path
@@ -101,9 +71,4 @@ print "get configFileList success"
 # print configFileList
 
 check_icon_name(configFileList , os.path.join(os.getcwd(),"orgin_icon_file"))
-
-# 更换下列文件
-# tranName(fileNameList)
-
-
 
