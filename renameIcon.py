@@ -30,23 +30,25 @@ def getFileNameList():
 	return fileNameList
 
 def tranName(fileNameList):
+	global error_icon_file_list
 	print "changing list :"
 	for item in fileNameList:
-
+		pass
 		#print "orginName:%s ===>tansName:%s" % (item  ,fileNameList[item])
 	for item in fileNameList:
 		try:
 			if(os.sep == '/'):
-				print("cp ./orgin_icon_file/%s ./trans_name_file/%s"  %(item  ,fileNameList[item]));
-				os.system("cp ./orgin_icon_file/%s ./trans_name_file/%s"  %(item  ,fileNameList[item]));
+				cmd = "cp ./orgin_icon_file/'%s' ./trans_name_file/'%s'"  %(item  ,fileNameList[item])
+				print(cmd);
+				os.system(cmd);
 			else:
-				cmd = ("copy .\\orgin_icon_file\\%s .\\trans_name_file\\%s"  %(item ,fileNameList[item]))
+				cmd = ("copy .\\orgin_icon_file\\'%s' .\\trans_name_file\\'%s'"  %(item ,fileNameList[item]))
 				cmd = cmd.encode("gbk")
 				print(cmd);
 				os.system(cmd)
 		except Exception , e : 
 			print "error , " + e.message 
-			error_icon_file_list += "转换失败\t原始文件：" + item + ",转换后文件:" + fileNameList[item] + "\n"
+			error_icon_file_list += "转换失败\t原始文件：" + item.encode("utf-8") + "\t\t\t,转换后文件:" + fileNameList[item].encode('utf-8') + "\n"
 			continue;
 	# 输出错误列表
 	filePath = os.path.join(os.getcwd(),"orgin_icon_file","error_list.txt")
@@ -56,7 +58,7 @@ def tranName(fileNameList):
 	file.write(error_icon_file_list)
 	file.close()
 
-	print "看到 success 字样说明转换成功 ，请查看orgin_icon_file 是否有 error_list.txt 文件 ，转换错误的信息将写在此文件中 ，"
+	print "转换成功 ，可能有部分图片转换失败 ，请查看orgin_icon_file 是否有 error_list.txt 文件 ，转换错误的信息将写在此文件中 ，"
 #start
 
 fileNameList = getFileNameList()
