@@ -35,8 +35,8 @@ def check_icon_name(configFileList, checkFilePath):
 	# print fileList 
 	# 对比中文名 ，则选择configFileList 中的kek  ，对比英文名则选择 value
 	for item in fileList:
-		if configFileList.has_key(item ):
-			configFileList.pop(item)
+		if configFileList.has_key(item.decode('gbk') ):
+			configFileList.pop(item.decode('gbk'))
 	# 剩下的configFileList 都是未找到对应的，需要输出到文件
 	if len(configFileList) == 0:
 		# print u"已检查" + checkFilePath +u"下所有png文件，文件名正确"
@@ -65,6 +65,8 @@ def getFileFromPath(path):
 			fileList.append(filename)
 		else:
 			continue
+	print "fileList:"
+	print fileList
 	return fileList
 
 
@@ -72,7 +74,7 @@ def getFileFromPath(path):
 
 configFileList = getFileNameList(os.path.join(os.getcwd(),"orgin_icon_file","icon_check_list.conf"))
 print "get configFileList success"
-# print configFileList
+print configFileList
 
 check_icon_name(configFileList , os.path.join(os.getcwd(),"orgin_icon_file"))
 
