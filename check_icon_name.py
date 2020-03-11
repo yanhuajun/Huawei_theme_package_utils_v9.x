@@ -25,8 +25,9 @@ def getFileNameList(filePath):
 		if line.startswith("#"):
 			continue
 		line = line.strip()
-		array = line.split("=")
-		fileNameList[array[0]] = array[1]
+		# array = line.split("=")
+		# fileNameList[array[0]] = array[1]
+		fileNameList[line] = line
 	return fileNameList
 
 def check_icon_name(configFileList, checkFilePath):
@@ -42,8 +43,8 @@ def check_icon_name(configFileList, checkFilePath):
 		return
 	result = u'以下为命名错误图标，请检查 \r\n\r\n'
 	for (d,x) in configFileList.items():
-		result += u"未找到 （中文名）:"+d+u"\r\n匹配的英文名:"+ x +"\r\n\r\n"
-	
+		# result += u"未找到 （中文名）:"+d + u"\r\n匹配的英文名:"+ x +"\r\n\r\n"
+		result += u"未找到 （中文名）:"+d + "\r\n\r\n"
 	# print result
 	resultPath = os.path.join(checkFilePath , "check_icon_name_error.txt")
 	resultFile = codecs.open(resultPath,"w",encoding='utf-8')
@@ -66,7 +67,7 @@ def getFileFromPath(path):
 
 #start
 
-configFileList = getFileNameList(os.path.join(os.getcwd(),"orgin_icon_file","icon_rename_file.conf"))
+configFileList = getFileNameList(os.path.join(os.getcwd(),"orgin_icon_file","icon_check_list.conf"))
 print "get configFileList success"
 # print configFileList
 
