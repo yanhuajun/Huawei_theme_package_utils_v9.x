@@ -39,7 +39,8 @@ def check_icon_name(configFileList, checkFilePath):
 			configFileList.pop(item)
 	# 剩下的configFileList 都是未找到对应的，需要输出到文件
 	if len(configFileList) == 0:
-		print u"已检查" + checkFilePath +u"下所有png文件，文件名正确"
+		# print u"已检查" + checkFilePath +u"下所有png文件，文件名正确"
+		print "success  ,finish check all file in path:" + checkFilePath + ",with conf file:" + os.path.join(os.getcwd(),"orgin_icon_file","icon_check_list.conf") +", and all file name is right!!" 
 		return
 	result = u'以下为命名错误图标，请检查 \r\n\r\n'
 	for (d,x) in configFileList.items():
@@ -51,7 +52,9 @@ def check_icon_name(configFileList, checkFilePath):
 	#resultFile = codecs.open(resultPath,"w",encoding='gbk')
 	resultFile.write(result)
 	resultFile.close()
-	print u"结果文件成功写入至" + resultPath
+
+	# print u"结果文件成功写入至" + resultPath
+	print "success , output file path:" + resultPath
 
 def getFileFromPath(path):
 	print "getFileFrom:" + path
