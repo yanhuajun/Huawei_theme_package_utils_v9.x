@@ -68,33 +68,52 @@ def optByConf( ):
 			icons_list.append(filePath)
 	return printArr 
 
-def combineImg(img1Path ,img2Path ,outFileName ,inputBox ):
-	# print "ready to combine img  : " + img1Path +" , and :" + img2Path
+# def combineImg(img1Path ,img2Path ,outFileName ,inputBox ):
+# 	# print "ready to combine img  : " + img1Path +" , and :" + img2Path
 
-	base_img = img2Path # Image.open(img2Path)
-	#新建透明底图，大小和手机图一样，mode使用RGBA，保留Alpha透明度，颜色为透明
-	#Image.new(mode, size, color=0)，color可以用tuple表示，分别表示RGBA的值
-	target = Image.new('RGBA', base_img.size, (0, 0, 0, 0))
-	if inputBox == '':
-		box = (0, 0, base_img.size[0], base_img.size[1]) #区域
+# 	base_img = img2Path # Image.open(img2Path)
+# 	#新建透明底图，大小和手机图一样，mode使用RGBA，保留Alpha透明度，颜色为透明
+# 	#Image.new(mode, size, color=0)，color可以用tuple表示，分别表示RGBA的值
+# 	target = Image.new('RGBA', base_img.size, (0, 0, 0, 0))
+# 	if inputBox == '':
+# 		box = (0, 0, base_img.size[0], base_img.size[1]) #区域
+# 	else:
+# 		box = inputBox
+# 	region = img1Path # Image.open(img1Path)
+# 	# region = region.rotate(180) #旋转180度
+# 	#确保图片是RGBA格式，大小和box区域一样
+# 	region = region.convert("RGBA")
+# 	region = region.resize((box[2] - box[0], box[3] - box[1]))
+# 	#先将狐狸像合成到底图上
+# 	target.paste(region,box)
+# 	#将手机图覆盖上去，中间透明区域将狐狸像显示出来。
+# 	target.paste(base_img,(0,0),base_img) #第一个参数表示需要粘贴的图像，中间的是坐标，最后是一个是mask图片，用于指定透明区域，将底图显示出来。
+# 	# target.show()
+# 	# target.save(os.path.join(default_output_file ,outFileName ))  # 保存图片
+
+# 	targetObj = {}
+# 	targetObj['img'] = target
+# 	targetObj['name'] = os.path.join(default_output_file ,outFileName )
+# 	return targetObj 
+
+def combineImg_New(baseImg , frontImg , outFileName  , frontImgCenterPoint,frontImgResize):
+	target = Image.new('RGBA' , baseImg.size , (0,0,0,0))
+	baseImg = baseImg.convert("RGBA")
+	frontImg = frontImg.convert("RGBA")
+	target.paste(baseImg , (0,0) )
+	# 处理粘贴坐标
+	if frontImgCenterPoint == '':
+		frontImgCenterPoint = (0,0)
 	else:
-		box = inputBox
-	# 加载需要狐狸像
-	region = img1Path # Image.open(img1Path)
-	# region = region.rotate(180) #旋转180度
-	#确保图片是RGBA格式，大小和box区域一样
-	region = region.convert("RGBA")
-	region = region.resize((box[2] - box[0], box[3] - box[1]))
-	#先将狐狸像合成到底图上
-	target.paste(region,box)
-	#将手机图覆盖上去，中间透明区域将狐狸像显示出来。
-	target.paste(base_img,(0,0),base_img) #第一个参数表示需要粘贴的图像，中间的是坐标，最后是一个是mask图片，用于指定透明区域，将底图显示出来。
-	# target.show()
-	# target.save(os.path.join(default_output_file ,outFileName ))  # 保存图片
+		frontImgCenterPoint = (frontImgCenterPoint[0]-frontImg.size[0]/2  , frontImgCenterPoint[1]-frontImg.size[1] / 2)
+
+	if frontImgResize != '':
+		frontImg = frontImg.resize(frontImgResize)
+	target.paste(frontImg , frontImgCenterPoint ,frontImg)
 
 	targetObj = {}
 	targetObj['img'] = target
-	targetObj['name'] = os.path.join(default_output_file ,outFileName )
+	# targetObj['name'] = os.path.join(default_output_file ,outFileName )
 	return targetObj 
 
 def isWindows():
@@ -108,31 +127,86 @@ def isWindows():
 		return False
 
 
+def iconPaste1440_3168(targetObj,outputFileName ,isFirst):
+	# print "icon:" + icons_list[0]		# icon.show()
+	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[0]).convert("RGBA"), item ,(200,2900) ,(180,180) )
+	# # targetObj = combineImg(Image.open(bgPath) ,  icon, item ,'')
+	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[1]).convert("RGBA"), item ,(200+330*1,2900) ,(180,180) )
+	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[3]).convert("RGBA"), item ,(200+330*2,2900) ,(180,180) )
+	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[4]).convert("RGBA"), item ,(200+330*4,2900) ,(180,180) )
+
+	start_width = 210
+	margin_left = 330
+
+
+	# 首页
+	for i in range(0,4):
+		targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*i,2873) ,(180,180) )
+
+	if isFirst:
+		for i in range(4,8):
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-4),1490) ,(180,180) )
+
+	if isFirst:
+		for i in range(8,12):
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-8),1896) ,(180,180) )
+	if isFirst:
+		for i in range(12,16):
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-12),2303) ,(180,180) )
+
+
+	# 第二页
+	if not isFirst:
+		for i in range(16,20):
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-16),271) ,(180,180) )
+	if not isFirst:
+		for i in range(20,24):
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-20),677) ,(180,180) )
+	if not isFirst:
+		for i in range(24,28):
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-24),1083) ,(180,180) )
+	if not isFirst:
+		for i in range(28,32):
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-28),1489) ,(180,180) )
+
+
+
+
+	return targetObj;
+
 def workWithSingleSize(bgPath ,resFilePath  ,width , height ):
 	path = os.path.join(resFilePath , "%d*%d" %(width ,height ) )
 	resList = getFileFromPath(path , ['.png'])
 	# if not os.path.exists(default_output_file):
 	# 	os.makedirs(default_output_file)
-	for item in resList:
+	for i in range(0,len(resList)):
+		item = resList[i]
 		# 背景和前置文字组合
-		targetObj = combineImg(Image.open(bgPath) , Image.open(os.path.join(path ,item )) , item ,'')
+		targetObj = combineImg_New(Image.open(bgPath) , Image.open(os.path.join(path ,item )) , item ,'','')
+
 		# icon和 以上组合
-		print "icon:" + icons_list[0]
-		icon = Image.open(icons_list[0])
-		targetObj = combineImg(targetObj["img"] ,  icon, item ,'')
-
-
+		if height == 3168:
+			print "item:" + item 
+			if item.find('preview_menu') >= 0 :
+				isFirst = True
+			else:
+				isFirst = False
+			targetObj = iconPaste1440_3168(targetObj,item ,isFirst)
+		elif height == 1080:
+			pass
 
 		# 准备存储
 		print targetObj
-		if isWindows:
-			dirs = targetObj['name'][0:targetObj['name'].rfind("\\")]
-		else:
-			dirs = targetObj['name'][0:targetObj['name'].rfind("/")]
+		# if isWindows:
+		# 	dirs = targetObj['name'][0:targetObj['name'].rfind("\\")]
+		# else:
+		# 	dirs = targetObj['name'][0:targetObj['name'].rfind("/")]
+		dirs = os.path.join( default_output_file ,"%d*%d" %(width ,height )  )
 		if not os.path.exists(dirs):
 			os.makedirs(dirs)
-		targetObj['img'].show()
-		# targetObj['img'].save(os.path.join(default_output_file ,targetObj['name'] ))
+		outputFilePath = os.path.join(dirs , item)
+		# targetObj['img'].show()
+		targetObj['img'].save(   outputFilePath   )
 
 
 
