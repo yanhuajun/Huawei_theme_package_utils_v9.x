@@ -17,8 +17,9 @@ default_output_file = os.path.join(os.getcwd() , 'output')
 bg_list = []
 icons_list = []
 conf_list = []
+system_color='white'
 
-isWindows = True
+
 
 def getFileFromPath(path,suffix):
 	print "getFileFrom:" + path
@@ -116,15 +117,6 @@ def combineImg_New(baseImg , frontImg , outFileName  , frontImgCenterPoint,front
 	# targetObj['name'] = os.path.join(default_output_file ,outFileName )
 	return targetObj 
 
-def isWindows():
-	platformStr = platform.platform()
-	print platformStr
-	if platformStr.find("windows")>=0 or platformStr.find("Windows") >=0 :
-		print "platform is windows"
-		return True
-	else:
-		print "platform is not windows"
-		return False
 
 
 def iconPaste1440_3168(targetObj,outputFileName ,isFirst):
@@ -175,7 +167,8 @@ def iconPaste1440_3168(targetObj,outputFileName ,isFirst):
 	return targetObj;
 
 def workWithSingleSize(bgPath ,resFilePath  ,width , height ):
-	path = os.path.join(resFilePath , "%d*%d" %(width ,height ) )
+	path = os.path.join(resFilePath , "%d*%d" %(width ,height ) , system_color.get())
+
 	resList = getFileFromPath(path , ['.png'])
 	# if not os.path.exists(default_output_file):
 	# 	os.makedirs(default_output_file)
@@ -201,7 +194,9 @@ def workWithSingleSize(bgPath ,resFilePath  ,width , height ):
 		# 	dirs = targetObj['name'][0:targetObj['name'].rfind("\\")]
 		# else:
 		# 	dirs = targetObj['name'][0:targetObj['name'].rfind("/")]
-		dirs = os.path.join( default_output_file ,"%d*%d" %(width ,height )  )
+		dirs = os.path.join( default_output_file ,"drawable-xxhdpi-%dx%d" %(height , width )  )
+		if dirs.find('drawable-xxhdpi-1920x1080') >= 0:
+			dirs = dirs.replace('drawable-xxhdpi-1920x1080' ,'drawable-xxhdpi')
 		if not os.path.exists(dirs):
 			os.makedirs(dirs)
 		outputFilePath = os.path.join(dirs , item)
@@ -211,9 +206,7 @@ def workWithSingleSize(bgPath ,resFilePath  ,width , height ):
 
 
 def startWork():
-	global isWindows
 	print 'start Work...'
-	isWindows = isWindows()
 	for item in bg_list:
 		bgPath = os.path.join(default_bg_file , item )
 		size = getImageSize(bgPath)
@@ -257,8 +250,22 @@ iconsConfigFilePathEntry.pack()
 outputPathLabel = Tkinter.Label(top,text="输出文件夹目录（不填则默认当前文件夹下output文件夹）")
 outputPathLabel.pack()
 
+
+
 outputPathEntry = Tkinter.Entry(top  )
 outputPathEntry.pack()
+
+var = Tkinter.StringVar()
+# l = Tkinter.Label(top, bg='yellow', width=20, text='empty')
+l = Tkinter.Label(top,  text='请选择文字颜色（A、白色 B、黑色）默认白色')
+l.pack()
+def print_selection():
+	global system_color
+	system_color = var
+	# l.config(text='you have selected ' + var.get())
+Tkinter.Radiobutton(top, text='白色',variable=var, value='white',command=print_selection).pack()
+Tkinter.Radiobutton(top, text='黑色',variable=var, value='black',command=print_selection).pack()
+
 
 strvar = Tkinter.StringVar()
 strvar.set("下一步") #初始的按钮文本
