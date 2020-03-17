@@ -17,7 +17,7 @@ default_output_file = os.path.join(os.getcwd() , 'output')
 bg_list = []
 icons_list = []
 conf_list = []
-system_color='white'
+system_color=''
 
 
 
@@ -167,7 +167,8 @@ def iconPaste1440_3168(targetObj,outputFileName ,isFirst):
 	return targetObj;
 
 def workWithSingleSize(bgPath ,resFilePath  ,width , height ):
-	path = os.path.join(resFilePath , "%d*%d" %(width ,height ) , system_color.get())
+
+	path = os.path.join(resFilePath , "%dx%d" %(height ,width ) , system_color.get() )
 
 	resList = getFileFromPath(path , ['.png'])
 	# if not os.path.exists(default_output_file):
@@ -211,7 +212,7 @@ def startWork():
 		bgPath = os.path.join(default_bg_file , item )
 		size = getImageSize(bgPath)
 		# 查看res中是否存在此分辨率的资源文件
-		resFileName = "%d*%d" %(size[0] , size[1])
+		resFileName = "%dx%d" %(size[1] , size[0])
 		# print resFileName
 		if os.path.exists(os.path.join(default_res_file ,resFileName)):
 			workWithSingleSize( bgPath ,default_res_file , size[0] , size[1]   )
@@ -256,6 +257,8 @@ outputPathEntry = Tkinter.Entry(top  )
 outputPathEntry.pack()
 
 var = Tkinter.StringVar()
+var.set('white')
+system_color=var
 # l = Tkinter.Label(top, bg='yellow', width=20, text='empty')
 l = Tkinter.Label(top,  text='请选择文字颜色（A、白色 B、黑色）默认白色')
 l.pack()
