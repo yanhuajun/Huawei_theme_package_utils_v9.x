@@ -44,7 +44,12 @@ def getFileFromPath(path,suffix):
 def readContentFromFileByLine( path ):
 	listArr = [] 
 	content = codecs.open( path ,'r' , encoding ='utf-8').read()
-	for item in content.split('\n'):
+	arr = []
+	if isWindows():
+		arr = content.split('\r\n')
+	else:
+		arr = content.split('\n')
+	for item in arr:
 		if item.find("=") >= 0 :
 			listArr.append(item)
 	return listArr
@@ -67,6 +72,11 @@ def optByConf( ):
 			print 'exists'
 			printArr.append(item)
 			icons_list.append(filePath)
+		else:
+			print 'not exists'
+		# printArr.append(item)
+		# icons_list.append(filePath)
+
 	return printArr 
 
 # def combineImg(img1Path ,img2Path ,outFileName ,inputBox ):
@@ -117,49 +127,82 @@ def combineImg_New(baseImg , frontImg , outFileName  , frontImgCenterPoint,front
 	# targetObj['name'] = os.path.join(default_output_file ,outFileName )
 	return targetObj 
 
+def loadIconPositionConf(size):
+	width=size[0]
+	height=size[1]
+	print "pre to load %dx%d icon position config file..." %(height , width )
+	content = codecs.open(os.path.join(default_res_file,"%dx%d"%(height,width),"icon_position.conf")).read()
+	arr = []
+	iconPositionConf = {}
+	if isWindows():
+		arr = content.split("\r\n")
+	else:
+		arr = content.split("\n")
+	for item in arr:
+		if item == '':
+			continue;
+		itemArr = item.split("=")
+		print "itemArr[0]=%s , itemArr[1]=%s" %(itemArr[0] , itemArr[1])
+		iconPositionConf[itemArr[0]] = int(itemArr[1])
+	print iconPositionConf
+	return iconPositionConf
 
 
-def iconPaste1440_3168(targetObj,outputFileName ,isFirst):
+def isWindows():
+	platformStr = platform.platform()
+	print platformStr
+	if platformStr.find("windows")>=0 or platformStr.find("Windows") >=0 :
+		print "platform is windows"
+		return True
+	else:
+		print "platform is not windows"
+		return False
+
+
+def iconPaste(targetObj,outputFileName ,isFirst,size):
 	# print "icon:" + icons_list[0]		# icon.show()
-	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[0]).convert("RGBA"), item ,(200,2900) ,(180,180) )
+	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[0]).convert("RGBA"), item ,(200,2900) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 	# # targetObj = combineImg(Image.open(bgPath) ,  icon, item ,'')
-	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[1]).convert("RGBA"), item ,(200+330*1,2900) ,(180,180) )
-	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[3]).convert("RGBA"), item ,(200+330*2,2900) ,(180,180) )
-	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[4]).convert("RGBA"), item ,(200+330*4,2900) ,(180,180) )
+	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[1]).convert("RGBA"), item ,(200+330*1,2900) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[3]).convert("RGBA"), item ,(200+330*2,2900) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[4]).convert("RGBA"), item ,(200+330*4,2900) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 
-	start_width = 210
-	margin_left = 330
+	iconPositionConf = loadIconPositionConf(size)
 
+	start_width = iconPositionConf['start_width']
+	margin_left = iconPositionConf['margin_left']
+
+
+	# 底部通用
+	for i in range(0,4):
+		targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*i,iconPositionConf["bottom_position_y"]) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 
 	# 首页
-	for i in range(0,4):
-		targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*i,2873) ,(180,180) )
-
 	if isFirst:
 		for i in range(4,8):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-4),1490) ,(180,180) )
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-4),iconPositionConf['p1_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 
 	if isFirst:
 		for i in range(8,12):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-8),1896) ,(180,180) )
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-8),iconPositionConf['p1_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 	if isFirst:
 		for i in range(12,16):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-12),2303) ,(180,180) )
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-12),iconPositionConf['p1_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 
 
 	# 第二页
 	if not isFirst:
 		for i in range(16,20):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-16),271) ,(180,180) )
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-16),iconPositionConf['p2_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 	if not isFirst:
 		for i in range(20,24):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-20),677) ,(180,180) )
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-20),iconPositionConf['p2_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 	if not isFirst:
 		for i in range(24,28):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-24),1083) ,(180,180) )
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-24),iconPositionConf['p2_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 	if not isFirst:
 		for i in range(28,32):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-28),1489) ,(180,180) )
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-28),iconPositionConf['p2_l4_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 
 
 
@@ -179,15 +222,12 @@ def workWithSingleSize(bgPath ,resFilePath  ,width , height ):
 		targetObj = combineImg_New(Image.open(bgPath) , Image.open(os.path.join(path ,item )) , item ,'','')
 
 		# icon和 以上组合
-		if height == 3168:
-			print "item:" + item 
-			if item.find('preview_menu') >= 0 :
-				isFirst = True
-			else:
-				isFirst = False
-			targetObj = iconPaste1440_3168(targetObj,item ,isFirst)
-		elif height == 1080:
-			pass
+		print "item:" + item 
+		if item.find('preview_menu') >= 0 :
+			isFirst = True
+		else:
+			isFirst = False
+		targetObj = iconPaste(targetObj,item ,isFirst,(width,height))
 
 		# 准备存储
 		print targetObj
