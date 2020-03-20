@@ -113,14 +113,18 @@ def combineImg_New(baseImg , frontImg , outFileName  , frontImgCenterPoint,front
 	baseImg = baseImg.convert("RGBA")
 	frontImg = frontImg.convert("RGBA")
 	target.paste(baseImg , (0,0) )
+
+	# 处理 font resize
+	if frontImgResize != '':
+		frontImg = frontImg.resize(frontImgResize)
+
+
 	# 处理粘贴坐标
 	if frontImgCenterPoint == '':
 		frontImgCenterPoint = (0,0)
 	else:
 		frontImgCenterPoint = (frontImgCenterPoint[0]-frontImg.size[0]/2  , frontImgCenterPoint[1]-frontImg.size[1] / 2)
 
-	if frontImgResize != '':
-		frontImg = frontImg.resize(frontImgResize)
 	target.paste(frontImg , frontImgCenterPoint ,frontImg)
 
 	targetObj = {}
@@ -353,7 +357,7 @@ def cutPic(orginPic  , size ):
 
 
 top = Tkinter.Tk()
-top.title="自动生成icons预览-oppo"
+top.title("自动生成icons预览-oppo")
 
 bgFilePathLabel = Tkinter.Label(top,text="背景图片文件夹路径（不填默认当前文件夹下bg文件夹）")
 bgFilePathLabel.pack()
