@@ -11,13 +11,14 @@ import platform
 default_bg_file = os.path.join(os.getcwd() , 'bg')
 default_icons_file = os.path.join(os.getcwd() , 'icons')
 default_res_file = os.path.join(os.getcwd() , 'res')
-default_icons_conf_file = os.path.join(os.getcwd() , 'icons.conf')
+default_icons_conf_file = os.path.join(os.getcwd() , 'iconsx3.conf')
 default_output_file = os.path.join(os.getcwd() , 'output')
 
 bg_list = []
 icons_list = []
 conf_list = []
 system_color=''
+all_size_arr = [(1080,1920),(1080,2160),(1080,2280),(1080,2340),(1080,2400),(1440,3168)]
 
 
 
@@ -50,8 +51,8 @@ def readContentFromFileByLine( path ):
 	else:
 		arr = content.split('\n')
 	for item in arr:
-		if item.find("=") >= 0 :
-			listArr.append(item)
+		if item != '' and not item.startswith('#') and  item.find("=") >= 0 :
+			listArr.append(os.path.join(default_icons_file , item.split('=')[1] ))
 	return listArr
 
 def getImageSize(path):
@@ -65,7 +66,7 @@ def optByConf( ):
 	printArr = []
 
 	for item in conf_list:
-		# print "item:" + item 
+		print "item:" + item 
 		filePath = os.path.join(default_icons_file , item.split('=')[1] )
 		print "filePath:" + filePath
 		if os.path.exists(filePath):
@@ -149,6 +150,7 @@ def loadIconPositionConf(size):
 
 
 def isWindows():
+	return False
 	platformStr = platform.platform()
 	print platformStr
 	if platformStr.find("windows")>=0 or platformStr.find("Windows") >=0 :
@@ -160,13 +162,12 @@ def isWindows():
 
 
 def iconPaste(targetObj,outputFileName ,isFirst,size):
-	# print "icon:" + icons_list[0]		# icon.show()
-	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[0]).convert("RGBA"), item ,(200,2900) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
-	# # targetObj = combineImg(Image.open(bgPath) ,  icon, item ,'')
-	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[1]).convert("RGBA"), item ,(200+330*1,2900) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
-	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[3]).convert("RGBA"), item ,(200+330*2,2900) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
-	# targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[4]).convert("RGBA"), item ,(200+330*4,2900) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
-
+	# 根据分辨率读取iconconfig
+	global icons_list
+	if size[1] == 3168:
+		icons_list = readContentFromFileByLine(os.path.join(os.getcwd(),'iconsx3.conf'))
+	else:
+		icons_list = readContentFromFileByLine(os.path.join(os.getcwd(),'iconsx4.conf'))
 	iconPositionConf = loadIconPositionConf(size)
 
 	start_width = iconPositionConf['start_width']
@@ -181,35 +182,57 @@ def iconPaste(targetObj,outputFileName ,isFirst,size):
 	if isFirst:
 		for i in range(4,8):
 			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-4),iconPositionConf['p1_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
-
 	if isFirst:
 		for i in range(8,12):
 			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-8),iconPositionConf['p1_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 	if isFirst:
 		for i in range(12,16):
 			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-12),iconPositionConf['p1_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+	
+	if size[1] == 3168:
+		# 第二页
+		if not isFirst:
+			for i in range(16,20):
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-16),iconPositionConf['p2_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+		if not isFirst:
+			for i in range(20,24):
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-20),iconPositionConf['p2_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+		if not isFirst:
+			for i in range(24,28):
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-24),iconPositionConf['p2_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+		if not isFirst:
+			for i in range(28,32):
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-28),iconPositionConf['p2_l4_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 
 
-	# 第二页
-	if not isFirst:
-		for i in range(16,20):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-16),iconPositionConf['p2_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
-	if not isFirst:
-		for i in range(20,24):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-20),iconPositionConf['p2_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
-	if not isFirst:
-		for i in range(24,28):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-24),iconPositionConf['p2_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
-	if not isFirst:
-		for i in range(28,32):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-28),iconPositionConf['p2_l4_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+	else:
+		if isFirst:
+			for i in range(16,20):
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-16),iconPositionConf['p1_l4_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+		
+
+		# 第二页
+		if not isFirst:
+			for i in range(20,24):
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-20),iconPositionConf['p2_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+		if not isFirst:
+			for i in range(24,28):
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-24),iconPositionConf['p2_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+		if not isFirst:
+			for i in range(28,32):
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-28),iconPositionConf['p2_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+		if not isFirst:
+			for i in range(32,36):
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-32),iconPositionConf['p2_l4_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+
+
 
 
 
 
 	return targetObj;
 
-def workWithSingleSize(bgPath ,resFilePath  ,width , height ):
+def workWithSingleSize(bgPath ,resFilePath  ,width , height ,bg ):
 
 	path = os.path.join(resFilePath , "%dx%d" %(height ,width ) , system_color.get() )
 
@@ -219,7 +242,9 @@ def workWithSingleSize(bgPath ,resFilePath  ,width , height ):
 	for i in range(0,len(resList)):
 		item = resList[i]
 		# 背景和前置文字组合
-		targetObj = combineImg_New(Image.open(bgPath) , Image.open(os.path.join(path ,item )) , item ,'','')
+		if bg == '':
+			bg = Image.open(bgPath)
+		targetObj = combineImg_New(bg , Image.open(os.path.join(path ,item )) , item ,'','')
 
 		# icon和 以上组合
 		print "item:" + item 
@@ -245,25 +270,86 @@ def workWithSingleSize(bgPath ,resFilePath  ,width , height ):
 		targetObj['img'].save(   outputFilePath   )
 
 
+def findMostRelatedSize(existsSizeArr  ,size):
+	size = size[0]*size[1]
+	tmparr = {}
+	minSize = {};
+	for item in existsSizeArr:
+		tmparr['%dx%d' %(item[0],item[1])] = item[0]*item[1]
+	for (key,value) in tmparr.items():
+		cha = abs(value - size)
+		if len(minSize) ==0:
+			minSize['name'] = key
+			minSize['cha'] = cha
+		else:
+			if cha < minSize['cha']:
+				minSize['name'] = key
+				minSize['cha'] = cha
+	print 'minSize[name]:' + minSize['name'] + (',minSize[cha]:%d' % minSize['cha'])
+	return ( int(minSize['name'].split('x')[0])  ,int(minSize['name'].split('x')[1]) )
 
 def startWork():
+	size_arr = []
 	print 'start Work...'
 	for item in bg_list:
 		bgPath = os.path.join(default_bg_file , item )
 		size = getImageSize(bgPath)
+		size_arr.append(size)
 		# 查看res中是否存在此分辨率的资源文件
 		resFileName = "%dx%d" %(size[1] , size[0])
 		# print resFileName
 		if os.path.exists(os.path.join(default_res_file ,resFileName)):
-			workWithSingleSize( bgPath ,default_res_file , size[0] , size[1]   )
+			workWithSingleSize( bgPath ,default_res_file , size[0] , size[1] , '' )
 		else:
 			print resFileName + " not exists ..."
 			continue
 
+	print 'start match bg img  , and cut ...'
+	print 'start clean all_size_arr'
+	print all_size_arr
+	for item in size_arr:
+		print item 
+		print 'workfinish and remove'
+		all_size_arr.remove(item )
+	for item in all_size_arr:
+		size = findMostRelatedSize(size_arr , item)
+		print size 
+		bgFilePath = getBgFromSize(size);
+		if bgFilePath == 'fail':
+			print 'can not find matched bg file ... continue'
+			continue
+		cuttedImg = cutPic( Image.open( bgFilePath ) ,item)
+		workWithSingleSize( '' ,default_res_file , cuttedImg.size[0] , cuttedImg.size[1]  ,  cuttedImg )
 
 	tkMessageBox.showinfo( "结果提示", "成功" )
 
+def getBgFromSize( size ):
+	print 'getBgFromSize,size:'
+	print size 
+	for item in bg_list:
+		path = os.path.join(default_bg_file  , item )
+		print 'path:' + path 
+		img = Image.open(path)
+		print img.size 
+		if img.size == size :
+			print 'find matched bg ,bgpath' + path 
+			return path
+	return 'fail'
 
+def cutPic(orginPic  , size ):
+	orginSize = orginPic.size
+	width = orginSize[0] - size[0] 
+	height = orginSize[1] - size[1]
+	x = (orginSize[0] - size[0]) / 2
+	y = (orginSize[1] - size[1]) / 2
+	cutSize =(x,y,size[0] + x,size[1] + y )
+	print 'cutSize:'
+	print cutSize 
+	orginPic = orginPic.crop(cutSize)
+	# orginPic.show()
+	print 'cutted pic size:'
+	print orginPic.size
+	return orginPic
 
 
 top = Tkinter.Tk()
@@ -282,17 +368,14 @@ iconsFilePathEntry = Tkinter.Entry(top  )
 iconsFilePathEntry.pack()
 
 
-iconsConfigFilePathLabel = Tkinter.Label(top,text="icons筛选配置文件路径（不填默认当前文件夹下icons.conf）")
-iconsConfigFilePathLabel.pack()
+# iconsConfigFilePathLabel = Tkinter.Label(top,text="icons筛选配置文件路径（不填默认当前文件夹下icons.conf）")
+# iconsConfigFilePathLabel.pack()
 
-iconsConfigFilePathEntry = Tkinter.Entry(top  )
-iconsConfigFilePathEntry.pack()
+# iconsConfigFilePathEntry = Tkinter.Entry(top  )
+# iconsConfigFilePathEntry.pack()
 
 outputPathLabel = Tkinter.Label(top,text="输出文件夹目录（不填则默认当前文件夹下output文件夹）")
 outputPathLabel.pack()
-
-
-
 outputPathEntry = Tkinter.Entry(top  )
 outputPathEntry.pack()
 
@@ -302,6 +385,8 @@ system_color=var
 # l = Tkinter.Label(top, bg='yellow', width=20, text='empty')
 l = Tkinter.Label(top,  text='请选择文字颜色（A、白色 B、黑色）默认白色')
 l.pack()
+
+
 def print_selection():
 	global system_color
 	system_color = var
@@ -338,34 +423,34 @@ def nextStepButtonAction():
 			listb.insert(0,item)
 		listb.pack()
 
-		listb2Label = Tkinter.Label(top,text="icons筛选配置文件内容")
-		listb2Label.pack()
-		if iconsConfigFilePathEntry.get() == '':
-			strr = default_icons_conf_file
-		else:
-			strr = iconsConfigFilePathEntry.get()
-		default_icons_conf_file = strr 
-		configLine = readContentFromFileByLine(strr)
-		conf_list = configLine
-		listb2  = Tkinter.Listbox(top)  
-		for item in configLine:
-			# listb1.insert(0,os.path.join(iconsFilePathEntry.get() ,item))
-			listb2.insert(0,item)
-		listb2.pack()
+		# listb2Label = Tkinter.Label(top,text="icons筛选配置文件内容")
+		# listb2Label.pack()
+		# if iconsConfigFilePathEntry.get() == '':
+		# 	strr = default_icons_conf_file
+		# else:
+		# 	strr = iconsConfigFilePathEntry.get()
+		# default_icons_conf_file = strr 
+		# configLine = readContentFromFileByLine(default_icons_conf_file)
+		# conf_list = configLine
+		# listb2  = Tkinter.Listbox(top)  
+		# for item in configLine:
+		# 	# listb1.insert(0,os.path.join(iconsFilePathEntry.get() ,item))
+		# 	listb2.insert(0,item)
+		# listb2.pack()
 
-		listb1Label = Tkinter.Label(top,text="icons扫描结果")
-		listb1Label.pack()
-		if iconsFilePathEntry.get() == '':
-			strr = default_icons_file
-		else:
-			strr = iconsFilePathEntry.get()
-		default_icons_file = strr
+		# listb1Label = Tkinter.Label(top,text="icons扫描结果")
+		# listb1Label.pack()
+		# if iconsFilePathEntry.get() == '':
+		# 	strr = default_icons_file
+		# else:
+		# 	strr = iconsFilePathEntry.get()
+		# default_icons_file = strr
 		# icons_list = iconsList
-		listb1  = Tkinter.Listbox(top)  
-		for item in optByConf():
-			# listb1.insert(0,os.path.join(iconsFilePathEntry.get() ,item))
-			listb1.insert(0,item)
-		listb1.pack()
+		# listb1  = Tkinter.Listbox(top)  
+		# for item in optByConf():
+		# 	# listb1.insert(0,os.path.join(iconsFilePathEntry.get() ,item))
+		# 	listb1.insert(0,item)
+		# listb1.pack()
 
 		strvar.set("确认输出")
 	else:
