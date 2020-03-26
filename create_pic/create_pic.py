@@ -9,6 +9,7 @@ from PIL import Image ,ImageFont, ImageDraw
 import platform
 import xlrd
 import re
+import random
 
 shadow_size = 5
 Grey = (190,190,190)
@@ -16,6 +17,32 @@ LightGray = (211,211,211)
 alapblack = (211,211,211,100)
 default_output_path = os.path.join(  os.getcwd()  , 'output' )
 
+
+def getFileFromPath(path,prefix,suffix):
+	print "getFileFrom:" + path
+	fileList = []
+	filenames = os.listdir(path)
+	for filename in filenames:
+		# print "suffix:" + filename[filename.rfind('.'):len(filename)]
+		# if filename[filename.rfind('.'):len(filename)] in suffix :
+		# 	fileList.append(filename)
+		# else:
+			# continue
+		if len(suffix ) == 0 and len(prefix) == 0:
+			# 没有前缀后缀匹配
+			fileList.append(filename)
+		else:
+			for item in suffix:
+				if filename.endswith(item):
+					fileList.append(filename)
+					continue
+			for prefix_item in prefix:
+				if filename.startswith(prefix_item):
+					fileList.append(filename)
+					continue
+	print "fileList:"
+	print fileList
+	return fileList
 
 def createShadowImg(orginImg ):
 	orginImg = orginImg.convert('RGBA')
@@ -50,7 +77,7 @@ def combineImg_New(baseImg , frontImg , outFileName  , frontImgCenterPoint,front
 
 	# 处理 font resize
 	if frontImgResize != '':
-		frontImg = frontImg.resize(frontImgResize)
+		frontImg = frontImg.resize(frontImgResize,Image.ANTIALIAS)
 
 
 	# 处理粘贴坐标
@@ -107,24 +134,33 @@ def readConfFromExcel(excelFile):
 		configList.append(configItemList)
 	return configList
 
+def randomName(bgName,prefixArr):
+	if bgName != '' :
+		return bgName
+	else:
+		fileList = getFileFromPath( os.path.join(os.getcwd(),'res') , prefixArr , [] )
+		return fileList[random.randint(0,len(fileList)-1)]
+
 
 def startWork( config ):
-	im = Image.open(os.path.join(os.getcwd(),'res',config[0])) # 打开文件
+	im = Image.open(os.path.join(os.getcwd(),'res',randomName(config[0] , ['bg']) )) # 打开文件
 	im = im.convert('RGBA')
 	if config[1] != '' :
 		size = config[1].split(',')
-		im = im.resize( (int(size[0])  , int(size[1]) ) )
-	img2 = Image.open(os.path.join(os.getcwd(),'res',config[2])) 
+		im = im.resize( (int(size[0])  , int(size[1]) ) ,Image.ANTIALIAS )
+	img2 = Image.open(os.path.join(os.getcwd(),'res',randomName(config[2] , ['front'])  )) 
 	img2 = img2.convert('RGBA')
 	size = []
 	if config[3] != '' :
 		size = config[3].split(',')
-		img2 = img2.resize( ( int(size[2]) , int(size[3]) ) )
-	img3 = createShadowImg(img2)
+		img2 = img2.resize( ( int(size[2]) , int(size[3]) ) ,Image.ANTIALIAS)
+	
 	targetObj = {'img':im}
 
 	# shadow
-	# targetObj = combineImg_New(im, img3 , '', ( int(size[0]) + 5 , int(size[1]) +5 ) , '' )
+	if config[14] == '1':
+		img3 = createShadowImg(img2)
+		targetObj = combineImg_New(im, img3 , '', ( int(size[0]) + 5 , int(size[1]) +5 ) , '' )
 	targetObj = combineImg_New(targetObj['img'], img2 , '',( int(size[0]) , int(size[1])  ) ,'' )
 	
 	# img4 = Image.open('箭头@2x.png')
@@ -184,6 +220,7 @@ def getColorFromHex(tmp):
 	strs = strs[0:-1]
 	print(strs)				#输出最后结果，末尾的","不打印
 	return strs.split(',')
+	
 def getPositionFromCenterPointAndText(letters  , position ,font ,fontSize ):
 	length = len(letters)
 	# position = (1080,1920)

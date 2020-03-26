@@ -116,7 +116,7 @@ def combineImg_New(baseImg , frontImg , outFileName  , frontImgCenterPoint,front
 
 	# 处理 font resize
 	if frontImgResize != '':
-		frontImg = frontImg.resize(frontImgResize)
+		frontImg = frontImg.resize(frontImgResize,Image.ANTIALIAS)
 
 
 	# 处理粘贴坐标
