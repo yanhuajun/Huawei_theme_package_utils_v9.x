@@ -11,11 +11,41 @@ import xlrd
 import re
 import random
 
+import textwrap
+
 shadow_size = 5
 Grey = (190,190,190)
 LightGray = (211,211,211)
 alapblack = (211,211,211,100)
 default_output_path = os.path.join(  os.getcwd()  , 'output' )
+
+backMode = {
+	"text":[{
+		"size":50,
+		"ttf":"./NotoSansSC-Bold.ttf",
+		"color":"100,100,100",
+		"position":(90,560),
+		"frame":(900,50),
+	},{
+		"size":50,
+		"ttf":"./NotoSansSC-Bold.ttf",
+		"color":"100,100,100",
+		"position":(90,620),
+		"frame":(900,50),
+	},{
+		"size":50,
+		"ttf":"./NotoSansSC-Bold.ttf",
+		"color":"100,100,100",
+		"position":(90,680),
+		"frame":(900,50),
+	},{
+		"size":50,
+		"ttf":"./NotoSansSC-Bold.ttf",
+		"color":"100,100,100",
+		"position":(90,740),
+		"frame":(900,50),
+	}]
+}
 
 
 def getFileFromPath(path,prefix,suffix):
@@ -188,7 +218,7 @@ def startWork( config ):
 
 	if config[4]!= '' and config[5] != '' and config[6] != '' :
 		size = config[6].split(',')
-		font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
+		font = ImageFont.truetype("./msyh.ttc", size = int(size[3])  )#更改文字字体
 		colorArr = getColorFromHex(config[5])
 		centerPoint = getPositionFromCenterPointAndText( config[4] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
 		draw.text( (centerPoint[0] , int(size[1]) ) , config[4],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字
@@ -198,17 +228,45 @@ def startWork( config ):
 		colorArr = getColorFromHex(config[8])
 		centerPoint = getPositionFromCenterPointAndText( config[7] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
 		draw.text( (centerPoint[0] , int(size[1]) )  , config[7],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字
+		# myfont = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3]))
+		# text = config[7];
+		# tend = len(text)
+		# while True:
+		# 	text_size = draw.textsize(text[:tend], font=myfont) #文本图层的尺寸
+		# 	#print(text_size)
+		# 	if text_size[0] <= size[2]:
+		# 		break
+		# 	else:
+		# 		tend -= 1 #文本太长，调整文本长度
+		# draw.text(  (centerPoint[0] , int(size[1]) )   , text[:tend], font=myfont , fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) )  )
+
+
 	if config[10]!= '' and config[11] != '' and config[12] != '' :
 		size = config[12].split(',')
 		font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
 		colorArr = getColorFromHex(config[11])
 		centerPoint = getPositionFromCenterPointAndText( config[10] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
 		draw.text( (centerPoint[0] , int(size[1]) )   , config[10],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字
+	if config[15]!= '' and config[16] != '' and config[17] != '' :
+		size = config[17].split(',')
+		font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
+		colorArr = getColorFromHex(config[16])
+		centerPoint = getPositionFromCenterPointAndText( config[15] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
+		draw.text( (centerPoint[0] , int(size[1]) )   , config[15],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字
+	print 'start write_line...'
+	print 'backMode:' 
+	print backMode
+	print 'backMode["text"]'
+	print backMode["text"]
+	if config[18] != '':
+		im = write_text(im  ,u"晚风窃笑街角 需要为一堆落叶放哨\n冷的月色\n铺垫整场你礼貌的揭晓 不爱我就拉倒", backMode["text"])
 	
+
 	# im.show()
 	if not os.path.exists( default_output_path ) :
 		os.makedirs(default_output_path)
-	im.save(os.path.join( default_output_path  ,config[13] )  )
+	im.show()
+	# im.save(os.path.join( default_output_path  ,config[13] )  )
 
 def getColorFromHex(tmp):
 	tmp = tmp[1:]
@@ -235,6 +293,52 @@ def getPositionFromCenterPointAndText(letters  , position ,font ,fontSize ):
 	print 'returnPosition:'
 	print returnPosition
 	return returnPosition
+
+def write_text(img , text, tmodeList):
+	#写文本
+	print 'tmodeList : '
+	print tmodeList
+	tlist = text.split("\n")
+	mnum = 0
+	draw = ImageDraw.Draw(img)
+	for t in tlist:
+		tbegin = 0
+		tend = len(t)
+		while True:
+			img, tend = write_line(img, t[tbegin:tend], tmodeList[mnum])
+			mnum += 1
+			if tbegin + tend == len(t) or mnum == len(tmodeList):
+				break
+			else:
+				tbegin = tbegin + tend
+				tend = len(t)
+		if mnum == len(tmodeList):
+			break
+	return img
+
+def write_line(backimg ,text, tmode):
+#给单个文本框填充数据
+	myfont = ImageFont.truetype(tmode["ttf"],size=tmode["size"])
+	draw = ImageDraw.Draw(backimg)
+	tend = len(text)
+	while True:
+		text_size = draw.textsize(text[:tend], font=myfont)
+#文本图层的尺寸
+		
+#print(text_size)
+		if text_size[0] <= tmode["frame"][0]:
+			break
+		else:
+			tend -= 1
+#文本太长，调整文本长度
+	if tmode['color'] == '':
+		color = (0,0,0)
+	else:
+		color = ( int(tmode['color'].split(',')[0]) , int(tmode['color'].split(',')[1]) , int(tmode['color'].split(',')[2]) ) 
+	draw.text((tmode["position"][0], tmode["position"][1]), text[:tend], font=myfont , fill= color )
+
+	return backimg, tend
+
 
 
 # start
