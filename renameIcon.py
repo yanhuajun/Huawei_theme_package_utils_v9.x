@@ -7,6 +7,7 @@ import time
 import fileinput 
 import chardet
 import codecs
+import shutil
 
 error_icon_file_list = '' 
 
@@ -38,17 +39,12 @@ def tranName(fileNameList):
 		#print u"orginName:%s ===>tansName:%s" % (item ,fileNameList[item])
 	for item in fileNameList:
 		try:
-			if(os.sep == '/'):
-				cmd = "cp ./orgin_icon_file/'%s' ./trans_name_file/'%s'"  %(item  ,fileNameList[item])
-				print(cmd);
-				os.system(cmd);
-			else:
-				cmd = ("copy .\\orgin_icon_file\\'%s' .\\trans_name_file\\'%s'"  %(item ,fileNameList[item]))
-				cmd = cmd.encode("gbk")
-				print(cmd);
-				os.system(cmd)
+			print item.encode('gbk')
+			
+			shutil.copyfile(os.path.join( os.getcwd(),"orgin_icon_file",  item.encode('gbk') ),os.path.join( os.getcwd(),"trans_name_file",fileNameList[item] ) )
 		except Exception , e : 
-			print "error , " + e.message 
+			print "error , " 
+			print e 
 			error_icon_file_list += u"转换失败,原始文件：" + item+ u"\t\t\t,转换后文件:" + fileNameList[item]+ "\r\n\r\n"
 			continue;
 	# 输出错误列表

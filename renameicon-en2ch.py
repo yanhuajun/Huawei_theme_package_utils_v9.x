@@ -7,6 +7,7 @@ import time
 import fileinput 
 import chardet
 import codecs
+import shutil
 
 def getFileNameList():
 	fileNameList = {}
@@ -31,15 +32,16 @@ def tranName(fileNameList):
 	print "changing list :"
 	for item in fileNameList:
 		#print "orginName:%s ===>tansName:%s" % (item  ,fileNameList[item])
-		if(os.sep == '/'):
-                        cmd = u"cp ./orgin_icon_file/%s ./trans_name_file/%s"  %(item  ,fileNameList[item])
-			#print(cmd);
-			os.system(cmd);
-		else:
-			cmd = (u"copy .\\orgin_icon_file\\%s .\\trans_name_file\\%s"  %(item ,fileNameList[item]))
-                        cmd = cmd.encode('utf-8')
-			#print(cmd);
-			os.system(cmd);
+		# if(os.sep == '/'):
+  #                       cmd = u"cp ./orgin_icon_file/%s ./trans_name_file/%s"  %(item  ,fileNameList[item])
+		# 	#print(cmd);
+		# 	os.system(cmd);
+		# else:
+		# 	cmd = (u"copy .\\orgin_icon_file\\%s .\\trans_name_file\\%s"  %(item ,fileNameList[item]))
+  #                       cmd = cmd.encode('utf-8')
+		# 	#print(cmd);
+		# 	os.system(cmd);
+		shutil.copyfile(os.path.join( os.getcwd(),"orgin_icon_file",  item.encode('gbk') ),os.path.join( os.getcwd(),"trans_name_file",fileNameList[item] ) )
 #start
 
 fileNameList = getFileNameList()
