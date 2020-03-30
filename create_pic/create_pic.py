@@ -22,26 +22,26 @@ default_output_path = os.path.join(  os.getcwd()  , 'output' )
 backMode = {
 	"text":[{
 		"size":50,
-		"ttf":"./NotoSansSC-Bold.ttf",
-		"color":"100,100,100",
+		"ttf":"./msyh.ttc",
+		"color":"30,30,30",
 		"position":(90,560),
 		"frame":(900,50),
 	},{
 		"size":50,
-		"ttf":"./NotoSansSC-Bold.ttf",
-		"color":"100,100,100",
+		"ttf":"./msyh.ttc",
+		"color":"30,30,30",
 		"position":(90,620),
 		"frame":(900,50),
 	},{
 		"size":50,
-		"ttf":"./NotoSansSC-Bold.ttf",
-		"color":"100,100,100",
+		"ttf":"./msyh.ttc",
+		"color":"30,30,30",
 		"position":(90,680),
 		"frame":(900,50),
 	},{
 		"size":50,
-		"ttf":"./NotoSansSC-Bold.ttf",
-		"color":"100,100,100",
+		"ttf":"./msyh.ttc",
+		"color":"30,30,30",
 		"position":(90,740),
 		"frame":(900,50),
 	}]
@@ -259,14 +259,14 @@ def startWork( config ):
 	print 'backMode["text"]'
 	print backMode["text"]
 	if config[18] != '':
-		im = write_text(im  ,u"晚风窃笑街角 需要为一堆落叶放哨\n冷的月色\n铺垫整场你礼貌的揭晓 不爱我就拉倒", backMode["text"])
+		im = write_text(im  ,config[18], backMode["text"])
 	
 
 	# im.show()
 	if not os.path.exists( default_output_path ) :
 		os.makedirs(default_output_path)
 	im.show()
-	# im.save(os.path.join( default_output_path  ,config[13] )  )
+	im.save(os.path.join( default_output_path  ,config[13] )  )
 
 def getColorFromHex(tmp):
 	tmp = tmp[1:]
