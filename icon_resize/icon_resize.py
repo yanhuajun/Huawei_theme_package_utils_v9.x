@@ -413,8 +413,8 @@ def nextStepButtonAction():
 		height = default_height
 	else:
 		height = heightEntry.get()
-	startWork(iconsFilePath , outputFilePath , width  ,height  ,resize_mode.get())
-	tkMessageBox.showinfo( "成功信息", "已输出至："  + outputFilePath +"文件夹下..." )
+	startWork(iconsFilePath , outputFilePath , int(width)  ,int(height)  ,resize_mode.get())
+	tkMessageBox.showinfo( "成功信息", "已输出至："  + outputFilePath.decode('gbk').encode('utf-8') +"文件夹下..." )
 
 
 
