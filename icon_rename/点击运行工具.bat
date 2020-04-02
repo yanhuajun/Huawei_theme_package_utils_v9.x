@@ -1,0 +1,1 @@
+python .\icon_rename.py
