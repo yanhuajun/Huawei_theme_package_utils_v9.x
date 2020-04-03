@@ -21,29 +21,29 @@ default_output_path = os.path.join(  os.getcwd()  , 'output' )
 
 backMode = {
 	"text":[{
-		"size":50,
+		"size":40,
 		"ttf":"./msyh.ttc",
 		"color":"30,30,30",
 		"position":(90,560),
-		"frame":(900,50),
+		"frame":(900,40),
 	},{
-		"size":50,
+		"size":40,
 		"ttf":"./msyh.ttc",
 		"color":"30,30,30",
 		"position":(90,620),
-		"frame":(900,50),
+		"frame":(900,40),
 	},{
-		"size":50,
+		"size":40,
 		"ttf":"./msyh.ttc",
 		"color":"30,30,30",
 		"position":(90,680),
-		"frame":(900,50),
+		"frame":(900,40),
 	},{
-		"size":50,
+		"size":40,
 		"ttf":"./msyh.ttc",
 		"color":"30,30,30",
 		"position":(90,740),
-		"frame":(900,50),
+		"frame":(900,40),
 	}]
 }
 
@@ -172,6 +172,36 @@ def randomName(bgName,prefixArr):
 		return fileList[random.randint(0,len(fileList)-1)]
 
 
+def circle_corner(img, radii):
+    """
+    圆角处理
+    :param img: 源图象。
+    :param radii: 半径，如：30。
+    :return: 返回一个圆角处理后的图象。
+    """
+
+    # 画圆（用于分离4个角）
+    circle = Image.new('L', (radii * 2, radii * 2), 0)  # 创建一个黑色背景的画布
+    draw = ImageDraw.Draw(circle)
+    draw.ellipse((0, 0, radii * 2, radii * 2), fill=255)  # 画白色圆形
+
+    # 原图
+    img = img.convert("RGBA")
+    w, h = img.size
+
+    # 画4个角（将整圆分离为4个部分）
+    alpha = Image.new('L', img.size, 255)
+    alpha.paste(circle.crop((0, 0, radii, radii)), (0, 0))  # 左上角
+    alpha.paste(circle.crop((radii, 0, radii * 2, radii)), (w - radii, 0))  # 右上角
+    alpha.paste(circle.crop((radii, radii, radii * 2, radii * 2)), (w - radii, h - radii))  # 右下角
+    alpha.paste(circle.crop((0, radii, radii, radii * 2)), (0, h - radii))  # 左下角
+    # alpha.show()
+
+    img.putalpha(alpha)  # 白色区域透明可见，黑色区域不可见
+    return img
+
+
+
 def startWork( config ):
 	im = Image.open(os.path.join(os.getcwd(),'res',randomName(config[0] , ['bg']) )) # 打开文件
 	im = im.convert('RGBA')
@@ -187,10 +217,18 @@ def startWork( config ):
 	
 	targetObj = {'img':im}
 
+
+	# 切圆角
+	img2 = circle_corner(img2  , 20 );
+
 	# shadow
-	if config[14] == '1':
+	print 'is front img shadow?'
+	print 'config[14]:'
+	print config[14]
+	if config[14] == 1.0 :
+		print 'get shadow...' 
 		img3 = createShadowImg(img2)
-		targetObj = combineImg_New(im, img3 , '', ( int(size[0]) + 5 , int(size[1]) +5 ) , '' )
+		targetObj = combineImg_New(im, img3 , '', ( int(size[0]) + 10 , int(size[1]) +10 ) , '' )
 	targetObj = combineImg_New(targetObj['img'], img2 , '',( int(size[0]) , int(size[1])  ) ,'' )
 	
 	# img4 = Image.open('箭头@2x.png')
@@ -218,13 +256,20 @@ def startWork( config ):
 
 	if config[4]!= '' and config[5] != '' and config[6] != '' :
 		size = config[6].split(',')
-		font = ImageFont.truetype("./msyh.ttc", size = int(size[3])  )#更改文字字体
+		if config[19] == '':
+			font = ImageFont.truetype("./msyh.ttc", size = int(size[3])  )#更改文字字体
+		else:
+			font = ImageFont.truetype("./%s" % config[19], size = int(size[3])  )#更改文字字体
+
 		colorArr = getColorFromHex(config[5])
 		centerPoint = getPositionFromCenterPointAndText( config[4] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
 		draw.text( (centerPoint[0] , int(size[1]) ) , config[4],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字
 	if config[7]!= '' and config[8] != '' and config[9] != '' :
 		size = config[9].split(',')
-		font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
+		if config[20] == '':
+			font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
+		else:
+			font = ImageFont.truetype("./%s" % config[20], size = int(size[3])  )#更改文字字体
 		colorArr = getColorFromHex(config[8])
 		centerPoint = getPositionFromCenterPointAndText( config[7] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
 		draw.text( (centerPoint[0] , int(size[1]) )  , config[7],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字
@@ -243,13 +288,20 @@ def startWork( config ):
 
 	if config[10]!= '' and config[11] != '' and config[12] != '' :
 		size = config[12].split(',')
-		font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
+		if config[21] == '':
+			font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
+		else:
+			font = ImageFont.truetype("./%s" % config[21], size = int(size[3])  )#更改文字字体
+
 		colorArr = getColorFromHex(config[11])
 		centerPoint = getPositionFromCenterPointAndText( config[10] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
 		draw.text( (centerPoint[0] , int(size[1]) )   , config[10],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字
 	if config[15]!= '' and config[16] != '' and config[17] != '' :
 		size = config[17].split(',')
-		font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
+		if config[22] == '':
+			font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
+		else:
+			font = ImageFont.truetype("./%s" % config[22], size = int(size[3])  )#更改文字字体
 		colorArr = getColorFromHex(config[16])
 		centerPoint = getPositionFromCenterPointAndText( config[15] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
 		draw.text( (centerPoint[0] , int(size[1]) )   , config[15],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字

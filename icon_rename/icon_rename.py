@@ -212,6 +212,17 @@ def clearOutputPathButtonAction():
 		tkMessageBox.showinfo( "确认信息", "已清空:"  + outputPath +"文件夹内容..." )
 
 
+def isWindows():
+	return False
+	platformStr = platform.platform()
+	print platformStr
+	if platformStr.find("windows")>=0 or platformStr.find("Windows") >=0 :
+		print "platform is windows"
+		return True
+	else:
+		print "platform is not windows"
+		return False
+
 
 def startLayoutView():
 	global outputPathEntry,lb2,change_mode,iconsFilePathEntry
@@ -267,7 +278,11 @@ def startLayoutView():
 	lb2=Tkinter.Listbox(top,selectmode=MULTIPLE)
 
 	for item in getFileFromPath(default_res_file,['.conf']):
-		lb2.insert(END,str(item.decode('gbk').encode('utf-8')))
+		if(isWindows()):
+			lb2.insert(END,str(item.decode('gbk').encode('utf-8')))
+		else:
+			lb2.insert(END,str(item))
+
 	#  有两个特殊的值ACTIVE和END，ACTIVE是向当前选中的item前插入一个
 	# （即使用当前选中的索引作为插入位置）；END是向
 	#  Listbox的最后一项添加插入一项
