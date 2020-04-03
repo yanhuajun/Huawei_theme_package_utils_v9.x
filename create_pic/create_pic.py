@@ -18,6 +18,7 @@ Grey = (190,190,190)
 LightGray = (211,211,211)
 alapblack = (211,211,211,100)
 default_output_path = os.path.join(  os.getcwd()  , 'output' )
+lineConfig = ''
 
 backMode = {
 	"text":[{
@@ -203,6 +204,8 @@ def circle_corner(img, radii):
 
 
 def startWork( config ):
+	global lineConfig 
+	lineConfig = config 
 	im = Image.open(os.path.join(os.getcwd(),'res',randomName(config[0] , ['bg']) )) # 打开文件
 	im = im.convert('RGBA')
 	if config[1] != '' :
@@ -219,7 +222,8 @@ def startWork( config ):
 
 
 	# 切圆角
-	img2 = circle_corner(img2  , 20 );
+	if config[23] == 1.0:
+		img2 = circle_corner(img2  , int(config[24]) );
 
 	# shadow
 	print 'is front img shadow?'
@@ -370,7 +374,7 @@ def write_text(img , text, tmodeList):
 
 def write_line(backimg ,text, tmode):
 #给单个文本框填充数据
-	myfont = ImageFont.truetype(tmode["ttf"],size=tmode["size"])
+	myfont = ImageFont.truetype('./%s' % lineConfig[26] ,size=int(lineConfig[25]))
 	draw = ImageDraw.Draw(backimg)
 	tend = len(text)
 	while True:
