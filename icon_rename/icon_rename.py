@@ -267,7 +267,7 @@ def startLayoutView():
 	lb2=Tkinter.Listbox(top,selectmode=MULTIPLE)
 
 	for item in getFileFromPath(default_res_file,['.conf']):
-		lb2.insert(END,str(item))
+		lb2.insert(END,str(item.decode('gbk').encode('utf-8')))
 	#  有两个特殊的值ACTIVE和END，ACTIVE是向当前选中的item前插入一个
 	# （即使用当前选中的索引作为插入位置）；END是向
 	#  Listbox的最后一项添加插入一项
