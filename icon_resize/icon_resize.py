@@ -332,12 +332,12 @@ def startWork(iconsPath ,outputPath ,width ,height ,resizeMode):
 		image = Image.open(os.path.join( iconsPath , icon ) )
 		image = image.convert('RGBA')
 		if resizeMode == 'A':
-			image = image.resize( (int(width)  ,int(height)) )
+			image = image.resize( (int(width)  ,int(height)) ,Image.ANTIALIAS)
 			image.save( os.path.join( outputPath , icon ) )
 		else:
 			bgImage = Image.open( os.path.join( default_res_file, 'bg.png' ) )
 			bgImage = bgImage.convert('RGBA')
-			bgImage = bgImage.resize( (int(width)  ,int(height)) )
+			bgImage = bgImage.resize( (int(width)  ,int(height)) ,Image.ANTIALIAS )
 			targetObj = combineImg_New(bgImage , image ,icon  ,'' , '')
 			targetObj['img'].save( os.path.join( outputPath , icon ) )
 

@@ -23,25 +23,25 @@ lineConfig = ''
 backMode = {
 	"text":[{
 		"size":40,
-		"ttf":"./msyh.ttc",
+		"ttf":os.path.join(os.getcwd() ,'font' ,  "msyh.ttc"),
 		"color":"30,30,30",
 		"position":(90,560),
 		"frame":(900,40),
 	},{
 		"size":40,
-		"ttf":"./msyh.ttc",
+		"ttf":os.path.join(os.getcwd() ,'font' ,  "msyh.ttc"),
 		"color":"30,30,30",
 		"position":(90,620),
 		"frame":(900,40),
 	},{
 		"size":40,
-		"ttf":"./msyh.ttc",
+		"ttf":os.path.join(os.getcwd() ,'font' ,  "msyh.ttc"),
 		"color":"30,30,30",
 		"position":(90,680),
 		"frame":(900,40),
 	},{
 		"size":40,
-		"ttf":"./msyh.ttc",
+		"ttf":os.path.join(os.getcwd() ,'font' ,  "msyh.ttc"),
 		"color":"30,30,30",
 		"position":(90,740),
 		"frame":(900,40),
@@ -261,23 +261,23 @@ def startWork( config ):
 	if config[4]!= '' and config[5] != '' and config[6] != '' :
 		size = config[6].split(',')
 		if config[19] == '':
-			font = ImageFont.truetype("./msyh.ttc", size = int(size[3])  )#更改文字字体
+			font = ImageFont.truetype(os.path.join(os.getcwd() ,'font' ,  "msyh.ttc"), size = int(size[3])  )#更改文字字体
 		else:
-			font = ImageFont.truetype("./%s" % config[19], size = int(size[3])  )#更改文字字体
+			font = ImageFont.truetype(os.path.join(os.getcwd() ,'font' ,  "./%s" % config[19] ), size = int(size[3])  )#更改文字字体
 
 		colorArr = getColorFromHex(config[5])
-		centerPoint = getPositionFromCenterPointAndText( config[4] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
+		centerPoint = getPositionFromCenterPointAndText( config[4] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , os.path.join(os.getcwd() ,'font' ,  "notosansscbold.ttf" ),  int(size[3])  ) 
 		draw.text( (centerPoint[0] , int(size[1]) ) , config[4],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字
 	if config[7]!= '' and config[8] != '' and config[9] != '' :
 		size = config[9].split(',')
 		if config[20] == '':
-			font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
+			font = ImageFont.truetype(os.path.join(os.getcwd(),'font' ,  "notosansscbold.ttf"), size = int(size[3])  )#更改文字字体
 		else:
-			font = ImageFont.truetype("./%s" % config[20], size = int(size[3])  )#更改文字字体
+			font = ImageFont.truetype(os.path.join(os.getcwd() ,'font' ,  "./%s" % config[20] ), size = int(size[3])  )#更改文字字体
 		colorArr = getColorFromHex(config[8])
-		centerPoint = getPositionFromCenterPointAndText( config[7] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
+		centerPoint = getPositionFromCenterPointAndText( config[7] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , os.path.join(os.getcwd() ,'font' ,  "notosansscbold.ttf" ),  int(size[3])  ) 
 		draw.text( (centerPoint[0] , int(size[1]) )  , config[7],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字
-		# myfont = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3]))
+		# myfont = ImageFont.truetype(os.path.join(os.getcwd() , "notosansscbold.ttf", size = int(size[3]))
 		# text = config[7];
 		# tend = len(text)
 		# while True:
@@ -293,21 +293,21 @@ def startWork( config ):
 	if config[10]!= '' and config[11] != '' and config[12] != '' :
 		size = config[12].split(',')
 		if config[21] == '':
-			font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
+			font = ImageFont.truetype(os.path.join(os.getcwd() ,'font' ,  "notosansscbold.ttf"), size = int(size[3])  )#更改文字字体
 		else:
-			font = ImageFont.truetype("./%s" % config[21], size = int(size[3])  )#更改文字字体
+			font = ImageFont.truetype(os.path.join(os.getcwd() ,'font' ,  "./%s" % config[21] ), size = int(size[3])  )#更改文字字体
 
 		colorArr = getColorFromHex(config[11])
-		centerPoint = getPositionFromCenterPointAndText( config[10] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
+		centerPoint = getPositionFromCenterPointAndText( config[10] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , os.path.join(os.getcwd() ,'font' ,  "notosansscbold.ttf") ,  int(size[3])  ) 
 		draw.text( (centerPoint[0] , int(size[1]) )   , config[10],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字
 	if config[15]!= '' and config[16] != '' and config[17] != '' :
 		size = config[17].split(',')
 		if config[22] == '':
-			font = ImageFont.truetype("./NotoSansSC-Bold.ttf", size = int(size[3])  )#更改文字字体
+			font = ImageFont.truetype(os.path.join(os.getcwd() ,'font' ,  "notosansscbold.ttf" ), size = int(size[3])  )#更改文字字体
 		else:
-			font = ImageFont.truetype("./%s" % config[22], size = int(size[3])  )#更改文字字体
+			font = ImageFont.truetype(os.path.join(os.getcwd() ,'font' ,  "%s" % config[22] ) , size = int(size[3])  )#更改文字字体
 		colorArr = getColorFromHex(config[16])
-		centerPoint = getPositionFromCenterPointAndText( config[15] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , "./NotoSansSC-Bold.ttf" ,  int(size[3])  ) 
+		centerPoint = getPositionFromCenterPointAndText( config[15] , ( int(config[1].split(',')[0])  ,int(config[1].split(',')[1])  ) , os.path.join(os.getcwd() ,'font' , "notosansscbold.ttf" ),  int(size[3])  ) 
 		draw.text( (centerPoint[0] , int(size[1]) )   , config[15],font= font ,  fill =  ( int(colorArr[0]) , int(colorArr[1]) , int(colorArr[2]) ) ) #利用ImageDraw的内置函数，在图片上写入文字
 	print 'start write_line...'
 	print 'backMode:' 
@@ -321,7 +321,7 @@ def startWork( config ):
 	# im.show()
 	if not os.path.exists( default_output_path ) :
 		os.makedirs(default_output_path)
-	im.show()
+	# im.show()
 	im.save(os.path.join( default_output_path  ,config[13] )  )
 
 def getColorFromHex(tmp):
@@ -330,7 +330,7 @@ def getColorFromHex(tmp):
 	strs = ""						#用以存放最后结果
 	for i in range (0, len(opt)):	#for循环，遍历分割后的字符串列表
 		strs += str(int(opt[i], 16)) + ","	#将结果拼接成12，12，12格式
-	print("转换后的RGB数值为：")
+	print(u"转换后的RGB数值为：")
 	strs = strs[0:-1]
 	print(strs)				#输出最后结果，末尾的","不打印
 	return strs.split(',')
@@ -374,7 +374,7 @@ def write_text(img , text, tmodeList):
 
 def write_line(backimg ,text, tmode):
 #给单个文本框填充数据
-	myfont = ImageFont.truetype('./%s' % lineConfig[26] ,size=int(lineConfig[25]))
+	myfont = ImageFont.truetype(os.path.join(os.getcwd() ,'font' ,  './%s' % lineConfig[26] ) ,size=int(lineConfig[25]))
 	draw = ImageDraw.Draw(backimg)
 	tend = len(text)
 	while True:
@@ -395,7 +395,9 @@ def write_line(backimg ,text, tmode):
 
 	return backimg, tend
 
-
+def writeTextByChar(backimg,text,tmode):
+	myfont = ImageFont.truetype(os.path.join(os.getcwd() ,'font' ,  './%s' % lineConfig[26] ) ,size=int(lineConfig[25]))
+	draw = ImageDraw.Draw(backimg)
 
 # start
 print 'start...'
