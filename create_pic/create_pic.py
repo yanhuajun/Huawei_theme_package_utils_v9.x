@@ -174,6 +174,8 @@ def randomName(bgName,prefixArr):
 
 
 def circle_corner(img, radii):
+    # img = img.resize((img.size[0]*1000  ,img.size[1]*1000 ) , Image.ANTIALIAS)
+    # radii = radii * 1000
     """
     圆角处理
     :param img: 源图象。
@@ -199,9 +201,49 @@ def circle_corner(img, radii):
     # alpha.show()
 
     img.putalpha(alpha)  # 白色区域透明可见，黑色区域不可见
+    # img = img.resize((img.size[0]/1000  ,img.size[1]/1000 ) , Image.ANTIALIAS)
     return img
 
+def circle(ima, radii):
+    # ima = ima.resize((600, 600), Image.ANTIALIAS)
+    size = ima.size
+    print(size)
+ 
+    # 因为是要圆形，所以需要正方形的图片
+    r2 = min(size[0], size[1])
+    if size[0] != size[1]:
+        ima = ima.resize((r2, r2), Image.ANTIALIAS)
+ 
+    # 最后生成圆的半径
+    r3 = radii
+    imb = Image.new('RGBA', (r3*2, r3*2),(255,255,255,0))
+    pima = ima.load()  # 像素的访问对象
+    pimb = imb.load()
+    r = float(r2/2) #圆心横坐标
+ 
+    for i in range(r2):
+        for j in range(r2):
+            lx = abs(i-r) #到圆心距离的横坐标
+            ly = abs(j-r)#到圆心距离的纵坐标
+            l  = (pow(lx,2) + pow(ly,2))** 0.5  # 三角函数 半径
+ 
+            if l < r3:
+                pimb[i-(r-r3),j-(r-r3)] = pima[i,j]
+    return imb
 
+def circle_new(ima ):
+    size = ima.size
+    r2 = min(size[0], size[1])
+    if size[0] != size[1]:
+        ima = ima.resize((r2, r2), Image.ANTIALIAS)
+    circle = Image.new('L', (r2, r2), 0)
+    draw = ImageDraw.Draw(circle)
+    draw.ellipse((0, 0, r2, r2), fill=255)
+    alpha = Image.new('L', (r2, r2), 255)
+    alpha.paste(circle, (0, 0))
+    ima.putalpha(alpha)
+    # ima.save('test_circle.png')
+    return ima
 
 def startWork( config ):
 	global lineConfig 
@@ -223,7 +265,9 @@ def startWork( config ):
 
 	# 切圆角
 	if config[23] == 1.0:
-		img2 = circle_corner(img2  , int(config[24]) );
+		# img2 = circle_corner(img2  , int(config[24]) );
+		# img2 = circle(img2  , int(config[24]) );
+		img2 = circle_new(img2)
 
 	# shadow
 	print 'is front img shadow?'
