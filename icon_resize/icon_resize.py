@@ -200,7 +200,7 @@ def workWithSingleSize(bgPath ,resFilePath  ,width , height ,bg ):
 
 	path = os.path.join(resFilePath , "%dx%d" %(height ,width ) , resize_mode.get() )
 
-	resList = getFileFromPath(path , ['.png'])
+	resList = getFileFromPath(path , ['.png','.PNG'])
 	# if not os.path.exists(default_output_file):
 	# 	os.makedirs(default_output_file)
 	for i in range(0,len(resList)):
