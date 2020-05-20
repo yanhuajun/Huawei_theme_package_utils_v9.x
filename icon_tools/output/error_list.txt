@@ -1,0 +1,16 @@
+转换失败,原始文件：铁路12306.png 			,转换后文件:com.MobileTicket.png 
+
+转换失败,原始文件：360清理大师.png 			,转换后文件:com.qihoo.cleandroid_cn.png 
+
+转换失败,原始文件：Face激萌.png 			,转换后文件:com.lemon.faceu.png 
+
+转换失败,原始文件：360浏览器.png 			,转换后文件:com.qihoo.browser.png 
+
+转换失败,原始文件：WPSOffice.png 			,转换后文件:cn.wps.moffice_eng.png 
+
+转换失败,原始文件：凤凰新闻.png 			,转换后文件:com.ifeng.news2.png 
+
+转换失败,原始文件：B612咔叽.png 			,转换后文件:com.campmobile.snowcamera.png 
+
+转换失败,原始文件：美颜相机.png 			,转换后文件:com.meitu.meiyancamera.png 
+

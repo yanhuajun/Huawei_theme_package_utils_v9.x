@@ -5,13 +5,13 @@ import Tkinter
 import tkMessageBox
 import os
 import codecs
-from PIL import Image
+from PIL import Image ,ImageFont, ImageDraw
 import platform
 
 default_bg_file = os.path.join(os.getcwd() , 'bg')
 default_icons_file = os.path.join(os.getcwd() , 'icons')
 default_res_file = os.path.join(os.getcwd() , 'res')
-default_icons_conf_file = os.path.join(os.getcwd() , 'iconsx3.conf')
+# default_icons_conf_file = os.path.join(os.getcwd() , 'iconsx3.conf')
 default_output_file = os.path.join(os.getcwd() , 'output')
 
 bg_list = []
@@ -52,7 +52,7 @@ def readContentFromFileByLine( path ):
 		arr = content.split('\n')
 	for item in arr:
 		if item != '' and not item.startswith('#') and  item.find("=") >= 0 :
-			listArr.append(os.path.join(default_icons_file , item.split('=')[1] ))
+			listArr.append(item)
 	return listArr
 
 def getImageSize(path):
@@ -116,7 +116,14 @@ def combineImg_New(baseImg , frontImg , outFileName  , frontImgCenterPoint,front
 
 	# 处理 font resize
 	if frontImgResize != '':
-		frontImg = frontImg.resize(frontImgResize,Image.ANTIALIAS)
+		# 更新为按比例缩放   参照  width
+		TW = float(frontImgResize[0])
+		TH = TW / float(frontImg.size[0]) * float(frontImg.size[1])
+		print 'TW:' 
+		print TW
+		print 'TH:' 
+		print TH
+		frontImg = frontImg.resize((int(TW),int(TH) ),Image.ANTIALIAS)
 
 
 	# 处理粘贴坐标
@@ -180,54 +187,54 @@ def iconPaste(targetObj,outputFileName ,isFirst,size):
 
 	# 底部通用
 	for i in range(0,4):
-		targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*i,iconPositionConf["bottom_position_y"]) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+		targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*i,iconPositionConf["bottom_position_y"]) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 
 	# 首页
 	if isFirst:
 		for i in range(4,8):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-4),iconPositionConf['p1_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-4),iconPositionConf['p1_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 	if isFirst:
 		for i in range(8,12):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-8),iconPositionConf['p1_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-8),iconPositionConf['p1_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 	if isFirst:
 		for i in range(12,16):
-			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-12),iconPositionConf['p1_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-12),iconPositionConf['p1_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 	
 	if size[1] == 3168:
 		# 第二页
 		if not isFirst:
 			for i in range(16,20):
-				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-16),iconPositionConf['p2_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-16),iconPositionConf['p2_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 		if not isFirst:
 			for i in range(20,24):
-				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-20),iconPositionConf['p2_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-20),iconPositionConf['p2_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 		if not isFirst:
 			for i in range(24,28):
-				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-24),iconPositionConf['p2_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-24),iconPositionConf['p2_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 		if not isFirst:
 			for i in range(28,32):
-				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-28),iconPositionConf['p2_l4_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-28),iconPositionConf['p2_l4_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 
 
 	else:
 		if isFirst:
 			for i in range(16,20):
-				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-16),iconPositionConf['p1_l4_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-16),iconPositionConf['p1_l4_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 		
 
 		# 第二页
 		if not isFirst:
 			for i in range(20,24):
-				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-20),iconPositionConf['p2_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-20),iconPositionConf['p2_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 		if not isFirst:
 			for i in range(24,28):
-				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-24),iconPositionConf['p2_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-24),iconPositionConf['p2_l2_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 		if not isFirst:
 			for i in range(28,32):
-				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-28),iconPositionConf['p2_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-28),iconPositionConf['p2_l3_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 		if not isFirst:
 			for i in range(32,36):
-				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,Image.open(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-32),iconPositionConf['p2_l4_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
+				targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-32),iconPositionConf['p2_l4_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
 
 
 
@@ -235,6 +242,58 @@ def iconPaste(targetObj,outputFileName ,isFirst,size):
 
 
 	return targetObj;
+
+def readAndCheckIcon( icon_path_str ):
+	icon_path_dic = icon_path_str.split('=')
+	if os.path.exists(os.path.join(default_icons_file,icon_path_dic[1])):
+		# return Image.open(icon_path_dic[1])
+		return addIconName(os.path.join(default_icons_file,icon_path_dic[1]),icon_path_dic[0])
+	else:
+		return Image.open(os.path.join(default_icons_file,'default_icon.png'))
+
+
+
+def addIconName(icon_path,icon_name):
+	print 'icon_Path:' + icon_path  +",icon_name:" + icon_name
+	iconImg = Image.open(icon_path).convert('RGBA')
+	bacImg = Image.new('RGBA', (iconImg.size[0] + 40, iconImg.size[1]+80), (255, 255, 255,1))
+	bacImg.paste(iconImg,(20,0))
+	# bacImg.show()
+	draw = ImageDraw.Draw(bacImg) #修改图片
+	#font = ImageFont.truetype(None, size = 40)#"C:\Users\Administrator\Desktop\每天小程序homework_day\0000\Helvetica Bold.ttf", 36) #更改文字字体
+	# print 'positionx:'
+	# print iconImg.size[0]/2
+	# draw.text((getPositionFromCenterPointAndText('test',(bacImg.size[0], bacImg.size[1]),'./msyh.ttc',30 )[0],bacImg.size[1] - 100), 'test' , fill = (255, 255 ,255)) #利用ImageDraw的内置函数，在图片上写入文字
+	# os.path.join(os.getcwd() ,'font' ,  "notosansscbold.ttf")
+	font = ImageFont.truetype( os.path.join(os.getcwd() ,'font' ,  "msyh.ttc"), size = 40  ,encoding="unic" )
+	position = getPositionFromCenterPointAndText(icon_name,(bacImg.size[0]/2 , bacImg.size[0] + 10 ),font )
+	print 'system_color:' 
+	print system_color.get()
+	if system_color.get() == 'black':
+		fillColor = (33,33,33)
+	else:
+		fillColor = (255,255,255)
+	draw.text( (position[0] + 54 , iconImg.size[1] +20 ) , icon_name ,font= font , fill=fillColor)
+	# bacImg.show()
+	# exit()
+	return bacImg
+
+def getPositionFromCenterPointAndText(letters  , position ,font  ):
+	print 'param position:'
+	print position
+	length = len(letters)
+	# position = (1080,1920)
+	im_50_blank = Image.new('RGB', position, (255, 0, 0))
+	draw = ImageDraw.Draw(im_50_blank)
+	# num = str(letters[random.randint(0, length - 1)])
+	num = letters
+	imwidth, imheight = im_50_blank.size
+	font_width, font_height = draw.textsize(num, font)
+	returnPosition = ((imwidth - font_width-font.getoffset(num)[0]) / 2, (imheight - font_height-font.getoffset(num)[1]) / 2)
+	print 'returnPosition:'
+	print returnPosition
+	return returnPosition
+
 
 def workWithSingleSize(bgPath ,resFilePath  ,width , height ,bg ):
 
@@ -248,7 +307,10 @@ def workWithSingleSize(bgPath ,resFilePath  ,width , height ,bg ):
 		# 背景和前置文字组合
 		if bg == '':
 			bg = Image.open(bgPath)
-		targetObj = combineImg_New(bg , Image.open(os.path.join(path ,item )) , item ,'','')
+
+		# 关闭前置文字
+		# targetObj = combineImg_New(bg , Image.open(os.path.join(path ,item )) , item ,'','')
+		targetObj = combineImg_New(bg , Image.new('RGBA',(bg.size[0],bg.size[1])  , (255,255,255,0)  ) , item ,'','')
 
 		# icon和 以上组合
 		print "item:" + item 
@@ -403,7 +465,7 @@ strvar = Tkinter.StringVar()
 strvar.set("下一步") #初始的按钮文本
 
 def nextStepButtonAction():
-	global default_bg_file , default_icons_file , default_output_file , default_res_file , default_icons_conf_file 
+	global default_bg_file , default_icons_file , default_output_file , default_res_file  
 	global bg_list , icons_list ,conf_list
 
 	global strvar
