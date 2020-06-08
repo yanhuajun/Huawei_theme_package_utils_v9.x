@@ -193,7 +193,7 @@ def iconPaste(targetObj,outputFileName ,isFirst,size):
 	# 首页
 	if isFirst:
 		# 底部指示器
-		targetObj["img"] = addBottomPointer(targetObj["img"].convert("RGBA") ,( targetObj['img'].size[0]/2 ,iconPositionConf["bottom_position_y"]-100 ),isFirst )
+		targetObj["img"] = addBottomPointer(targetObj["img"].convert("RGBA") ,( targetObj['img'].size[0]/2 ,iconPositionConf["bottom_position_y"]-iconPositionConf['icon_size'] ),isFirst )
 
 		for i in range(4,8):
 			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-4),iconPositionConf['p1_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
@@ -206,7 +206,7 @@ def iconPaste(targetObj,outputFileName ,isFirst,size):
 
 	else:
 		# 底部指示器
-		targetObj["img"] = addBottomPointer(targetObj["img"].convert("RGBA") ,( targetObj['img'].size[0]/2 ,iconPositionConf["bottom_position_y"]-iconPositionConf['icon_size'] ),not isFirst )
+		targetObj["img"] = addBottomPointer(targetObj["img"].convert("RGBA") ,( targetObj['img'].size[0]/2 ,iconPositionConf["bottom_position_y"]-iconPositionConf['icon_size'] ), isFirst )
 
 		for i in range(20,24):
 			targetObj = combineImg_New( targetObj["img"].convert("RGBA")  ,readAndCheckIcon(icons_list[i]).convert("RGBA"), outputFileName ,(start_width+margin_left*(i-20),iconPositionConf['p2_l1_y']) ,(iconPositionConf['icon_size'],iconPositionConf['icon_size']) )
@@ -241,7 +241,7 @@ def addBottomPointer( img  ,position ,isFirst):
 	ratio = pointerPng.size[0]/pointerPng.size[1]
 	# pointerPng = pointerPng.resize( ) ,Image.ANTIALIAS)
 	# point = (int(position[0]-pointerPng.size[0]/2), int(position[1]-pointerPng.size[1]/2) )
-	return combineImg_New(img , pointerPng , 'default'  , position,(int(img.size[0]*0.3)  , int(img.size[0]*0.3 / ratio) ) )['img']
+	return combineImg_New(img , pointerPng , 'default'  , position,(int(img.size[0]*0.2)  , int(img.size[0]*0.2 / ratio) ) )['img']
 
 
 def readAndCheckIcon( icon_path_str ):
